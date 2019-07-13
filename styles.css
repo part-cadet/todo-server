@@ -1,4 +1,4 @@
-body {font-family: Arial;}
+body {font-family: Montserrat;}
 
 /* Style the tab */
 .tab {
@@ -37,13 +37,20 @@ body {font-family: Arial;}
   border-top: none;
 }
 
-boardBox {
+.boardBox {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
 }
 
-boardBox .board {
+.boardBox .board:hover{
+  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+  /* box-shadow: -5px -5px 10px rgba(128, 128, 128, 0.315); */
+
+  /* justify-content: center; */
+}
+
+.boardBox .board {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -53,4 +60,32 @@ boardBox .board {
   /* border-width: 5px; */
   border-radius: 15px;
   /* background-color: cadetblue; */
+}
+
+
+.boardBox .board .name {
+  min-width: inherit;
+  align-self: center;
+  font-size: 40px;
+  margin-top: 15%;
+}
+
+.boardBox .board .status {
+  align-self: center;
+  min-height: 20%;
+  font-size: 40px;
+  margin-top: 15%;
+  color: red;
+}
+
+.boardBox .board ul {
+  align-self: center;
+  font-size: 12px;
+  padding: 0px;
+}
+
+.boardBox .board ul {
+  align-self: center;
+  font-size: 12px;
+  padding: 0px;
 }
