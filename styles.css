@@ -36,3 +36,21 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   border-top: none;
 }
+
+boardBox {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+
+boardBox .board {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  height: 400px;
+  width: 20%;
+  border: 2px solid cadetblue;
+  /* border-width: 5px; */
+  border-radius: 15px;
+  /* background-color: cadetblue; */
+}

@@ -6,49 +6,37 @@
 </head>
 <body>
 
-<div class="tab">
-  <!-- <button class="tablinks" onclick="openCity(event, 'London')">Londonnn</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
-  <button class="tablinks active">Dashboard</button>
-  <button class="tablinks" onclick="window.location.href='boards.html'">Boards</button>
-  <button class="tablinks" onclick="window.location.href='todos.html'">Todos</button>
-</div>
+  <div class="tab">
+    <!-- <button class="tablinks" onclick="openCity(event, 'London')">Londonnn</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
+    <button class="tablinks active">Dashboard</button>
+    <button class="tablinks" onclick="window.location.href='boards.html'">Boards</button>
+    <button class="tablinks" onclick="window.location.href='todos.html'">Todos</button>
+  </div>
 
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
-</div>
-<!-- 
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
+  <div id="London" class="tabcontent">
 
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div> -->
+    <boardBox>
+      <div class="board">
 
-<!-- <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    if(i == 0){
-        tabcontent[i].style.display = "block";
-    }
-    tabcontent[i].style.display = "none";
-  }
-  tabcontent[0].style.display = "active";
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script> -->
-   
+      </div>
+      <div class="board">
+        
+      </div>
+      <div class="board">
+        
+      </div>
+      <div class="board" >
+        
+      </div>
+      <div class="board">
+        
+      </div>
+    </boardBox>
+    
+
+  </div>
+
 </body>
 </html> 
