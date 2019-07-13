@@ -43,12 +43,14 @@ body {font-family: Montserrat;}
   /* justify-content: center; */
 }
 
+
 .boardBox .board:hover{
   box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
   /* box-shadow: -5px -5px 10px rgba(128, 128, 128, 0.315); */
 
   /* justify-content: center; */
 }
+
 
 .boardBox .board {
   display: flex;
@@ -62,6 +64,54 @@ body {font-family: Montserrat;}
   /* background-color: cadetblue; */
 }
 
+
+
+.boards {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  height: 200px;
+  width: 90%;
+  border: 2px solid cadetblue;
+  /* border-width: 5px; */
+  border-radius: 15px;
+  /* background-color: cadetblue; */
+}
+
+.innerBoard {
+  display: flex;
+   flex-direction: row; 
+  margin: 10px;
+  margin-left:auto;
+  margin-right:15px;
+  height: 150px;
+  width: 40%;
+  padding: 14px 15px;
+  align-items: left;
+  align-content: left;
+
+  border: 2px solid cadetblue;
+  /* border-width: 5px; */
+  border-radius: 15px;
+  /* background-color: cadetblue; */
+}
+
+.circleButton{
+  display: flex;
+  height: 40px;
+  width: 10%;
+  background-color: rgb(67, 118, 124); 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  /* text-decoration: none; */
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%
+  /* cursor: pointer; */
+
+}
 
 .boardBox .todo {
     display: flex;
