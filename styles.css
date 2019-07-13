@@ -46,17 +46,11 @@ body {font-family: Montserrat;}
 
 .boardBox .board:hover{
   box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
-  /* box-shadow: -5px -5px 10px rgba(128, 128, 128, 0.315); */
-
-  /* justify-content: center; */
 }
 
 
 .boardBox .todo:hover{
     box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
-    /* box-shadow: -5px -5px 10px rgba(128, 128, 128, 0.315); */
-  
-    /* justify-content: center; */
   } 
 
 .boardBox .board {
