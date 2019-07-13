@@ -137,8 +137,10 @@ body {font-family: Montserrat;}
   padding: 0px;
 }
 
-.boardBox .board ul {
+.boardBox .board .members {
   align-self: center;
-  font-size: 12px;
-  padding: 0px;
+  min-height: 20%;
+  font-size: 40px;
+  margin-top: 15%;
+  color: red;
 }
