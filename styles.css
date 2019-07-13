@@ -37,13 +37,13 @@ body {font-family: Arial;}
   border-top: none;
 }
 
-boardBox {
+.boardBox {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
 }
 
-boardBox .board {
+.boardBox .board {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -53,4 +53,52 @@ boardBox .board {
   /* border-width: 5px; */
   border-radius: 15px;
   /* background-color: cadetblue; */
+}
+
+
+.boards {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  height: 200px;
+  width: 90%;
+  border: 2px solid cadetblue;
+  /* border-width: 5px; */
+  border-radius: 15px;
+  /* background-color: cadetblue; */
+}
+
+.innerBoard {
+  display: flex;
+   flex-direction: row; 
+  margin: 10px;
+  margin-left:auto;
+  margin-right:15px;
+  height: 150px;
+  width: 40%;
+  padding: 14px 15px;
+  align-items: left;
+  align-content: left;
+
+  border: 2px solid cadetblue;
+  /* border-width: 5px; */
+  border-radius: 15px;
+  /* background-color: cadetblue; */
+}
+
+.circleButton{
+  display: flex;
+  height: 40px;
+  width: 10%;
+  background-color: rgb(67, 118, 124); 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  /* text-decoration: none; */
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%
+  /* cursor: pointer; */
+
 }
