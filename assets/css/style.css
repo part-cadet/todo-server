@@ -5,11 +5,10 @@ body {
   font-weight: 200; }
 
 ::-webkit-scrollbar {
-  width: 20px; }
+  width: 4px; }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
   border-radius: 10px; }
 
 /* Handle */
@@ -125,7 +124,7 @@ body {
   box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
   transition: all 0.2s; }
 
-.boardBoxTodo .todo {
+.boardBoxTodo .todoBox {
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -133,21 +132,60 @@ body {
   height: 400px;
   width: 17%;
   border: 2px solid cadetblue;
-  border-radius: 15px; }
-  .boardBoxTodo .todo hr {
-    margin-top: 0.9em;
-    margin-bottom: 0.9em;
-    border: 0;
-    height: 1px;
-    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); }
-  .boardBoxTodo .todo img {
-    border-radius: 50%;
+  border-radius: 15px;
+  overflow: auto; }
+  .boardBoxTodo .todoBox .title {
+    line-height: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    align-self: center;
+    text-align: center;
     height: 50px;
-    width: 50px;
-    margin-left: -20px; }
+    width: 95%;
+    border-radius: 3px;
+    background-color: cadetblue; }
+  .boardBoxTodo .todoBox .allTasksContainer {
+    color: #464646;
+    align-content: left;
+    text-align: left;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow: auto; }
+    .boardBoxTodo .todoBox .allTasksContainer .taskContainer {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      justify-content: space-between; }
+      .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem {
+        align-self: center; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem input[type=checkbox] + label {
+          color: #464646; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem input[type=checkbox]:checked + label {
+          color: #c5c3c3;
+          text-decoration: line-through;
+          transition: 0.3s;
+          font-style: normal; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem img {
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          margin-left: -20px; }
+    .boardBoxTodo .todoBox .allTasksContainer hr {
+      margin-top: 0.9em;
+      margin-bottom: 0.9em;
+      border: 0;
+      height: 1px;
+      background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); }
 
 .boardBoxTodo .todoplus {
   display: flex;
@@ -166,48 +204,6 @@ body {
   line-height: 350px;
   font-size: 40px;
   text-decoration: none; }
-
-.boardBoxTodo .todo .title {
-  line-height: 50px;
-  color: white;
-  font-weight: bold;
-  font-size: 19px;
-  align-self: center;
-  text-align: center;
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  margin: 10px;
-  height: 50px;
-  width: 95%;
-  /* border: 2px solid cadetblue; */
-  /* border-width: 5px; */
-  border-radius: 3px;
-  background-color: cadetblue; }
-
-.boardBoxTodo .todo .content {
-  /* line-height: 50px; */
-  color: #464646;
-  align-content: left;
-  text-align: left;
-  margin: 20px;
-  /* height: 50px; */
-  /* width: 90%; */
-  /* border: 2px solid cadetblue; */
-  /* border-width: 5px; */
-  border-radius: 15px;
-  /* background-color: rgb(13, 25, 26); */ }
-
-.taskContainer {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-between; }
-  .taskContainer .taskItem {
-    align-self: center; }
 
 .styled-checkbox {
   position: absolute;
@@ -244,15 +240,6 @@ body {
     height: 2px;
     box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
     transform: rotate(45deg); }
-
-input[type=checkbox] + label {
-  color: #464646; }
-
-input[type=checkbox]:checked + label {
-  color: #c5c3c3;
-  text-decoration: line-through;
-  transition: 0.3s;
-  font-style: normal; }
 
 .dropbtn {
   background-color: cadetblue;
@@ -291,60 +278,6 @@ input[type=checkbox]:checked + label {
 
 .dropdown:hover .dropbtn {
   background-color: #1f7281; }
-
-.checkboxcontainer {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-/* Hide the browser's default checkbox */
-.checkboxcontainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0; }
-
-/* custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #eee; }
-
-.checkboxcontainer:hover input ~ .checkmark {
-  background-color: #ccc; }
-
-.checkboxcontainer input:checked ~ .checkmark {
-  background-color: #2196F3; }
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none; }
-
-.checkboxcontainer input:checked ~ .checkmark:after {
-  display: block; }
-
-.checkboxcontainer .checkmark:after {
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg); }
 
 .boardBox2 {
   display: flex;
