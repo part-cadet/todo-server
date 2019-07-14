@@ -1,5 +1,5 @@
 body {
-  font-family: Montserrat; }
+  font-family: Rubik; }
 
 ::-webkit-scrollbar {
   width: 20px; }
@@ -53,31 +53,30 @@ body {
 
 .boardBox {
   display: flex;
-  flex-wrap: wrap;
-  /* justify-content: center;  */ }
-
-.boardBox .board:hover {
-  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
-  transition: all 0.2s; }
+  flex-wrap: wrap; }
 
 .boardBox .board {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3% 1% 1% 1%;
+  padding: 3% 0% 1% 0%;
   margin: 10px;
-  height: 400px;
-  width: 20%;
+  height: 300px;
+  width: 17%;
   border: 2px solid cadetblue;
   /* border-width: 5px; */
   border-radius: 15px;
-  position: relative;
-  /* background-color: cadetblue; */ }
+  position: relative; }
+
+.boardBox .board:hover {
+  box-shadow: 0px 10px 20px rgba(51, 51, 51, 0.753);
+  transition: all 0.2s; }
 
 .boardBox .board .name {
   /* min-width: inherit; */
   align-self: center;
-  font-size: 40px;
+  font-size: 35px;
+  flex-basis: 25%;
   /* margin-top: 15%; */ }
 
 .boardBox .board .status {
@@ -85,27 +84,33 @@ body {
   min-height: 20%;
   font-size: 40px;
   margin-top: 15%;
-  color: red; }
+  color: red;
+  flex-basis: 25%; }
 
 .boardBox .board ul {
   /* position: absolute; */
   align-self: center;
   font-size: 12px;
   /* bottom: 10%; */
-  padding: 0px; }
+  padding: 0px;
+  flex-basis: 25%; }
 
 .boardBox .board .members {
   display: flex;
+  align-items: center;
   flex-direction: row-reverse;
   margin-right: 20px;
   margin-left: 20px;
+  border-radius: 20px;
+  background-color: rgba(163, 162, 162, 0.151);
   /* position: absolute; */
-  /* padding: 10px; */ }
+  padding: 10px;
+  flex: 0 1 25%; }
 
 .boardBox .board .members img {
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   margin-left: -20px; }
 
 .boardBoxTodo {
