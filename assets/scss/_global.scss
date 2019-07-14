@@ -1,6 +1,8 @@
-$primaryColorr: cadetblue;
+$primaryColor: cadetblue;
 
-body {font-family: Montserrat;}
+body {
+    font-family: Rubik;
+}
 
 ::-webkit-scrollbar {
     width: 20px;
@@ -14,7 +16,7 @@ body {font-family: Montserrat;}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $primaryColorr; 
+    background: $primaryColor; 
     border-radius: 10px;
 }
 
