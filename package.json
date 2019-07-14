@@ -1,0 +1,20 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --include-path scss assets/scss/style.scss assets/css/style.css",
+    "start": "npm run scss && npm run scss -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://igit.partdp.ir/cadet/todo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
