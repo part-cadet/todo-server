@@ -97,13 +97,15 @@ body {font-family: Montserrat;}
 .boardBox .board {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 3% 1% 1% 1%;
   margin: 10px;
   height: 400px;
   width: 20%;
   border: 2px solid cadetblue;
   /* border-width: 5px; */
   border-radius: 15px;
-  
+  position: relative;
   /* background-color: cadetblue; */
 }
 
@@ -444,10 +446,10 @@ body {font-family: Montserrat;}
 
 
 .boardBox .board .name {
-  min-width: inherit;
+  /* min-width: inherit; */
   align-self: center;
   font-size: 40px;
-  margin-top: 15%;
+  /* margin-top: 15%; */
   
 }
 
@@ -460,17 +462,26 @@ body {font-family: Montserrat;}
 }
 
 .boardBox .board ul {
+  /* position: absolute; */
   align-self: center;
   font-size: 12px;
+  /* bottom: 10%; */
   padding: 0px;
+
 }
 
 .boardBox .board .members {
-  align-self: center;
-  min-height: 20%;
-  font-size: 40px;
-  margin-top: 15%;
-  color: red;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 20px: 
+  margin-left: 20px: 
+  /* position: absolute; */
+  /* padding: 10px; */
 }
-
+.boardBox .board .members img{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-left: -20px;
+}
 
