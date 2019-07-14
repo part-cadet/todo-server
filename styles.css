@@ -35,6 +35,7 @@ body {font-family: Montserrat;}
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  position: relative;
 }
 
 .boardBox {
@@ -263,8 +264,11 @@ body {font-family: Montserrat;}
     position: relative;
     line-height: 350px;
     font-size: 40px;
+    text-decoration: none;
     
   }
+
+
 
 
 
@@ -315,15 +319,19 @@ body {font-family: Montserrat;}
     padding: 16px;
     font-size: 16px;
     border: none;
-    right:50 px;
+
+    float: right;
+
+
     /* margin: 40px; */
   }
   
   .dropdown {
-    position: sticky;
+    right: 20px;
+    position: fixed;
     align-content: right;
     display: inline-block;
-    float: right;
+
   }
   
   .dropdown-content {
