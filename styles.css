@@ -139,6 +139,27 @@ body {font-family: Montserrat;}
   }
 
 
+  .boardBox .todoplus {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    height: 400px;
+    width: 20%;
+    border: 2px solid cadetblue;
+    /* border-width: 5px; */
+    border-radius: 15px;
+    background-color: cadetblue;
+    color: white;
+    position: relative;
+    line-height: 350px;
+    font-size: 40px;
+    
+  }
+
+
+
   .boardBox .todo .title {
 
     line-height: 50px;
@@ -186,6 +207,8 @@ body {font-family: Montserrat;}
     padding: 16px;
     font-size: 16px;
     border: none;
+    right:50 px;
+    /* margin: 40px; */
   }
   
   .dropdown {
