@@ -1,0 +1,207 @@
+.boardBoxTodo {
+    display: flex;
+    flex-wrap: wrap;
+     /* justify-content: center;  */
+  }
+  
+
+.boardBoxTodo {
+    .todo:hover{
+        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+        transition: all 0.2s;
+    }
+}
+
+
+.boardBoxTodo .todo {
+    display: flex;
+    /* align-content: center;
+    align-items: center; */
+    flex-direction: column;
+    margin: 10px;
+    height: 400px;
+    width: 20%;
+    border: 2px solid cadetblue;
+    /* border-width: 5px; */
+    border-radius: 15px;
+    /* background-color: cadetblue; */
+  }
+
+
+
+
+  .boardBoxTodo .todoplus {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    height: 400px;
+    width: 20%;
+    border: 2px solid cadetblue;
+    /* border-width: 5px; */
+    border-radius: 15px;
+    background-color: cadetblue;
+    color: white;
+    position: relative;
+    line-height: 350px;
+    font-size: 40px;
+    text-decoration: none;
+    
+  }
+
+
+
+
+
+  .boardBoxTodo .todo .title {
+
+    line-height: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+ 
+    text-align: center;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    margin: 10px;
+    height: 50px;
+    width: 90%;
+    /* border: 2px solid cadetblue; */
+    /* border-width: 5px; */
+    border-radius: 15px;
+    background-color: cadetblue;
+  }
+
+
+  .boardBoxTodo .todo .content {
+
+    /* line-height: 50px; */
+    color: rgb(70, 70, 70);
+    align-content: left;
+ 
+    text-align: left; 
+   
+    
+   
+     margin: 20px; 
+    /* height: 50px; */
+    /* width: 90%; */
+    /* border: 2px solid cadetblue; */
+    /* border-width: 5px; */
+    border-radius: 15px;
+    /* background-color: rgb(13, 25, 26); */
+  }
+
+
+  .dropbtn {
+    background-color: cadetblue;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
+    float: right;
+
+
+    /* margin: 40px; */
+  }
+  
+  .dropdown {
+    right: 20px;
+    position: fixed;
+    align-content: right;
+    display: inline-block;
+
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #1f7281;}  
+
+
+
+
+  .checkboxcontainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkboxcontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+  
+
+  .checkboxcontainer:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+ 
+  .checkboxcontainer input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  
+  .checkboxcontainer input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkboxcontainer .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

@@ -1,0 +1,73 @@
+
+.boardBox {
+    display: flex;
+    flex-wrap: wrap;
+     /* justify-content: center;  */
+  }
+  
+
+.boardBox {
+    .board:hover{
+        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+        transition: all 0.2s;
+    }
+}
+
+.boardBox {
+    .board {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3% 1% 1% 1%;
+    margin: 10px;
+    height: 400px;
+    width: 20%;
+    border: 2px solid cadetblue;
+    /* border-width: 5px; */
+    border-radius: 15px;
+    position: relative;
+    /* background-color: cadetblue; */
+    }
+}
+
+
+
+.boardBox .board .name {
+  /* min-width: inherit; */
+  align-self: center;
+  font-size: 40px;
+  /* margin-top: 15%; */
+  
+}
+
+.boardBox .board .status {
+  align-self: center;
+  min-height: 20%;
+  font-size: 40px;
+  margin-top: 15%;
+  color: red;
+}
+
+.boardBox .board ul {
+  /* position: absolute; */
+  align-self: center;
+  font-size: 12px;
+  /* bottom: 10%; */
+  padding: 0px;
+
+}
+
+.boardBox .board .members {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 20px;
+  margin-left: 20px;
+  /* position: absolute; */
+  /* padding: 10px; */
+}
+.boardBox .board .members img{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-left: -20px;
+}

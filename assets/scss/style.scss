@@ -1,6 +1,4 @@
-$test: 16px;
-$test2: blue;
-test{
-    font-size: $test;
-    color: $test2;
-}
+@import "global";
+@import "dashboard";
+@import "todos";
+@import "boards";
