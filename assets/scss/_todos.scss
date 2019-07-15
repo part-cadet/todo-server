@@ -69,8 +69,9 @@ $primaryColor: cadetblue;
     overflow-y: scroll;
     overflow: auto;
 
-        
-      @include onHoverScroll();
+      $bordercolor: white;
+      $trackcolor: grey;
+      @include onHoverScroll($bordercolor, $trackcolor);
    
     
 

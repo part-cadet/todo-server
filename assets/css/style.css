@@ -175,7 +175,7 @@ body {
       width: 21px; }
     .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-track {
       border-radius: 5px;
-      background: rgba(221, 221, 221, 0.445);
+      background: grey;
       border-left: 10px solid white;
       border-right: 10px solid white; }
     .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-thumb {
