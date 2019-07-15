@@ -129,7 +129,7 @@ body {
 .boardBoxTodo .todoBox {
   background: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 20px;
   padding: 10px;
   height: 400px;
@@ -294,7 +294,7 @@ body {
     display: flex;
     flex-direction: row;
     margin: 10px;
-    height: 900px;
+    height: 300px;
     width: 90%;
     justify-content: space-around;
     border-radius: 5px;
