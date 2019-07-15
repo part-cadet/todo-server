@@ -28,7 +28,7 @@ body {
 ::-webkit-scrollbar-track {
    
     border-radius: 5px;
-    background: rgba(221, 221, 221);
+    background: #fff;
 
     border-left: 9px solid white;
     border-right: 10px solid white;
@@ -36,19 +36,65 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(95, 158, 160); 
+    // 
     
     border-radius: 5px;
-
+    background: cadetblue; 
     
     border-left: 7px solid white;
     border-right: 7px solid white;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: $primaryColor; 
+// ::-webkit-scrollbar-thumb:hover {
+//     background: $primaryColor; 
+// }
+
+
+@mixin onHoverScroll(){
+    &:hover {
+
+        &::-webkit-scrollbar-thumb {
+          background: cadetblue; 
+          
+          border-radius: 5px;
+      
+          
+          border-left: 7px solid white;
+          border-right: 7px solid white;
+      }
+  
+      }
+  
+      &::-webkit-scrollbar {
+        width: 21px;
+    }
+    
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+       
+        border-radius: 5px;
+        background: rgba(221, 221, 221, 0.445);
+    
+        border-left: 10px solid white;
+        border-right: 10px solid white;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(95, 158, 160,0); 
+        
+        border-radius: 5px;
+    
+        
+        border-left: 7px solid white;
+        border-right: 7px solid white;
+    }
+    
 }
+
+
 
 /* Style the tab */
 

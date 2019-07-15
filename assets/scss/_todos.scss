@@ -69,49 +69,8 @@ $primaryColor: cadetblue;
     overflow-y: scroll;
     overflow: auto;
 
-    &:hover {
-
-      &::-webkit-scrollbar-thumb {
-        background: cadetblue; 
         
-        border-radius: 5px;
-    
-        
-        border-left: 7px solid white;
-        border-right: 7px solid white;
-    }
-
-    }
-
-    &::-webkit-scrollbar {
-      width: 21px;
-  }
-  
-  
-  /* Track */
-  &::-webkit-scrollbar-track {
-     
-      border-radius: 5px;
-      background: rgba(221, 221, 221, 0.445);
-  
-      border-left: 10px solid white;
-      border-right: 10px solid white;
-  }
-  
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-      background: rgba(95, 158, 160,0); 
-      
-      border-radius: 5px;
-  
-      
-      border-left: 7px solid white;
-      border-right: 7px solid white;
-  }
-  
-  /* Handle on hover */
- 
-    
+      @include onHoverScroll();
    
     
 

@@ -8,6 +8,24 @@ body {
   font-weight: 200;
   background: #f3f3f3; }
 
+::-webkit-scrollbar {
+  width: 20px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #fff;
+  border-left: 9px solid white;
+  border-right: 10px solid white; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: cadetblue;
+  border-left: 7px solid white;
+  border-right: 7px solid white; }
+
+/* Handle on hover */
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -147,8 +165,7 @@ body {
     overflow-y: scroll;
     overflow: auto;
     /* Track */
-    /* Handle */
-    /* Handle on hover */ }
+    /* Handle */ }
     .boardBoxTodo .todoBox .allTasksContainer:hover::-webkit-scrollbar-thumb {
       background: cadetblue;
       border-radius: 5px;
