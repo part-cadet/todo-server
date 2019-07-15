@@ -377,6 +377,7 @@ body {
 
 .finalButton {
   display: flex;
+  margin: 10px;
   justify-content: center;
   height: 40px;
   width: 90%;
