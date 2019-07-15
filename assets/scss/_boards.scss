@@ -115,7 +115,7 @@ $primaryColor: cadetblue;
             .membersOfBoard {
                         font-size: 16px;
                         margin-top:0px;
-                         
+                       
                      p{
                            
                          margin-top: 3px; 
@@ -134,6 +134,9 @@ $primaryColor: cadetblue;
                         height: 70px;
                         // margin-bottom: 50px;
                         overflow:auto;
+                        $colorback: rgb(235, 232, 232);
+                        $colorToolBar:white;
+                        @include onHoverScroll( $colorback, $colorToolBar);
                             
                             }
                         } 

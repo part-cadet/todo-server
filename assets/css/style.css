@@ -384,7 +384,26 @@ body {
         margin-top: 0px;
         font-size: 13px;
         height: 70px;
-        overflow: auto; }
+        overflow: auto;
+        /* Track */
+        /* Handle */ }
+        .boardBox2 .innerBoard .membersOfBoard ul:hover::-webkit-scrollbar-thumb {
+          background: cadetblue;
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar {
+          width: 21px; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background: white;
+          border-left: 10px solid #ebe8e8;
+          border-right: 10px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-thumb {
+          background: rgba(95, 158, 160, 0);
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
     .boardBox2 .innerBoard .circleButton {
       display: flex;
       justify-content: center;
