@@ -15,32 +15,39 @@ body {
     font-style: light;
     font-weight: 200;
     background: rgb(243, 243, 243); 
+    
 }
+
+
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 20px;
 }
-
-
-
-
-
 
 
 /* Track */
 ::-webkit-scrollbar-track {
-    
-    border-radius: 10px;
+   
+    border-radius: 5px;
+    background: rgba(221, 221, 221);
+
+    border-left: 9px solid white;
+    border-right: 10px solid white;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $primaryColor; 
-    border-radius: 10px;
+    background: rgba(95, 158, 160); 
+    
+    border-radius: 5px;
+
+    
+    border-left: 7px solid white;
+    border-right: 7px solid white;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(145, 238, 241); 
+    background: $primaryColor; 
 }
 
 /* Style the tab */

@@ -1,8 +1,12 @@
 $primaryColor: cadetblue;
 
+
+
 .boardBoxTodo {
     display: flex;
     flex-wrap: wrap;
+   
+    margin: 20px;
      /* justify-content: center;  */
   }
   
@@ -10,7 +14,7 @@ $primaryColor: cadetblue;
 .boardBoxTodo {
     .todoBox:hover{
       
-        box-shadow: 0 50px 20px rgba(3,27,78,.1);
+        box-shadow: 0 20px 20px rgba(3,27,78,.1);
         transition: all 0.2s;
     
     }
@@ -29,6 +33,11 @@ $primaryColor: cadetblue;
     border-radius: 5px;
     overflow:auto;
     min-width: 200px;
+    @include breakpoint(small){
+      height: 300px;
+    }
+
+  
 
     .title {
 
@@ -59,6 +68,49 @@ $primaryColor: cadetblue;
     max-height: 300px;
     overflow-y: scroll;
     overflow: auto;
+
+    &:hover {
+
+      &::-webkit-scrollbar-thumb {
+        background: cadetblue; 
+        
+        border-radius: 5px;
+    
+        
+        border-left: 7px solid white;
+        border-right: 7px solid white;
+    }
+
+    }
+
+    &::-webkit-scrollbar {
+      width: 21px;
+  }
+  
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+     
+      border-radius: 5px;
+      background: rgba(221, 221, 221, 0.445);
+  
+      border-left: 10px solid white;
+      border-right: 10px solid white;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: rgba(95, 158, 160,0); 
+      
+      border-radius: 5px;
+  
+      
+      border-left: 7px solid white;
+      border-right: 7px solid white;
+  }
+  
+  /* Handle on hover */
+ 
     
    
     

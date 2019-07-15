@@ -8,22 +8,6 @@ body {
   font-weight: 200;
   background: #f3f3f3; }
 
-::-webkit-scrollbar {
-  width: 4px; }
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px; }
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: cadetblue;
-  border-radius: 10px; }
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #91eef1; }
-
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -120,10 +104,11 @@ body {
 .boardBoxTodo {
   display: flex;
   flex-wrap: wrap;
+  margin: 20px;
   /* justify-content: center;  */ }
 
 .boardBoxTodo .todoBox:hover {
-  box-shadow: 0 50px 20px rgba(3, 27, 78, 0.1);
+  box-shadow: 0 20px 20px rgba(3, 27, 78, 0.1);
   transition: all 0.2s; }
 
 .boardBoxTodo .todoBox {
@@ -137,6 +122,9 @@ body {
   border-radius: 5px;
   overflow: auto;
   min-width: 200px; }
+  @media (max-width: 768px) {
+    .boardBoxTodo .todoBox {
+      height: 300px; } }
   .boardBoxTodo .todoBox .title {
     line-height: 50px;
     color: white;
@@ -157,7 +145,27 @@ body {
     border-radius: 15px;
     max-height: 300px;
     overflow-y: scroll;
-    overflow: auto; }
+    overflow: auto;
+    /* Track */
+    /* Handle */
+    /* Handle on hover */ }
+    .boardBoxTodo .todoBox .allTasksContainer:hover::-webkit-scrollbar-thumb {
+      background: cadetblue;
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar {
+      width: 21px; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background: rgba(221, 221, 221, 0.445);
+      border-left: 10px solid white;
+      border-right: 10px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-thumb {
+      background: rgba(95, 158, 160, 0);
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
     .boardBoxTodo .todoBox .allTasksContainer .taskContainer {
       display: -webkit-box;
       display: -moz-box;
