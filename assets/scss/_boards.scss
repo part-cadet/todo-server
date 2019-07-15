@@ -20,11 +20,20 @@ $primaryColor: cadetblue;
             display: flex;
             flex-direction: row;
             margin: 10px;
-            height: 200px;
+           
             width: 90%;
+            justify-content: space-around;
+            padding-bottom: 10px;
             // border: 1.7px solid $primaryColor;
-             border-radius: 5px;
-           background-color: white;
+            border-radius: 5px;
+            background-color: white;
+            @include breakpoint(small){
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+                align-self: center;
+                
+            }
         
             
                 
@@ -32,23 +41,32 @@ $primaryColor: cadetblue;
                 display: flex;
                 flex-direction: column;
                 min-height: 20%;
-                width: 50%;
+                width: 55%;
                 margin-bottom: 10px;
-                font-size: 16px;
+                font-size: 25px;
                 margin-top: 20px;
-                margin-left: 20px; 
-                  
+                margin-left: 20px;
+                // font-weight: bold; 
+                @include breakpoint(small){
+                 align-items: center;
+                // align-content: center;
+                // align-self: center;
+                }
                 
                 
 
                 .listOwner {
                 font-size: 16px;
                 margin-top: 20px;
-
-
                 
+                 @include breakpoint(small){
+                  align-self: center;
+                 }
 
-                    h5{
+
+                }
+
+                    h6{
                     margin-bottom: 2px;
                     font-size: 16px;
                 
@@ -57,7 +75,7 @@ $primaryColor: cadetblue;
                 
                      ul{
                         padding: 17px;
-                        margin-top: 1px;
+                        margin-top: 15px;
                         font-size: 13px;
                
                     }
@@ -77,15 +95,17 @@ $primaryColor: cadetblue;
                         display: flex;
                         flex-direction: column; 
                         position: relative;
-                        margin-left:auto;
-                        margin-top: 10px;
-                        margin-right:15px;
+                        margin: 10px;
                         height: 110px;
-                        width: 40%;
-                        padding: 9px 10px 60px 10px; 
+                        width: 45%;
+                        padding: 20px 10px 85px 20px; 
                         background-color: rgb(235, 232, 232);
                         // border: 1.7px solid $primaryColor;
                         border-radius: 5px;
+                        @include breakpoint(small){
+                            width: 80%;
+                        }
+                        
 
 
             .circleButton:hover{
@@ -95,12 +115,12 @@ $primaryColor: cadetblue;
             .membersOfBoard {
                         font-size: 16px;
                         margin-top:0px;
-                         
+                       
                      p{
                            
                          margin-top: 3px; 
                          font-size: 14;
-                         margin-bottom: 0px;
+                         margin-bottom: 10px;
                          font-size: 16px;
                          font-weight: bold;
                            
@@ -112,7 +132,11 @@ $primaryColor: cadetblue;
                         margin-top: 0px;
                         font-size: 13px;
                         height: 70px;
+                        // margin-bottom: 50px;
                         overflow:auto;
+                        $colorback: rgb(235, 232, 232);
+                        $colorToolBar:white;
+                        @include onHoverScroll( $colorback, $colorToolBar);
                             
                             }
                         } 
@@ -130,7 +154,8 @@ $primaryColor: cadetblue;
                             color: white;
                             font-size: 10px;
                             cursor: pointer;
-                            bottom: 3px;
+                            // margin-top: 10px;
+                            bottom: 10px;
                             margin: 3px 2px; 
                             border-radius: 50%;
                           
@@ -145,6 +170,7 @@ $primaryColor: cadetblue;
       
     .finalButton{
     display: flex;
+    margin: 10px;
     justify-content:center;
     height: 40px;
     width: 90%;
@@ -156,7 +182,7 @@ $primaryColor: cadetblue;
     border-radius: 5px;
     }  
    
-}
+
 //end boardBox
 
 

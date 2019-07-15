@@ -1,8 +1,12 @@
 $primaryColor: cadetblue;
 
+
+
 .boardBoxTodo {
     display: flex;
     flex-wrap: wrap;
+   
+    margin: 20px;
      /* justify-content: center;  */
   }
   
@@ -10,7 +14,7 @@ $primaryColor: cadetblue;
 .boardBoxTodo {
     .todoBox:hover{
       
-        box-shadow: 0 50px 20px rgba(3,27,78,.1);
+        box-shadow: 0 20px 20px rgba(3,27,78,.1);
         transition: all 0.2s;
     
     }
@@ -28,6 +32,12 @@ $primaryColor: cadetblue;
     //border: 2px solid cadetblue;
     border-radius: 5px;
     overflow:auto;
+    min-width: 200px;
+    @include breakpoint(small){
+      height: 300px;
+    }
+
+  
 
     .title {
 
@@ -58,7 +68,10 @@ $primaryColor: cadetblue;
     max-height: 300px;
     overflow-y: scroll;
     overflow: auto;
-    
+
+      $bordercolor: white;
+      $trackcolor: grey;
+      @include onHoverScroll($bordercolor, $trackcolor);
    
     
 

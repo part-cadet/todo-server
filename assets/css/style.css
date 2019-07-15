@@ -1,4 +1,4 @@
-@font-face {
+
   font-family: 'GT Walsheim';
   src: url("assets/fonts/GT Walsheim Regular.ttf") format("truetype"); }
 
@@ -9,33 +9,28 @@ body {
   background: #f3f3f3; }
 
 ::-webkit-scrollbar {
-  width: 4px; }
+  width: 20px; }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px; }
+  border-radius: 5px;
+  background: #fff;
+  border-left: 9px solid white;
+  border-right: 10px solid white; }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
+  border-radius: 5px;
   background: cadetblue;
-  border-radius: 10px; }
+  border-left: 7px solid white;
+  border-right: 7px solid white; }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #91eef1; }
-
 /* Style the tab */
 .tab {
-  display: flex;
-  justify-content: flex-start;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
-  background-color: #fff;
-  box-shadow: 0 5px 10px rgba(3, 27, 78, 0.1); }
-
-@media only screen and (max-width: 600px) {
-  .tab {
-    justify-content: center; } }
+  background-color: #fff; }
 
 /* Style the buttons inside the tab */
 .tab button {
@@ -59,7 +54,6 @@ body {
 /* Style the tab content */
 .tabcontent {
   display: flex;
-  justify-content: center;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
@@ -137,10 +131,11 @@ body {
 .boardBoxTodo {
   display: flex;
   flex-wrap: wrap;
+  margin: 20px;
   /* justify-content: center;  */ }
 
-.boardBoxTodo .todoBox:hover {
-  box-shadow: 0 50px 20px rgba(3, 27, 78, 0.1);
+.boardBoxTodo .todo:hover {
+  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
   transition: all 0.2s; }
 
 .boardBoxTodo .todoBox {
@@ -151,7 +146,7 @@ body {
   padding: 10px;
   height: 400px;
   width: 17%;
-  border-radius: 5px;
+  border-radius: 3px;
   overflow: auto; }
   .boardBoxTodo .todoBox .title {
     line-height: 50px;
@@ -173,7 +168,26 @@ body {
     border-radius: 15px;
     max-height: 300px;
     overflow-y: scroll;
-    overflow: auto; }
+    overflow: auto;
+    /* Track */
+    /* Handle */ }
+    .boardBoxTodo .todoBox .allTasksContainer:hover::-webkit-scrollbar-thumb {
+      background: cadetblue;
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar {
+      width: 21px; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background: grey;
+      border-left: 10px solid white;
+      border-right: 10px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-thumb {
+      background: rgba(95, 158, 160, 0);
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
     .boardBoxTodo .todoBox .allTasksContainer .taskContainer {
       display: -webkit-box;
       display: -moz-box;
@@ -257,7 +271,12 @@ body {
     background: white;
     width: 2px;
     height: 2px;
-    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    box-shadow: 2px 0 0 white,
+ 4px 0 0 white,
+ 4px -2px 0 white,
+ 4px -4px 0 white,
+ 4px -6px 0 white,
+ 4px -8px 0 white;
     transform: rotate(45deg); }
 
 .dropbtn {
@@ -310,80 +329,557 @@ body {
     display: flex;
     flex-direction: row;
     margin: 10px;
-    height: 200px;
     width: 90%;
+    justify-content: space-around;
+    padding-bottom: 10px;
     border-radius: 5px;
     background-color: white; }
+    @media (max-width: 768px) {
+      .boardBox2 .boards {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        align-self: center; } }
     .boardBox2 .boards .name {
       display: flex;
       flex-direction: column;
       min-height: 20%;
-      width: 50%;
+      width: 55%;
       margin-bottom: 10px;
-      font-size: 16px;
+      font-size: 25px;
       margin-top: 20px;
       margin-left: 20px; }
+      @media (max-width: 768px) {
+        .boardBox2 .boards .name {
+          align-items: center; } }
       .boardBox2 .boards .name .listOwner {
         font-size: 16px;
         margin-top: 20px; }
-        .boardBox2 .boards .name .listOwner h5 {
-          margin-bottom: 2px;
-          font-size: 16px; }
-        .boardBox2 .boards .name .listOwner ul {
-          padding: 17px;
-          margin-top: 1px;
-          font-size: 13px; }
-    .boardBox2 .boards .innerBoard {
+        @media (max-width: 768px) {
+          .boardBox2 .boards .name .listOwner {
+            align-self: center; } }
+      .boardBox2 .boards .name h6 {
+        margin-bottom: 2px;
+        font-size: 16px; }
+      .boardBox2 .boards .name ul {
+        padding: 17px;
+        margin-top: 15px;
+        font-size: 13px; }
+  .boardBox2 .innerBoard {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+    height: 110px;
+    width: 45%;
+    padding: 20px 10px 85px 20px;
+    background-color: #ebe8e8;
+    border-radius: 5px; }
+    @media (max-width: 768px) {
+      .boardBox2 .innerBoard {
+        width: 80%; } }
+    .boardBox2 .innerBoard .circleButton:hover {
+      box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+    .boardBox2 .innerBoard .membersOfBoard {
+      font-size: 16px;
+      margin-top: 0px; }
+      .boardBox2 .innerBoard .membersOfBoard p {
+        margin-top: 3px;
+        font-size: 14;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold; }
+      .boardBox2 .innerBoard .membersOfBoard ul {
+        padding: 17px;
+        margin-top: 0px;
+        font-size: 13px;
+        height: 70px;
+        overflow: auto;
+        /* Track */
+        /* Handle */ }
+        .boardBox2 .innerBoard .membersOfBoard ul:hover::-webkit-scrollbar-thumb {
+          background: cadetblue;
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar {
+          width: 21px; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background: white;
+          border-left: 10px solid #ebe8e8;
+          border-right: 10px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-thumb {
+          background: rgba(95, 158, 160, 0);
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
+    .boardBox2 .innerBoard .circleButton {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      background-color: cadetblue;
+      border: none;
+      color: white;
+      font-size: 10px;
+      cursor: pointer;
+      bottom: 10px;
+      margin: 3px 2px;
+      border-radius: 50%; }
+
+.finalButton {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  height: 40px;
+  width: 90%;
+  background-color: cadetblue;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px; }
+
+  font-family: 'GT Walsheim';
+  src: url("assets/fonts/GT Walsheim Regular.ttf") format("truetype"); }
+
+body {
+  font-family: Arial, Helvetica, sans-serif , sans-serif;
+  font-style: light;
+  font-weight: 200;
+  background: #f3f3f3; }
+
+::-webkit-scrollbar {
+  width: 20px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #fff;
+  border-left: 9px solid white;
+  border-right: 10px solid white; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: cadetblue;
+  border-left: 7px solid white;
+  border-right: 7px solid white; }
+
+/* Handle on hover */
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff; }
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px; }
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: cadetblue; }
+
+/* Create an active/current tablink class */
+.tab button .active {
+  background-color: cadetblue; }
+
+/* Style the tab content */
+.tabcontent {
+  display: block;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  position: relative; }
+
+.boardBox {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: 1000px;
+  padding-top: 10px;
+  padding-bottom: 1%; }
+
+.boardBox .board {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3% 0% 2% 0%;
+  margin: 10px;
+  height: 300px;
+  min-width: 200px;
+  /* border-width: 5px; */
+  border-radius: 5px;
+  background-color: white; }
+
+.boardBox .empty {
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  padding: 3% 0% 2% 0%;
+  margin: 10px;
+  height: 300px;
+  min-width: 200px;
+  /* border-width: 5px; */ }
+
+.boardBox .board:hover {
+  box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
+  transition: all 0.2s; }
+
+.boardBox .board .name {
+  /* min-width: inherit; */
+  align-self: center;
+  font-size: 35px;
+  /* margin-top: 15%; */ }
+
+.boardBox .board .status {
+  align-self: center;
+  min-height: 20%;
+  font-size: 30px;
+  margin-top: 15%;
+  color: red; }
+
+.boardBox .board ul {
+  /* position: absolute; */
+  align-self: center;
+  font-size: 12px;
+  /* bottom: 10%; */
+  padding: 0px; }
+
+.boardBox .board .members {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 20px; }
+
+.boardBox .board .members img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: -20px; }
+
+.boardBoxTodo {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  /* justify-content: center;  */ }
+
+.boardBoxTodo .todoBox:hover {
+  box-shadow: 0 20px 20px rgba(3, 27, 78, 0.1);
+  transition: all 0.2s; }
+
+.boardBoxTodo .todoBox {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
+  height: 400px;
+  width: 17%;
+  border-radius: 5px;
+  overflow: auto;
+  min-width: 200px; }
+  @media (max-width: 768px) {
+    .boardBoxTodo .todoBox {
+      height: 300px; } }
+  .boardBoxTodo .todoBox .title {
+    line-height: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    align-self: center;
+    text-align: center;
+    height: 50px;
+    width: 95%;
+    border-radius: 3px;
+    background-color: cadetblue; }
+  .boardBoxTodo .todoBox .allTasksContainer {
+    color: #464646;
+    align-content: left;
+    text-align: left;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow: auto;
+    /* Track */
+    /* Handle */ }
+    .boardBoxTodo .todoBox .allTasksContainer:hover::-webkit-scrollbar-thumb {
+      background: cadetblue;
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar {
+      width: 21px; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background: grey;
+      border-left: 10px solid white;
+      border-right: 10px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer::-webkit-scrollbar-thumb {
+      background: rgba(95, 158, 160, 0);
+      border-radius: 5px;
+      border-left: 7px solid white;
+      border-right: 7px solid white; }
+    .boardBoxTodo .todoBox .allTasksContainer .taskContainer {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      justify-content: space-between; }
+      .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem {
+        align-self: center; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem input[type=checkbox] + label {
+          color: #464646; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem input[type=checkbox]:checked + label {
+          color: #c5c3c3;
+          text-decoration: line-through;
+          transition: 0.3s;
+          font-style: normal; }
+        .boardBoxTodo .todoBox .allTasksContainer .taskContainer .taskItem img {
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          margin-left: -20px; }
+    .boardBoxTodo .todoBox .allTasksContainer hr {
+      margin-top: 0.9em;
+      margin-bottom: 0.9em;
+      border: 0;
+      height: 1px;
+      background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+      background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); }
+
+.boardBoxTodo .todoplus {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  height: 400px;
+  padding: 10px;
+  width: 17%;
+  border: 2px solid cadetblue;
+  border-radius: 15px;
+  background-color: cadetblue;
+  color: white;
+  position: relative;
+  line-height: 350px;
+  font-size: 40px;
+  text-decoration: none; }
+
+.styled-checkbox {
+  position: absolute;
+  opacity: 0; }
+  .styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0; }
+  .styled-checkbox + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: #dfdfdf; }
+  .styled-checkbox:hover + label:before {
+    background: cadetblue; }
+  .styled-checkbox:checked + label:before {
+    background: cadetblue; }
+  .styled-checkbox:disabled + label {
+    color: #b8b8b8;
+    cursor: auto; }
+  .styled-checkbox:disabled + label:before {
+    box-shadow: none;
+    background: #b8b8b8; }
+  .styled-checkbox:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    transform: rotate(45deg); }
+
+.dropbtn {
+  background-color: cadetblue;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  float: right;
+  /* margin: 40px; */ }
+
+.dropdown {
+  right: 20px;
+  position: fixed;
+  align-content: right;
+  display: inline-block; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; }
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; }
+
+.dropdown-content a:hover {
+  background-color: #ddd; }
+
+.dropdown:hover .dropdown-content {
+  display: block; }
+
+.dropdown:hover .dropbtn {
+  background-color: #1f7281; }
+
+.boardBox2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .boardBox2 .finalButton:hover {
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+  .boardBox2 .boards:hover {
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+  .boardBox2 .boards {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    width: 90%;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: white; }
+    @media (max-width: 768px) {
+      .boardBox2 .boards {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        align-self: center; } }
+    .boardBox2 .boards .name {
       display: flex;
       flex-direction: column;
-      position: relative;
-      margin-left: auto;
-      margin-top: 10px;
-      margin-right: 15px;
-      height: 110px;
-      width: 40%;
-      padding: 9px 10px 60px 10px;
-      background-color: #ebe8e8;
-      border-radius: 5px; }
-      .boardBox2 .boards .innerBoard .circleButton:hover {
-        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-      .boardBox2 .boards .innerBoard .membersOfBoard {
+      min-height: 20%;
+      width: 55%;
+      margin-bottom: 10px;
+      font-size: 25px;
+      margin-top: 20px;
+      margin-left: 20px; }
+      @media (max-width: 768px) {
+        .boardBox2 .boards .name {
+          align-items: center; } }
+      .boardBox2 .boards .name .listOwner {
         font-size: 16px;
-        margin-top: 0px; }
-        .boardBox2 .boards .innerBoard .membersOfBoard p {
-          margin-top: 3px;
-          font-size: 14;
-          margin-bottom: 0px;
-          font-size: 16px;
-          font-weight: bold; }
-        .boardBox2 .boards .innerBoard .membersOfBoard ul {
-          padding: 17px;
-          margin-top: 0px;
-          font-size: 13px;
-          height: 70px;
-          overflow: auto; }
-      .boardBox2 .boards .innerBoard .circleButton {
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        height: 30px;
-        width: 30px;
-        background-color: cadetblue;
-        border: none;
-        color: white;
-        font-size: 10px;
-        cursor: pointer;
-        bottom: 3px;
-        margin: 3px 2px;
-        border-radius: 50%; }
-  .boardBox2 .finalButton {
+        margin-top: 20px; }
+        @media (max-width: 768px) {
+          .boardBox2 .boards .name .listOwner {
+            align-self: center; } }
+      .boardBox2 .boards .name h6 {
+        margin-bottom: 2px;
+        font-size: 16px; }
+      .boardBox2 .boards .name ul {
+        padding: 17px;
+        margin-top: 15px;
+        font-size: 13px; }
+  .boardBox2 .innerBoard {
     display: flex;
-    justify-content: center;
-    height: 40px;
-    width: 90%;
-    background-color: cadetblue;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+    height: 110px;
+    width: 45%;
+    padding: 20px 10px 85px 20px;
+    background-color: #ebe8e8;
     border-radius: 5px; }
+    @media (max-width: 768px) {
+      .boardBox2 .innerBoard {
+        width: 80%; } }
+    .boardBox2 .innerBoard .circleButton:hover {
+      box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+    .boardBox2 .innerBoard .membersOfBoard {
+      font-size: 16px;
+      margin-top: 0px; }
+      .boardBox2 .innerBoard .membersOfBoard p {
+        margin-top: 3px;
+        font-size: 14;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold; }
+      .boardBox2 .innerBoard .membersOfBoard ul {
+        padding: 17px;
+        margin-top: 0px;
+        font-size: 13px;
+        height: 70px;
+        overflow: auto;
+        /* Track */
+        /* Handle */ }
+        .boardBox2 .innerBoard .membersOfBoard ul:hover::-webkit-scrollbar-thumb {
+          background: cadetblue;
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar {
+          width: 21px; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background: white;
+          border-left: 10px solid #ebe8e8;
+          border-right: 10px solid #ebe8e8; }
+        .boardBox2 .innerBoard .membersOfBoard ul::-webkit-scrollbar-thumb {
+          background: rgba(95, 158, 160, 0);
+          border-radius: 5px;
+          border-left: 7px solid #ebe8e8;
+          border-right: 7px solid #ebe8e8; }
+    .boardBox2 .innerBoard .circleButton {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      background-color: cadetblue;
+      border: none;
+      color: white;
+      font-size: 10px;
+      cursor: pointer;
+      bottom: 10px;
+      margin: 3px 2px;
+      border-radius: 50%; }
+
+.finalButton {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  height: 40px;
+  width: 90%;
+  background-color: cadetblue;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px; }

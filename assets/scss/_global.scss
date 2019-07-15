@@ -15,43 +15,93 @@ body {
     font-style: light;
     font-weight: 200;
     background: rgb(243, 243, 243); 
+    
 }
+
+
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 20px;
 }
+
 
 /* Track */
 ::-webkit-scrollbar-track {
-    
-    border-radius: 10px;
+   
+    border-radius: 5px;
+    background: #fff;
+
+    border-left: 9px solid white;
+    border-right: 10px solid white;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $primaryColor; 
-    border-radius: 10px;
+    // 
+    
+    border-radius: 5px;
+    background: cadetblue; 
+    
+    border-left: 7px solid white;
+    border-right: 7px solid white;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(145, 238, 241); 
+// ::-webkit-scrollbar-thumb:hover {
+//     background: $primaryColor; 
+// }
+
+
+@mixin onHoverScroll($color,$trackColor){
+    &:hover {
+
+        &::-webkit-scrollbar-thumb {
+          background: cadetblue; 
+          
+          border-radius: 5px;
+      
+          
+          border-left: 7px solid $color;
+          border-right: 7px solid $color;
+      }
+  
+      }
+  
+      &::-webkit-scrollbar {
+        width: 21px;
+    }
+    
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+       
+        border-radius: 5px;
+        background:$trackColor;
+    
+        border-left: 10px solid $color;
+        border-right: 10px solid $color;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(95, 158, 160,0); 
+        
+        border-radius: 5px;
+    
+        
+        border-left: 7px solid $color;
+        border-right: 7px solid $color;
+    }
+    
 }
+
+
 
 /* Style the tab */
 
 .tab {
-    display: flex;
-    justify-content: flex-start;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
-    box-shadow: 0 5px 10px rgba(3,27,78,.1);
-}
-
-@media only screen and (max-width: 600px){
-    .tab{
-        justify-content: center;
-    }
 }
 
 /* Style the buttons inside the tab */
@@ -85,6 +135,7 @@ body {
 }
 
 
+
 /* Style the tab content */
 .tabcontent {
     display: flex;
@@ -94,4 +145,7 @@ body {
     border-top: none;
     position: relative;
 }
+
+
+
 
