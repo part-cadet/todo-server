@@ -1,6 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:300&display=swap");
+@font-face {
+  font-family: 'GT Walsheim';
+  src: url("assets/fonts/GT Walsheim Regular.ttf") format("truetype"); }
+
 body {
-  font-family: Rubik , sans-serif;
+  font-family: Arial, Helvetica, sans-serif , sans-serif;
   font-style: light;
   font-weight: 200;
   background: #f3f3f3; }
@@ -23,9 +26,16 @@ body {
 
 /* Style the tab */
 .tab {
+  display: flex;
+  justify-content: flex-start;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
-  background-color: #fff; }
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(3, 27, 78, 0.1); }
+
+@media only screen and (max-width: 600px) {
+  .tab {
+    justify-content: center; } }
 
 /* Style the buttons inside the tab */
 .tab button {
@@ -48,7 +58,7 @@ body {
 
 /* Style the tab content */
 .tabcontent {
-  display: block;
+  display: flex;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
@@ -56,7 +66,8 @@ body {
 
 .boardBox {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
 
 .boardBox .board {
   display: flex;
@@ -66,20 +77,20 @@ body {
   margin: 10px;
   height: 300px;
   width: 17%;
-  border: 2px solid cadetblue;
+  min-width: 200px;
   /* border-width: 5px; */
-  border-radius: 15px;
+  border-radius: 5px;
+  background-color: white;
   position: relative; }
 
 .boardBox .board:hover {
-  box-shadow: 0px 10px 20px rgba(51, 51, 51, 0.753);
+  box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
   transition: all 0.2s; }
 
 .boardBox .board .name {
   /* min-width: inherit; */
   align-self: center;
   font-size: 35px;
-  flex-basis: 25%;
   /* margin-top: 15%; */ }
 
 .boardBox .board .status {
@@ -87,16 +98,14 @@ body {
   min-height: 20%;
   font-size: 40px;
   margin-top: 15%;
-  color: red;
-  flex-basis: 25%; }
+  color: red; }
 
 .boardBox .board ul {
   /* position: absolute; */
   align-self: center;
   font-size: 12px;
   /* bottom: 10%; */
-  padding: 0px;
-  flex-basis: 25%; }
+  padding: 0px; }
 
 .boardBox .board .members {
   display: flex;
@@ -107,8 +116,7 @@ body {
   border-radius: 20px;
   background-color: rgba(163, 162, 162, 0.151);
   /* position: absolute; */
-  padding: 10px;
-  flex: 0 1 25%; }
+  padding: 10px; }
 
 .boardBox .board .members img {
   border-radius: 50%;
@@ -239,7 +247,7 @@ body {
     background: white;
     width: 2px;
     height: 2px;
-    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
     transform: rotate(45deg); }
 
 .dropbtn {
