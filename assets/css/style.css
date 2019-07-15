@@ -59,29 +59,42 @@ body {
 /* Style the tab content */
 .tabcontent {
   display: flex;
+  justify-content: center;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
   position: relative; }
 
 .boardBox {
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; }
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: 1000px;
+  padding-top: 10px;
+  padding-bottom: 1%; }
 
 .boardBox .board {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3% 0% 1% 0%;
+  padding: 3% 0% 2% 0%;
   margin: 10px;
   height: 300px;
-  width: 17%;
   min-width: 200px;
   /* border-width: 5px; */
   border-radius: 5px;
-  background-color: white;
-  position: relative; }
+  background-color: white; }
+
+.boardBox .empty {
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  padding: 3% 0% 2% 0%;
+  margin: 10px;
+  height: 300px;
+  min-width: 200px;
+  /* border-width: 5px; */ }
 
 .boardBox .board:hover {
   box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
@@ -96,7 +109,7 @@ body {
 .boardBox .board .status {
   align-self: center;
   min-height: 20%;
-  font-size: 40px;
+  font-size: 30px;
   margin-top: 15%;
   color: red; }
 
@@ -113,10 +126,7 @@ body {
   flex-direction: row-reverse;
   margin-right: 20px;
   margin-left: 20px;
-  border-radius: 20px;
-  background-color: rgba(163, 162, 162, 0.151);
-  /* position: absolute; */
-  padding: 10px; }
+  border-radius: 20px; }
 
 .boardBox .board .members img {
   border-radius: 50%;
@@ -129,8 +139,8 @@ body {
   flex-wrap: wrap;
   /* justify-content: center;  */ }
 
-.boardBoxTodo .todo:hover {
-  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+.boardBoxTodo .todoBox:hover {
+  box-shadow: 0 50px 20px rgba(3, 27, 78, 0.1);
   transition: all 0.2s; }
 
 .boardBoxTodo .todoBox {
@@ -141,7 +151,7 @@ body {
   padding: 10px;
   height: 400px;
   width: 17%;
-  border-radius: 3px;
+  border-radius: 5px;
   overflow: auto; }
   .boardBoxTodo .todoBox .title {
     line-height: 50px;

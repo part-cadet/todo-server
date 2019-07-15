@@ -1,34 +1,70 @@
 $primaryColor: cadetblue;
 
 .boardBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    // align-content: center;
+	box-sizing: border-box;
+	// display: inline-flex;
+	display: flex;
+	// flex-wrap: wrap;
+	flex-flow: row wrap;
+	// width: auto;
+	justify-content: center;
+	// margin-left: 25%; 
+	// margin-right: 25%; 
+	max-width: 1000px;
+	// flex-basis: fit-content;
+	padding-top: 10px; 
+	padding-bottom: 1%;
 }
+
 
 
 .boardBox {
     .board {
+		// align-self: flex-start;
+		box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        padding: 3% 0% 1% 0%;
+		justify-content: space-between;
+		
+		// align-items: center;
+        padding: 3% 0% 2% 0%;
         margin: 10px;
         height: 300px;
-        width: 17%;
-        min-width: 200px;
+        // width: 170px;
+		min-width: 200px;
         // border: 2px solid $primaryColor;
         /* border-width: 5px; */
         border-radius: 5px;
         background-color: white;
-        position: relative;
+        // position: relative;
     }
 }
 
 .boardBox {
+      .empty {
+		background-color: rgb(243, 243, 243);
+		box-sizing: border-box;
+        // display: flex;
+        // flex-direction: column;
+		// justify-content: space-between;
+		
+		// align-items: center;
+        padding: 3% 0% 2% 0%;
+        margin: 10px;
+        height: 300px;
+        // width: 170px;
+		min-width: 200px;
+        // border: 2px solid $primaryColor;
+        /* border-width: 5px; */
+        // border-radius: 5px;
+        // position: relative;
+	}
+}
+
+
+.boardBox {
     .board:hover {
-        box-shadow: 0 10px 20px rgba(3,27,78,.1);
+        box-shadow: 0 10px 20px rgba(3, 27, 78, .1);
         transition: all 0.2s;
     }
 }
@@ -45,11 +81,12 @@ $primaryColor: cadetblue;
 .boardBox .board .status {
     align-self: center;
     min-height: 20%;
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 15%;
     color: red;
     // flex-basis: 25%; 
 }
+
 
 .boardBox .board ul {
     /* position: absolute; */
@@ -68,10 +105,8 @@ $primaryColor: cadetblue;
     margin-right: 20px;
     margin-left: 20px;
     border-radius: 20px;
-    background-color: rgba(163, 162, 162, 0.151);
-    /* position: absolute; */
-    padding: 10px;
-    // flex: 0 1 25%;
+    // background-color: rgba(163, 162, 162, 0.151);
+    // padding: 10px;
 }
 
 .boardBox .board .members img {
