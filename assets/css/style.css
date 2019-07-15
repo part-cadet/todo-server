@@ -284,121 +284,88 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
-
-.boardBox2 .finalButton:hover {
-  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-
-.boardBox2 .boards .innerBoard .circleButton:hover {
-  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-
-.boardBox2 .boards:hover {
-  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-
-.boardBox2 .boards {
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-  height: 200px;
-  width: 90%;
-  border: 2px solid cadetblue;
-  /* border-width: 5px; */
-  border-radius: 15px;
-  /* background-color: cadetblue; */ }
-
-.boardBox2 .boards .name {
-  display: flex;
-  flex-direction: column;
-  min-height: 20%;
-  width: 50%;
-  margin-bottom: 10px;
-  font-size: 16px;
-  margin-top: 20px;
-  margin-left: 20px;
-  /* background-color: cadetblue;  */ }
-
-.boardBox2 .boards .name .listOwner {
-  font-size: 16px;
-  margin-top: 20px; }
-
-.boardBox2 .boards .name .listOwner h5 {
-  /* padding: 20px; */
-  /* margin-top: 0px; */
-  /* width: 30px; */
-  margin-bottom: 2px;
-  font-size: 16px;
-  /* background-color: chartreuse;  */ }
-
-.boardBox2 .boards .name .listOwner ul {
-  padding: 17px;
-  margin-top: 1px;
-  font-size: 13px;
-  /* width: 30px; */
-  /* background-color: chartreuse;  */ }
-
-.boardBox2 .boards .innerBoard {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-right: 15px;
-  height: 110px;
-  width: 40%;
-  padding: 9px 10px 60px 10px;
-  background-color: #e9e9e9;
-  border: 2px solid cadetblue;
-  border-radius: 15px; }
-
-.boardBox2 .boards .innerBoard .membersOfBoard {
-  font-size: 16px;
-  margin-top: 0px;
-  /* padding-top: 0px; */
-  /* background-color: aqua;  */ }
-
-.boardBox2 .boards .innerBoard .membersOfBoard p {
-  /* padding: 20px; */
-  margin-top: 3px;
-  font-size: 14;
-  /* width: 30px; */
-  margin-bottom: 0px;
-  font-size: 16px;
-  /* background-color: chartreuse;  */ }
-
-.boardBox2 .boards .innerBoard .membersOfBoard ul {
-  padding: 17px;
-  margin-top: 0px;
-  font-size: 13px;
-  height: 70px;
-  overflow: auto; }
-
-.boardBox2 .boards .innerBoard .circleButton {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  background-color: #43767c;
-  border: none;
-  color: white;
-  font-size: 10px;
-  cursor: pointer;
-  bottom: 0;
-  /* padding-top: 20px; */
-  /* margin-top: 2px; */
-  margin: 3px 2px;
-  border-radius: 50%; }
-
-.boardBox2 .finalButton {
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  width: 90%;
-  background-color: #43767c;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 15px;
-  /* margin-top: 2px; */
-  /* margin: 3px 2px;  */
-  /* border-radius: 15%; */ }
+  .boardBox2 .finalButton:hover {
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+  .boardBox2 .boards:hover {
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+  .boardBox2 .boards {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    height: 200px;
+    width: 90%;
+    border-radius: 5px;
+    background-color: white; }
+    .boardBox2 .boards .name {
+      display: flex;
+      flex-direction: column;
+      min-height: 20%;
+      width: 50%;
+      margin-bottom: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+      margin-left: 20px; }
+      .boardBox2 .boards .name .listOwner {
+        font-size: 16px;
+        margin-top: 20px; }
+        .boardBox2 .boards .name .listOwner h5 {
+          margin-bottom: 2px;
+          font-size: 16px; }
+        .boardBox2 .boards .name .listOwner ul {
+          padding: 17px;
+          margin-top: 1px;
+          font-size: 13px; }
+    .boardBox2 .boards .innerBoard {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-left: auto;
+      margin-top: 10px;
+      margin-right: 15px;
+      height: 110px;
+      width: 40%;
+      padding: 9px 10px 60px 10px;
+      background-color: #ebe8e8;
+      border-radius: 5px; }
+      .boardBox2 .boards .innerBoard .circleButton:hover {
+        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+      .boardBox2 .boards .innerBoard .membersOfBoard {
+        font-size: 16px;
+        margin-top: 0px; }
+        .boardBox2 .boards .innerBoard .membersOfBoard p {
+          margin-top: 3px;
+          font-size: 14;
+          margin-bottom: 0px;
+          font-size: 16px;
+          font-weight: bold; }
+        .boardBox2 .boards .innerBoard .membersOfBoard ul {
+          padding: 17px;
+          margin-top: 0px;
+          font-size: 13px;
+          height: 70px;
+          overflow: auto; }
+      .boardBox2 .boards .innerBoard .circleButton {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        background-color: cadetblue;
+        border: none;
+        color: white;
+        font-size: 10px;
+        cursor: pointer;
+        bottom: 0;
+        margin: 3px 2px;
+        border-radius: 50%; }
+  .boardBox2 .finalButton {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 90%;
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px; }
