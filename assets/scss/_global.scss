@@ -40,9 +40,18 @@ body {
 /* Style the tab */
 
 .tab {
+    display: flex;
+    justify-content: flex-start;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
+    box-shadow: 0 5px 10px rgba(3,27,78,.1);
+}
+
+@media only screen and (max-width: 600px){
+    .tab{
+        justify-content: center;
+    }
 }
 
 /* Style the buttons inside the tab */
@@ -77,7 +86,8 @@ body {
 
 /* Style the tab content */
 .tabcontent {
-    display: block;
+    display: flex;
+    // justify-content: space-evenly;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
