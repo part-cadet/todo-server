@@ -1,7 +1,7 @@
 var i, count = 0;
 
 window.onload = () => { 
-    var boardBoxWidth = document.getElementById("boardBox").clientWidth;
+    var boardBoxWidth = document.getElementById("boardBox").offsetWidth;
     console.log("Board Box Width = " + boardBoxWidth);
     var boards = document.getElementsByClassName("board");
     console.log("Board Count = " + boards.length);

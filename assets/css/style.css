@@ -31,7 +31,8 @@ body {
   display: flex;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
-  background-color: #fff; }
+  background-color: #fff;
+  box-shadow: 0 5px 20px rgba(3, 27, 78, 0.1); }
 
 @media only screen and (max-width: 600px) {
   .tab {
@@ -83,8 +84,7 @@ body {
       padding: 3% 0% 2% 0%;
       margin: 10px;
       height: 400px;
-      width: 17%;
-      min-width: 300px;
+      min-width: 270px;
       border-radius: 5px;
       background-color: white; }
       .boardBoxOrganizer .boardBox .board .name {
@@ -119,7 +119,7 @@ body {
       margin: 10px;
       height: 400px;
       width: 17%;
-      min-width: 300px;
+      min-width: 270px;
       order: 2; }
     .boardBoxOrganizer .boardBox .done {
       background-color: rgba(255, 255, 255, 0.5);
@@ -274,7 +274,7 @@ body {
     background: white;
     width: 2px;
     height: 2px;
-    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
     transform: rotate(45deg); }
 
 .dropbtn {
