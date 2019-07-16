@@ -1,228 +1,252 @@
 $primaryColor: cadetblue;
 
-.todoHolder{
+.todoHolder {
+		max-width: 1250px;
 
-display: flex;
-justify-content: center;
-
-
-.boardBoxTodo {
-
-	max-width: 1250px;
 	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px;
 
-	margin: 20px;
+	.todosInfo {
+		display:flex;
+		flex-direction: row;
+		justify-content: space-between;
 
-	.todoBox:hover {
+		flex-grow: 1;
+		background: #fff;
+		width:100%;
+		height: 50px;
+		margin: 10px 0 30px 0;
 
-		box-shadow: 0 20px 20px rgba(3, 27, 78, .1);
-		transition: all 0.2s;
+
+		.text {
+			flex-grow:1;
+		}
+
+		.boardsmenu {}
 
 	}
 
 
+	.boardBoxTodo {
 
-
-
-	.todoBox {
-	
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
+		flex-wrap: wrap;
+
 		margin: 20px;
-		padding: 10px;
-		height: 400px;
-		width: 17%;
-		//border: 2px solid cadetblue;
-		border-radius: 5px;
-		overflow: auto;
-		min-width: 250px;
-		background: white;
-	
-		@include breakpoint(small) {
-			height: 300px;
+
+		.todoBox:hover {
+
+			box-shadow: 0 20px 20px rgba(3, 27, 78, .1);
+			transition: all 0.2s;
+
 		}
-	
-	
-	
-		.title {
-	
-			line-height: 50px;
-			color: white;
-			font-weight: bold;
-			font-size: 19px;
-			align-self: center;
-			text-align: center;
-			height: 50px;
-			width: 95%;
-			border-radius: 3px;
-			background-color: cadetblue;
-		}
-	
-	
-		.allTasksContainer {
-	
-	
-			color: rgb(70, 70, 70);
-			// align-content: left;
-			text-align: left;
+
+
+
+
+
+		.todoBox {
+
+			display: flex;
+			flex-direction: column;
 			margin: 10px;
 			padding: 10px;
-			border-radius: 15px;
-	
-	
-			max-height: 300px;
-			overflow-y: scroll;
+			height: 400px;
+			width: 17%;
+			//border: 2px solid cadetblue;
+			border-radius: 5px;
 			overflow: auto;
-	
-			$bordercolor: white;
-			$trackcolor: grey;
-			@include onHoverScroll($bordercolor, $trackcolor);
+			min-width: 250px;
+			background: white;
 
-
-
-			.inputContainer{
-
-				display: flex;
-				justify-content: space-between;
-				//padding-right: 2px;
-				// -webkit-flex-flow: row wrap;
-				// justify-content: stretch;
-
-				input[type=text]{
-					box-sizing: border-box;
-					// width:%;
-					// flex-grow:1;?
-					border: 0px solid;
-					// border-bottom: 1px dotted  rgba(0, 0, 0, 0.404);
-					//flex-grow:2;
-					//padding: 5px 12px;
-					text-decoration: none;
-					// margin: 4px;
-					cursor: pointer;
-					//margin-right:10px;
-				}
-				input[type=text]:focus{
-					outline: none;
-				}
-
-				input[type=submit]{
-					font-size:25px;
-					border-radius: 50%;
-						height: 50px;
-						width: 50px;
-						margin-left: -20px;
-					// size: 45px 45px;
-					border-radius: 50%;
-					background-color: cadetblue;
-					border: none;
-					color: white;
-					//padding: 5px 12px;
-					text-decoration: none;
-					// margin: 4px;
-					cursor: pointer;
-				  }
-				.inputItem{
-					
-					
-
-					align-self: center;
-
-					
-
-				}
+			@include breakpoint(small) {
+				height: 300px;
 			}
 
 
 
-	
-	
-	
-			.taskContainer {
-				// display: -webkit-box;
-				// display: -moz-box;
-				// display: -ms-flexbox;
-				// display: -webkit-flex;
-				display: flex;
-	
-				// -webkit-flex-flow: row wrap;
-				justify-content: space-between;
+			.title {
+
+				line-height: 50px;
+				color: white;
+				font-weight: bold;
+				font-size: 19px;
+				align-self: center;
+				text-align: center;
+				height: 50px;
+				width: 95%;
+				border-radius: 3px;
+				background-color: cadetblue;
+			}
 
 
-				
-	
-	
-	
-				.taskItem {
+			.allTasksContainer {
 
-					
-					align-self: center;
 
-					
-	
-					input[type=checkbox]+label {
-						color: rgb(70, 70, 70);
+				color: rgb(70, 70, 70);
+				// align-content: left;
+				text-align: left;
+				margin: 10px;
+				padding: 10px;
+				border-radius: 15px;
 
+
+				max-height: 300px;
+				overflow-y: scroll;
+				overflow: auto;
+
+				$bordercolor: white;
+				$trackcolor: grey;
+				@include onHoverScroll($bordercolor, $trackcolor);
+
+
+
+				.inputContainer {
+
+					display: flex;
+					justify-content: space-between;
+					//padding-right: 2px;
+					// -webkit-flex-flow: row wrap;
+					// justify-content: stretch;
+
+					input[type=text] {
+						box-sizing: border-box;
+						// width:%;
+						// flex-grow:1;?
+						border: 0px solid;
+						// border-bottom: 1px dotted  rgba(0, 0, 0, 0.404);
+						//flex-grow:2;
+						//padding: 5px 12px;
+						text-decoration: none;
+						// margin: 4px;
+						cursor: pointer;
+						//margin-right:10px;
 					}
-	
-					input[type=checkbox]:checked+label {
-						color: rgb(197, 195, 195);
-						text-decoration: line-through;
-						transition: 0.3s;
-						font-style: normal;
+
+					input[type=text]:focus {
+						outline: none;
 					}
-	
-	
-	
-					img {
+
+					input[type=submit] {
+						font-size: 25px;
 						border-radius: 50%;
 						height: 50px;
 						width: 50px;
 						margin-left: -20px;
+						// size: 45px 45px;
+						border-radius: 50%;
+						background-color: cadetblue;
+						border: none;
+						color: white;
+						//padding: 5px 12px;
+						text-decoration: none;
+						// margin: 4px;
+						cursor: pointer;
+					}
+
+					.inputItem {
+
+
+
+						align-self: center;
+
+
+
 					}
 				}
+
+
+
+
+
+
+				.taskContainer {
+					// display: -webkit-box;
+					// display: -moz-box;
+					// display: -ms-flexbox;
+					// display: -webkit-flex;
+					display: flex;
+
+					// -webkit-flex-flow: row wrap;
+					justify-content: space-between;
+
+
+
+
+
+
+					.taskItem {
+
+
+						align-self: center;
+
+
+
+						input[type=checkbox]+label {
+							color: rgb(70, 70, 70);
+
+						}
+
+						input[type=checkbox]:checked+label {
+							color: rgb(197, 195, 195);
+							text-decoration: line-through;
+							transition: 0.3s;
+							font-style: normal;
+						}
+
+
+
+						img {
+							border-radius: 50%;
+							height: 50px;
+							width: 50px;
+							margin-left: -20px;
+						}
+					}
+				}
+
+
+				hr {
+					margin-top: 0.9em;
+					margin-bottom: 0.9em;
+					border: 0;
+					height: 1px;
+					background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+					background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+					background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+					background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+
+				}
+
 			}
-	
-	
-			hr {
-				margin-top: 0.9em;
-				margin-bottom: 0.9em;
-				border: 0;
-				height: 1px;
-				background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-				background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-				background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-				background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-	
-			}
-	
+
 		}
-	
+
+
+		.done {
+
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+			order: 1;
+		}
+
+		.plus {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: cadetblue;
+			color: white;
+			position: relative;
+			font-size: 40px;
+			text-decoration: none;
+			order: 2;
+		}
+
+
 	}
-
-
-	.done {
-		
-		opacity: 0.5;
-		filter: alpha(opacity=50);
-		order: 1;
-	}
-
-	.plus {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: cadetblue;
-		color: white;
-		position: relative;
-		font-size: 40px;
-		text-decoration: none;
-		order: 2;
-	}
-
-
-}
 
 }
 
@@ -305,8 +329,9 @@ justify-content: center;
 	padding: 16px;
 	font-size: 16px;
 	border: none;
+	right:0px;
 
-	float: right;
+	//float: right;
 
 
 	/* margin: 40px; */
@@ -314,7 +339,7 @@ justify-content: center;
 
 .dropdown {
 	right: 20px;
-	position: fixed;
+	//position: fixed;
 	align-content: right;
 	display: inline-block;
 
@@ -347,7 +372,3 @@ justify-content: center;
 .dropdown:hover .dropbtn {
 	background-color: #1f7281;
 }
-
-
-
-
