@@ -148,7 +148,7 @@ body {
   width: 17%;
   border-radius: 5px;
   overflow: auto;
-  min-width: 200px; }
+  min-width: 250px; }
   @media (max-width: 768px) {
     .boardBoxTodo .todoBox {
       height: 300px; } }
@@ -226,19 +226,18 @@ body {
 
 .boardBoxTodo .todoplus {
   display: flex;
-  align-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   margin: 20px;
   height: 400px;
   padding: 10px;
   width: 17%;
+  min-width: 250px;
   border: 2px solid cadetblue;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: cadetblue;
   color: white;
   position: relative;
-  line-height: 350px;
   font-size: 40px;
   text-decoration: none; }
 
