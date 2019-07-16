@@ -6,10 +6,10 @@ body {
   font-family: Arial, Helvetica, sans-serif , sans-serif;
   font-style: light;
   font-weight: 200;
-  background: #f0f0f0; }
+  background: whitesmoke; }
 
 .bg {
-  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #eeeeee 68%, rgba(124, 229, 233, 0.11) 68%) rgba(124, 229, 233, 0.11); }
+  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #f3f3f3 68%, rgba(124, 229, 233, 0.11) 68%) rgba(124, 229, 233, 0.11); }
 
 ::-webkit-scrollbar {
   width: 20px; }
@@ -66,7 +66,7 @@ body {
 .tabcontent {
   display: block;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ebebeb;
   border-top: none;
   position: relative;
   background-color: transparent; }
