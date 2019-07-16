@@ -1,4 +1,7 @@
 $primaryColor: cadetblue;
+$lt: rgb(238, 238, 238);
+$md: rgba(95, 158, 160, 0.315);
+$dk:rgba(124, 229, 233, 0.041);
 
 
 
@@ -14,7 +17,7 @@ body {
     font-family: Arial, Helvetica, sans-serif , sans-serif;;
     font-style: light;
     font-weight: 200;
-    background: rgb(243, 243, 243); 
+    background: #ccc;
     
 }
 
@@ -149,6 +152,23 @@ body {
     border: 1px solid #ccc;
     border-top: none;
     position: relative;
+
+    background: 	
+
+   
+		// top-left-corner
+		radial-gradient(
+			circle at right bottom, 
+			rgba(0,0,0,0) 80%, 
+			$md 80%, 
+		),					
+		// middle + bottom-right
+		radial-gradient(
+			farthest-corner at 0% -20%,
+			$lt 68%,  
+			$dk 68%, 
+		)
+		$dk; // background
 }
 
 
