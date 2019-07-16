@@ -1,7 +1,7 @@
 $primaryColor: cadetblue;
 $lt: rgb(238, 238, 238);
 $md: rgba(95, 158, 160, 0.315);
-$dk:rgba(124, 229, 233, 0.041);
+$dk:rgba(124, 229, 233, 0.11);
 
 
 
@@ -17,8 +17,27 @@ body {
     font-family: Arial, Helvetica, sans-serif , sans-serif;;
     font-style: light;
     font-weight: 200;
-    background: #ccc;
+    background: rgb(240, 240, 240);
     
+    
+}
+.bg{
+    background: 	
+
+   
+    // top-left-corner
+    radial-gradient(
+        circle at right bottom, 
+        rgba(0,0,0,0) 80%, 
+        $md 80%, 
+    ),					
+    // middle + bottom-right
+    radial-gradient(
+        farthest-corner at 0% -20%,
+        $lt 68%,  
+        $dk 68%, 
+    )
+    $dk; // background
 }
 
 
@@ -105,7 +124,7 @@ body {
     display: flex;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
-    background-color: #fff;
+    //background-color: transparent;
 	box-shadow: 0 5px 20px rgba(3, 27, 78, .1);
 }
 
@@ -152,23 +171,9 @@ body {
     border: 1px solid #ccc;
     border-top: none;
     position: relative;
-
-    background: 	
+    background-color: transparent;
 
    
-		// top-left-corner
-		radial-gradient(
-			circle at right bottom, 
-			rgba(0,0,0,0) 80%, 
-			$md 80%, 
-		),					
-		// middle + bottom-right
-		radial-gradient(
-			farthest-corner at 0% -20%,
-			$lt 68%,  
-			$dk 68%, 
-		)
-		$dk; // background
 }
 
 

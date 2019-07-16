@@ -6,7 +6,10 @@ body {
   font-family: Arial, Helvetica, sans-serif , sans-serif;
   font-style: light;
   font-weight: 200;
-  background: #ccc; }
+  background: #f0f0f0; }
+
+.bg {
+  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #eeeeee 68%, rgba(124, 229, 233, 0.11) 68%) rgba(124, 229, 233, 0.11); }
 
 ::-webkit-scrollbar {
   width: 20px; }
@@ -31,7 +34,6 @@ body {
   display: flex;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
-  background-color: #fff;
   box-shadow: 0 5px 20px rgba(3, 27, 78, 0.1); }
 
 @media only screen and (max-width: 600px) {
@@ -67,7 +69,7 @@ body {
   border: 1px solid #ccc;
   border-top: none;
   position: relative;
-  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #eeeeee 68%, rgba(124, 229, 233, 0.041) 68%) rgba(124, 229, 233, 0.041); }
+  background-color: transparent; }
 
 .boardBoxOrganizer {
   display: flex;
@@ -141,9 +143,11 @@ body {
     transition: all 0.2s; }
 
 .organizer {
+  background: transparent;
   display: flex;
   justify-content: center; }
   .organizer .todoHolder {
+    background: transparent;
     box-sizing: border-box;
     max-width: 1250px;
     display: flex;
