@@ -73,7 +73,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  max-width: 1500px;
+  max-width: 1000px;
   padding-top: 10px;
   padding-bottom: 1%; }
 
@@ -86,7 +86,7 @@ body {
   margin: 10px;
   height: 400px;
   width: 17%;
-  min-width: 200px;
+  min-width: 300px;
   border-radius: 5px;
   background-color: white; }
 
@@ -97,7 +97,7 @@ body {
   margin: 10px;
   height: 400px;
   width: 17%;
-  min-width: 200px; }
+  min-width: 300px; }
 
 .boardBox .board:hover {
   box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
