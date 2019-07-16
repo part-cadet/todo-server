@@ -52,9 +52,9 @@ body {
 .tab button:hover {
   background-color: cadetblue; }
 
-/* Create an active/current tablink class */
-.tab button .active {
-  background-color: cadetblue; }
+.tab .active {
+  background-color: cadetblue;
+  color: white; }
 
 /* Style the tab content */
 .tabcontent {
