@@ -99,9 +99,17 @@ body {
 /* Style the tab */
 
 .tab {
+    display: flex;
+    // justify-content: flex-start;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+    .tab {
+        justify-content: center;
+    }
 }
 
 /* Style the buttons inside the tab */

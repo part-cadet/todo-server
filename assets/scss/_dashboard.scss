@@ -1,64 +1,49 @@
 $primaryColor: cadetblue;
 
-.boardBox {
-	box-sizing: border-box;
-	// display: inline-flex;
-	display: flex;
-	// flex-wrap: wrap;
-	flex-flow: row wrap;
-	// width: auto;
-	justify-content: center;
-	// margin-left: 25%; 
-	// margin-right: 25%; 
-	max-width: 1000px;
-	// flex-basis: fit-content;
-	padding-top: 10px; 
-	padding-bottom: 1%;
+.boardBoxOrganizer {
+    display: flex;
+    justify-content: center;
 }
 
+.boardBoxOrganizer {
+    .boardBox {
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        max-width: 1500px;
+        padding-top: 10px;
+        padding-bottom: 1%;
+    }
+}
 
 
 .boardBox {
     .board {
-		// align-self: flex-start;
-		box-sizing: border-box;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-		justify-content: space-between;
-		
-		// align-items: center;
+        justify-content: space-between;
         padding: 3% 0% 2% 0%;
         margin: 10px;
-        height: 300px;
-        // width: 170px;
-		min-width: 200px;
-        // border: 2px solid $primaryColor;
-        /* border-width: 5px; */
+        height: 400px;
+        width: 17%;
+        min-width: 200px;
         border-radius: 5px;
         background-color: white;
-        // position: relative;
     }
 }
 
 .boardBox {
-      .empty {
-		background-color: rgb(243, 243, 243);
-		box-sizing: border-box;
-        // display: flex;
-        // flex-direction: column;
-		// justify-content: space-between;
-		
-		// align-items: center;
+    .empty {
+        background-color: rgb(243, 243, 243);
+        box-sizing: border-box;
         padding: 3% 0% 2% 0%;
         margin: 10px;
-        height: 300px;
-        // width: 170px;
-		min-width: 200px;
-        // border: 2px solid $primaryColor;
-        /* border-width: 5px; */
-        // border-radius: 5px;
-        // position: relative;
-	}
+        height: 400px;
+        width: 17%;
+        min-width: 200px;
+    }
 }
 
 
@@ -70,12 +55,8 @@ $primaryColor: cadetblue;
 }
 
 .boardBox .board .name {
-    /* min-width: inherit; */
     align-self: center;
     font-size: 35px;
-    // flex-basis: 25%;
-    /* margin-top: 15%; */
-
 }
 
 .boardBox .board .status {
@@ -83,19 +64,14 @@ $primaryColor: cadetblue;
     min-height: 20%;
     font-size: 30px;
     margin-top: 15%;
-    color: red;
-    // flex-basis: 25%; 
+    color: $primaryColor;
 }
 
 
 .boardBox .board ul {
-    /* position: absolute; */
     align-self: center;
     font-size: 12px;
-    /* bottom: 10%; */
     padding: 0px;
-
-    // flex-basis: 25%;
 }
 
 .boardBox .board .members {
@@ -105,8 +81,6 @@ $primaryColor: cadetblue;
     margin-right: 20px;
     margin-left: 20px;
     border-radius: 20px;
-    // background-color: rgba(163, 162, 162, 0.151);
-    // padding: 10px;
 }
 
 .boardBox .board .members img {
