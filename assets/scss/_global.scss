@@ -129,7 +129,9 @@ body {
 /* Change background color of buttons on hover */
 .tab {
     button:hover{
-        background-color: cadetblue;
+        background-color: $primaryColor;
+        color: white;
+        transition: 0.2s;
     }
     .active{
         background-color: $primaryColor;

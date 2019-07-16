@@ -51,7 +51,9 @@ body {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: cadetblue; }
+  background-color: cadetblue;
+  color: white;
+  transition: 0.2s; }
 
 .tab .active {
   background-color: cadetblue;
@@ -319,7 +321,7 @@ body {
       background: white;
       width: 2px;
       height: 2px;
-      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
       transform: rotate(45deg); }
   .organizer .dropbtn {
     background-color: cadetblue;
