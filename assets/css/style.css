@@ -355,7 +355,8 @@ body {
 .boardBox2 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  max-width: 1250px; }
   .boardBox2 .finalButton:hover {
     box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
   .boardBox2 .boards:hover {
@@ -439,13 +440,15 @@ body {
         .boardBox2 .boards .innerBoard .membersOfBoard .headOfMember {
           margin-top: 5px;
           font-size: 19px;
-          margin-bottom: 5px;
+          margin-bottom: 14px;
           font-weight: bold; }
         .boardBox2 .boards .innerBoard .membersOfBoard ul {
-          padding: 17px;
+          padding: 0px;
           margin-top: 0px;
           font-size: 13px;
-          height: 70px;
+          height: 90px;
+          color: #4d4949;
+          list-style: none;
           overflow: auto;
           /* Track */
           /* Handle */ }
@@ -466,6 +469,13 @@ body {
             border-radius: 5px;
             border-left: 7px solid #ebe8e8;
             border-right: 7px solid #ebe8e8; }
+        .boardBox2 .boards .innerBoard .membersOfBoard li::before {
+          content: "\2022";
+          color: cadetblue;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: 0em; }
       .boardBox2 .boards .innerBoard .circleButton {
         display: flex;
         justify-content: center;

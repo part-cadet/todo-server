@@ -4,6 +4,7 @@ $primaryColor: cadetblue;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1250px;
 
     .finalButton:hover {
         box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
@@ -182,7 +183,7 @@ $primaryColor: cadetblue;
 
                     margin-top: 5px;
                     font-size: 19px;
-                    margin-bottom: 5px;
+                    margin-bottom: 14px;
                     //  font-size: 16px;
                     font-weight: bold;
 
@@ -190,15 +191,27 @@ $primaryColor: cadetblue;
 
 
                 ul {
-                    padding: 17px;
+                     padding: 0px;
                     margin-top: 0px;
                     font-size: 13px;
-                    height: 70px;
+                    height: 90px;
+                    color: rgb(77, 73, 73);
+                    list-style: none;
                     overflow: auto;
                     $colorback: rgb(235, 232, 232);
                     $colorToolBar: white;
                     @include onHoverScroll($colorback, $colorToolBar);
 
+                }
+
+                li::before { 
+                    content: "\2022"; 
+                    color:$primaryColor;
+                    font-weight: bold;
+                    // font-size: 27px;
+                     display: inline-block; 
+                    width:1em;
+                    margin-left:0em
                 }
             }
 
