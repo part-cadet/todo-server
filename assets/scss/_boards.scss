@@ -1,212 +1,239 @@
-
 $primaryColor: cadetblue;
+
 .boardBox2 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
 
-    .finalButton:hover{
+    .finalButton:hover {
         box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
     }
 
-    
-    
-    .boards:hover{
-            box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+
+
+    .boards:hover {
+        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
     }
 
-    
+
     .boards {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+
+        width: 90%;
+        justify-content: space-around;
+        padding-bottom: 10px;
+        // border: 1.7px solid $primaryColor;
+        border-radius: 5px;
+        background-color: white;
+
+        @include breakpoint(small) {
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            align-self: center;
+
+        }
+
+
+
+        .boardsOwnerAndName {
             display: flex;
-            flex-direction: row;
-            margin: 10px;
-           
-            width: 90%;
-            justify-content: space-around;
-            padding-bottom: 10px;
-            // border: 1.7px solid $primaryColor;
-            border-radius: 5px;
-            background-color: white;
-            @include breakpoint(small){
-                flex-direction: column;
-                align-items: center;
-                align-content: center;
-                align-self: center;
-                
-            }
-        
-            
-                
-            .name {
-                display: flex;
-                flex-direction: column;
-                min-height: 20%;
-                width: 55%;
-                margin-bottom: 10px;
-                font-size: 25px;
-                margin-top: 20px;
-                margin-left: 20px;
-                // font-weight: bold; 
-                @include breakpoint(small){
-                 align-items: center;
+            flex-direction: column;
+
+            //  justify-content: start;
+            // min-height: 20%;
+            width: 80%;
+            margin-bottom: 10px;
+            font-size: 25px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+
+            // font-weight: bold; 
+            @include breakpoint(small) {
+                align-items: left;
+                justify-content: start;
+                // left: 0px;
+                // align-items: center;
                 // align-content: center;
                 // align-self: center;
-                }
-                
-                
+            }
 
-                .listOwner {
+            .numberOfBoard {
+                display: flex;
+                flex-direction: row;
+                // min-height: 20%;
+                // width: 55%;
+                // margin: 2px;
+                // margin-bottom: 10px;
+                font-size: 25px;
+                color:$primaryColor;
+                // margin-top: 20px;
+                // margin-left: 10px;
+
+            }
+
+            .listOwner {
+                // display: flex;
+                // justify-content: center;
                 font-size: 16px;
                 margin-top: 20px;
-                
-                 @include breakpoint(small){
-                  align-self: center;
-                 }
+                align-items: center;
+
+
+
+                @include breakpoint(small) {
+                    // display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    // align-self: flex-start;
+                    // display: flex;
+                    //  justify-content: flex-start;
 
 
                 }
 
-                    h6{
+
+
+
+
+                h6 {
                     margin-bottom: 2px;
-                    font-size: 16px;
-                
-                    }
-        
-                
-                     ul{
-                        padding: 17px;
-                        margin-top: 15px;
-                        font-size: 13px;
-               
-                    }
-        
-      
+                    font-size: 18px;
 
+                    @include breakpoint(small) {
+                        // padding-left: 40px;
+                        align-self: center;
+                        align-content: center;
+                    }
+
+
+                }
+
+
+                ul {
+                    padding: 10px;
+                    margin-top: 15px;
+                    font-size: 13px;
+
+                    @include breakpoint(small) {
+                        // padding-left: 45px;
+                        align-self: center;
+                    }
+
+                }
 
             }
-    
-            //end listOwner
 
-                   
-            }
-             //end name  
-              
+
+
+            //endOfListOwner
+
+        }
+
+        //end Of boardsOwnerAndName
+
+
+
+
+
         .innerBoard {
-                        display: flex;
-                        flex-direction: column; 
-                        position: relative;
-                        margin: 10px;
-                        height: 110px;
-                        width: 45%;
-                        padding: 20px 10px 85px 20px; 
-                        background-color: rgb(235, 232, 232);
-                        // border: 1.7px solid $primaryColor;
-                        border-radius: 5px;
-                        @include breakpoint(small){
-                            width: 80%;
-                        }
-                        
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 10px;
+            height: 110px;
+            width: 45%;
+            padding: 20px 10px 85px 20px;
+            background-color: rgb(235, 232, 232);
+            // border: 1.7px solid $primaryColor;
+            border-radius: 5px;
+
+            @include breakpoint(small) {
+                width: 80%;
+            }
 
 
-            .circleButton:hover{
-                        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
-                        }
+
+            .circleButton:hover {
+                box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+            }
 
             .membersOfBoard {
-                        font-size: 16px;
-                        margin-top:0px;
-                       
-                     p{
-                           
-                         margin-top: 3px; 
-                         font-size: 14;
-                         margin-bottom: 10px;
-                         font-size: 16px;
-                         font-weight: bold;
-                           
-                            }  
-                             
-                             
-                     ul{
-                        padding: 17px;
-                        margin-top: 0px;
-                        font-size: 13px;
-                        height: 70px;
-                        // margin-bottom: 50px;
-                        overflow:auto;
-                        $colorback: rgb(235, 232, 232);
-                        $colorToolBar:white;
-                        @include onHoverScroll( $colorback, $colorToolBar);
-                            
-                            }
-                        } 
-                        //end member 
-                        
-                        
-            .circleButton{
-                            display: flex;
-                            justify-content:center;
-                            position: absolute;
-                            height: 30px;
-                            width: 30px;
-                            background-color: $primaryColor; 
-                            border: none;
-                            color: white;
-                            font-size: 10px;
-                            cursor: pointer;
-                            // margin-top: 10px;
-                            bottom: 10px;
-                            margin: 3px 2px; 
-                            border-radius: 50%;
-                          
-                          
-                          }
-                    }
-                   //end innerboard    
-            
-        
-        } 
-        // end boards
-      
-    .finalButton{
-    display: flex;
-    margin: 10px;
-    justify-content:center;
-    height: 40px;
-    width: 90%;
-    background-color: $primaryColor; 
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    }  
-   
+                font-size: 20px;
+                margin-top: 0px;
+
+                .headOfMember {
+
+                    margin-top: 5px;
+                    font-size: 19px;
+                    margin-bottom: 5px;
+                    //  font-size: 16px;
+                    font-weight: bold;
+
+                }
+
+
+                ul {
+                    padding: 17px;
+                    margin-top: 0px;
+                    font-size: 13px;
+                    height: 70px;
+                    overflow: auto;
+                    $colorback: rgb(235, 232, 232);
+                    $colorToolBar: white;
+                    @include onHoverScroll($colorback, $colorToolBar);
+
+                }
+            }
+
+            //end member 
+
+
+            .circleButton {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                height: 35px;
+                width: 35px;
+                background-color: $primaryColor;
+                border: none;
+                color: white;
+                font-size: 15px;
+                cursor: pointer;
+                // margin-top: 10px;
+                bottom: 10px;
+                border-radius: 50%;
+
+
+            }
+        }
+
+        //end innerboard    
+
+    }
+
+
+    .finalButton {
+        display: flex;
+        margin: 10px;
+        justify-content: center;
+        height: 40px;
+        width: 90%;
+        background-color: $primaryColor;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+// end boards
+
+
 
 //end boardBox
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
- 
-
-
-
-
-
-
-
-

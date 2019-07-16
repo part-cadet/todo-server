@@ -131,14 +131,9 @@ body {
     button:hover{
         background-color: cadetblue;
     }
-}
-
-/* Create an active/current tablink class */
-.tab {
-    button{
-        .active{
-            background-color: $primaryColor;
-        }
+    .active{
+        background-color: $primaryColor;
+        color: white;
     }
 }
 
