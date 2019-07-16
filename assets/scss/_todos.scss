@@ -1,11 +1,10 @@
 $primaryColor: cadetblue;
 .organizer{
-
-	  display: flex;
+	display: flex;
     justify-content: center;
-.todoHolder {
+	.todoHolder {
 	box-sizing: border-box;
-		max-width: 1250px;
+	max-width: 1250px;
 
 	display: flex;
 	align-items: center;
