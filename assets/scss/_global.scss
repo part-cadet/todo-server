@@ -100,10 +100,10 @@ body {
 
 .tab {
     display: flex;
-    // justify-content: flex-start;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
+	box-shadow: 0 5px 20px rgba(3, 27, 78, .1);
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,154 +1,184 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="assets/css/style.css"></link>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css">
+  </link>
 
 
 </head>
+
 <body>
 
-<div class="tab">
-  <!-- <button class="tablinks" onclick="openCity(event, 'London')">Londonnn</button>
+  <div class="tab">
+    <!-- <button class="tablinks" onclick="openCity(event, 'London')">Londonnn</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
   <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
-  <button class="tablinks" onclick="window.location.href='index.html'">Dashboard</button>
-  <button class="tablinks" onclick="window.location.href='boards.html'"> Boards</button>
-  <button class="tablinks active">Todos</button>
-</div>
+    <button class="tablinks" onclick="window.location.href='index.html'">Dashboard</button>
+    <button class="tablinks" onclick="window.location.href='boards.html'"> Boards</button>
+    <button class="tablinks active">Todos</button>
+  </div>
 
-<!-- <div id="London" class="tabcontent">
+  <!-- <div id="London" class="tabcontent">
   <h3>London</h3>
   <p>London is the capital city of England.</p>
 </div> -->
-<!-- <div id="T" class="tabcontent">
+  <!-- <div id="T" class="tabcontent">
   <h3>Paris</h3>
   <p>Paris is the capital of France.</p> 
 </div> -->
 
-<div id="Todos" class="tabcontent">
+  <div id="Todos" class="tabcontent">
+    <div class="organizer">
 
-        <div class="dropdown">
-                <button class="dropbtn">Boards</button>
-                <div class="dropdown-content">
-                  <a href="#">Link 1</a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-              </div>
- 
-    <div class="boardBoxTodo">
-            <div class="todoBox done">
-                <div class="title">To do one</div>
-                <div class= "allTasksContainer">
-                  
-
-                    <div class="taskContainer">
-                      <div class="taskItem">
-                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-                        <label for="styled-checkbox-1">Checkbox</label>
-                      </div>
-                      <div class="taskItem">
-                          <img src="pictures/img_avatar.png" alt="img_avatar1">
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="taskContainer">
-                        <div class="taskItem">
-                          <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value1">
-                          <label for="styled-checkbox-3">Checkbox</label>
-                        </div>
-                        <div class="taskItem">
-                            <img src="pictures/img_avatar.png" alt="img_avatar1">
-                          </div>
-                       </div>
-                       <hr><div class="taskContainer">
-                          <div class="taskItem">
-                            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value1">
-                            <label for="styled-checkbox-4">Checkbox</label>
-                          </div>
-                          <div class="taskItem">
-                              <img src="pictures/img_avatar.png" alt="img_avatar1">
-                            </div>
-                         </div>
-                         <hr><div class="taskContainer">
-                            <div class="taskItem">
-                              <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" value="value1">
-                              <label for="styled-checkbox-5">Checkbox</label>
-                            </div>
-                            <div class="taskItem">
-                                <img src="pictures/img_avatar.png" alt="img_avatar1">
-                              </div>
-                           </div>
-                           <hr>
-                     <div class="taskContainer">
-                        <div class="taskItem">
-                          <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value1">
-                          <label for="styled-checkbox-2">Checkbox</label>
-                        </div>
-                        <div class="taskItem">
-                            <img src="pictures/img_avatar2.png" alt="img_avatar2">
-                          </div>
-                       </div>
-                       <hr>
-                </div>
-
-                </div>
-
-
-
-
-
-
-
-
-                <div class="todoBox">
-                    <div class="title">To do one</div>
-                    <div class= "allTasksContainer">
-                      
     
-                        <div class="taskContainer">
-                          <div class="taskItem">
-                            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value1">
-                            <label for="styled-checkbox-7">Checkbox</label>
-                          </div>
-                          <div class="taskItem">
-                              <img src="pictures/img_avatar.png" alt="img_avatar1">
-                            </div>
-                         </div>
-                         <hr>
-                         
-                         <div class="taskContainer">
-                            <div class="taskItem">
-                              <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value1">
-                              <label for="styled-checkbox-8">Checkbox</label>
-                            </div>
-                            <div class="taskItem">
-                                <img src="pictures/img_avatar2.png" alt="img_avatar2">
-                              </div>
-                           </div>
-                           <hr>
-                    </div>
-    
-                    </div>
-
-
-
-
-        <a href="#" class="todoBox plus"><p>+</p></a>
-
-
-
-
+    <div class="todoHolder">
+       
+        <div class="todosInfo">
+          <div class="text"><p>Total of 2 boards</p></div>
+          
+          <div class="dropdown">
+            <button class="dropbtn">Boards</button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div></div> 
+      <div class="boardBoxTodo">
         
+        
+        <div class="todoBox done">
+          <div class="title">To do one</div>
+          <div class="allTasksContainer">
+
+
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                <label for="styled-checkbox-1">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar.png" alt="img_avatar1">
+              </div>
+            </div>
+            <hr>
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value1">
+                <label for="styled-checkbox-3">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar.png" alt="img_avatar1">
+              </div>
+            </div>
+            <hr>
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value1">
+                <label for="styled-checkbox-4">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar.png" alt="img_avatar1">
+              </div>
+            </div>
+            <hr>
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" value="value1">
+                <label for="styled-checkbox-5">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar.png" alt="img_avatar1">
+              </div>
+            </div>
+            <hr>
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value1">
+                <label for="styled-checkbox-2">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar2.png" alt="img_avatar2">
+              </div>
+            </div>
+            <hr>
+          </div>
+
+        </div>
 
 
 
 
+
+
+
+
+        <div class="todoBox">
+          <div class="title">To do one</div>
+          <div class="allTasksContainer">
+
+            <div class="inputContainer">
+
+              <input type="text" name="task" placeholder="Enter task here" onfocus="this.placeholder=''"
+                onblur="this.placeholder='Enter task her'">
+
+
+
+              <input type="submit" value="+">
+            </div>
+            <hr>
+
+
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value1">
+                <label for="styled-checkbox-7">hi</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar.png" alt="img_avatar1">
+              </div>
+            </div>
+            <hr>
+
+            <div class="taskContainer">
+              <div class="taskItem">
+                <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value1">
+                <label for="styled-checkbox-8">Checkbox</label>
+              </div>
+              <div class="taskItem">
+                <img src="pictures/img_avatar2.png" alt="img_avatar2">
+              </div>
+            </div>
+            <hr>
+          </div>
+
+        </div>
+
+
+
+
+        <a href="#" class="todoBox plus">
+          <p>+</p>
+        </a>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
     </div>
 
-</div>
 
-   
+  </div>
+
+
 </body>
-</html> 
+
+</html>
