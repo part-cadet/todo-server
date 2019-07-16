@@ -1,11 +1,16 @@
 $primaryColor: cadetblue;
 
+.todoHolder{
 
+display: flex;
+justify-content: center;
 
 
 .boardBoxTodo {
 
+	max-width: 1250px;
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 
 	margin: 20px;
@@ -60,7 +65,7 @@ $primaryColor: cadetblue;
 	
 	
 			color: rgb(70, 70, 70);
-			align-content: left;
+			// align-content: left;
 			text-align: left;
 			margin: 10px;
 			padding: 10px;
@@ -74,29 +79,91 @@ $primaryColor: cadetblue;
 			$bordercolor: white;
 			$trackcolor: grey;
 			@include onHoverScroll($bordercolor, $trackcolor);
+
+
+
+			.inputContainer{
+
+				display: flex;
+				justify-content: space-between;
+				//padding-right: 2px;
+				// -webkit-flex-flow: row wrap;
+				// justify-content: stretch;
+
+				input[type=text]{
+					box-sizing: border-box;
+					// width:%;
+					// flex-grow:1;?
+					border: 0px solid;
+					// border-bottom: 1px dotted  rgba(0, 0, 0, 0.404);
+					//flex-grow:2;
+					//padding: 5px 12px;
+					text-decoration: none;
+					// margin: 4px;
+					cursor: pointer;
+					//margin-right:10px;
+				}
+				input[type=text]:focus{
+					outline: none;
+				}
+
+				input[type=submit]{
+					font-size:25px;
+					border-radius: 50%;
+						height: 50px;
+						width: 50px;
+						margin-left: -20px;
+					// size: 45px 45px;
+					border-radius: 50%;
+					background-color: cadetblue;
+					border: none;
+					color: white;
+					//padding: 5px 12px;
+					text-decoration: none;
+					// margin: 4px;
+					cursor: pointer;
+				  }
+				.inputItem{
+					
+					
+
+					align-self: center;
+
+					
+
+				}
+			}
+
+
+
 	
 	
 	
 			.taskContainer {
-				display: -webkit-box;
-				display: -moz-box;
-				display: -ms-flexbox;
-				display: -webkit-flex;
+				// display: -webkit-box;
+				// display: -moz-box;
+				// display: -ms-flexbox;
+				// display: -webkit-flex;
 				display: flex;
 	
-				-webkit-flex-flow: row wrap;
+				// -webkit-flex-flow: row wrap;
 				justify-content: space-between;
+
+
+				
 	
 	
 	
 				.taskItem {
+
+					
 					align-self: center;
+
+					
 	
 					input[type=checkbox]+label {
 						color: rgb(70, 70, 70);
-	
-	
-	
+
 					}
 	
 					input[type=checkbox]:checked+label {
@@ -139,6 +206,7 @@ $primaryColor: cadetblue;
 		
 		opacity: 0.5;
 		filter: alpha(opacity=50);
+		order: 1;
 	}
 
 	.plus {
@@ -150,13 +218,13 @@ $primaryColor: cadetblue;
 		position: relative;
 		font-size: 40px;
 		text-decoration: none;
-	
+		order: 2;
 	}
 
 
 }
 
-
+}
 
 
 
