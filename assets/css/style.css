@@ -509,10 +509,16 @@ body {
       margin: 10px;
       justify-content: center;
       height: 40px;
-      width: 90%;
+      width: 950px;
       background-color: cadetblue;
       border: none;
       color: white;
       font-size: 20px;
       cursor: pointer;
       border-radius: 5px; }
+      @media (max-width: 992px) {
+        .boardsOrganizer .boardBox2 .finalButton {
+          min-width: 700px; } }
+      @media (max-width: 768px) {
+        .boardsOrganizer .boardBox2 .finalButton {
+          min-width: 300px; } }
