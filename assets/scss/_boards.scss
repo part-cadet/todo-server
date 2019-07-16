@@ -103,26 +103,39 @@ $primaryColor: cadetblue;
                     margin-bottom: 2px;
                     font-size: 18px;
 
-                    @include breakpoint(small) {
-                        // padding-left: 40px;
-                        align-self: center;
-                        align-content: center;
-                    }
+                    // @include breakpoint(small) {
+                    //     // padding-left: 40px;
+                    //     align-self: center;
+                    //     align-content: center;
+                    // }
 
 
                 }
 
 
                 ul {
-                    padding: 10px;
+                     padding: 10px;
                     margin-top: 15px;
                     font-size: 13px;
+                    color: rgb(77, 73, 73);
+                    list-style: none;
+                    list-style-position: inside;
 
-                    @include breakpoint(small) {
-                        // padding-left: 45px;
-                        align-self: center;
-                    }
+                    // @include breakpoint(small) {
+                    //     // padding-left: 45px;
+                    //     align-self: center;
+                    // }
 
+                }
+
+                li::before { 
+                    content: "\2022"; 
+                    color:$primaryColor;
+                    font-weight: bold;
+                    // font-size: 27px;
+                    display: inline-block; 
+                    width:1em;
+                    margin-left:0em
                 }
 
             }

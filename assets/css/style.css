@@ -404,17 +404,20 @@ body {
         .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
           margin-bottom: 2px;
           font-size: 18px; }
-          @media (max-width: 768px) {
-            .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
-              align-self: center;
-              align-content: center; } }
         .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
           padding: 10px;
           margin-top: 15px;
-          font-size: 13px; }
-          @media (max-width: 768px) {
-            .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
-              align-self: center; } }
+          font-size: 13px;
+          color: #4d4949;
+          list-style: none;
+          list-style-position: inside; }
+        .boardBox2 .boards .boardsOwnerAndName .listOwner li::before {
+          content: "\2022";
+          color: cadetblue;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: 0em; }
     .boardBox2 .boards .innerBoard {
       display: flex;
       flex-direction: column;
