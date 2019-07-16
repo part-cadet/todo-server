@@ -67,71 +67,74 @@ body {
 .boardBoxOrganizer {
   display: flex;
   justify-content: center; }
-
-.boardBoxOrganizer .boardBox {
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  max-width: 1000px;
-  padding-top: 10px;
-  padding-bottom: 1%; }
-
-.boardBox .board {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 3% 0% 2% 0%;
-  margin: 10px;
-  height: 400px;
-  width: 17%;
-  min-width: 300px;
-  border-radius: 5px;
-  background-color: white; }
-
-.boardBox .empty {
-  background-color: #f3f3f3;
-  box-sizing: border-box;
-  padding: 3% 0% 2% 0%;
-  margin: 10px;
-  height: 400px;
-  width: 17%;
-  min-width: 300px; }
-
-.boardBox .board:hover {
-  box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
-  transition: all 0.2s; }
-
-.boardBox .board .name {
-  align-self: center;
-  font-size: 35px; }
-
-.boardBox .board .status {
-  align-self: center;
-  min-height: 20%;
-  font-size: 30px;
-  margin-top: 15%;
-  color: cadetblue; }
-
-.boardBox .board ul {
-  align-self: center;
-  font-size: 12px;
-  padding: 0px; }
-
-.boardBox .board .members {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  margin-right: 20px;
-  margin-left: 20px;
-  border-radius: 20px; }
-
-.boardBox .board .members img {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  margin-left: -20px; }
+  .boardBoxOrganizer .boardBox {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-width: 1250px;
+    padding-top: 10px;
+    padding-bottom: 1%; }
+    .boardBoxOrganizer .boardBox .board {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3% 0% 2% 0%;
+      margin: 10px;
+      height: 400px;
+      width: 17%;
+      min-width: 300px;
+      border-radius: 5px;
+      background-color: white; }
+      .boardBoxOrganizer .boardBox .board .name {
+        align-self: center;
+        font-size: 35px; }
+      .boardBoxOrganizer .boardBox .board .status {
+        align-self: center;
+        min-height: 20%;
+        font-size: 30px;
+        margin-top: 15%;
+        color: cadetblue; }
+      .boardBoxOrganizer .boardBox .board ul {
+        align-self: center;
+        font-size: 12px;
+        padding: 0px; }
+      .boardBoxOrganizer .boardBox .board .members {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        margin-right: 20px;
+        margin-left: 20px;
+        border-radius: 20px; }
+        .boardBoxOrganizer .boardBox .board .members img {
+          border-radius: 50%;
+          height: 40px;
+          width: 40px;
+          margin-left: -20px; }
+    .boardBoxOrganizer .boardBox .empty {
+      background-color: #f3f3f3;
+      box-sizing: border-box;
+      padding: 3% 0% 2% 0%;
+      margin: 10px;
+      height: 400px;
+      width: 17%;
+      min-width: 300px;
+      order: 2; }
+    .boardBoxOrganizer .boardBox .done {
+      background-color: rgba(255, 255, 255, 0.5);
+      order: 1; }
+      .boardBoxOrganizer .boardBox .done .name {
+        opacity: 0.5; }
+      .boardBoxOrganizer .boardBox .done ul {
+        opacity: 0.5; }
+      .boardBoxOrganizer .boardBox .done .members {
+        opacity: 0.5; }
+      .boardBoxOrganizer .boardBox .done .status {
+        opacity: 1; }
+  .boardBoxOrganizer .board:hover {
+    box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
+    transition: all 0.2s; }
 
 .boardBoxTodo {
   display: flex;
