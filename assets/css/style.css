@@ -345,29 +345,40 @@ body {
       margin-bottom: 10px;
       font-size: 25px;
       margin-top: 20px;
-      margin-left: 20px; }
+      margin-left: 20px;
+      margin-right: 20px; }
       @media (max-width: 768px) {
         .boardBox2 .boards .boardsOwnerAndName {
-          align-items: center; } }
+          align-items: center;
+          align-content: center;
+          align-self: center; } }
       .boardBox2 .boards .boardsOwnerAndName .numberOfBoard {
         display: flex;
         flex-direction: row;
-        min-height: 20%;
-        width: 55%;
         font-size: 25px; }
       .boardBox2 .boards .boardsOwnerAndName .listOwner {
         font-size: 16px;
-        margin-top: 20px; }
+        margin-top: 20px;
+        align-items: center; }
         @media (max-width: 768px) {
           .boardBox2 .boards .boardsOwnerAndName .listOwner {
-            align-self: center; } }
+            align-items: center; } }
         .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
           margin-bottom: 2px;
-          font-size: 16px; }
+          font-size: 18px; }
+          @media (max-width: 768px) {
+            .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
+              padding-left: 30px;
+              align-self: center;
+              align-content: center; } }
         .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
           padding: 17px;
           margin-top: 15px;
           font-size: 13px; }
+          @media (max-width: 768px) {
+            .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
+              padding-left: 45px;
+              align-self: center; } }
     .boardBox2 .boards .innerBoard {
       display: flex;
       flex-direction: column;
