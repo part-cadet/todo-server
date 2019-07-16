@@ -262,13 +262,21 @@ $primaryColor: cadetblue;
             margin: 10px;
             justify-content: center;
             height: 40px;
-            width: 90%;
+            width: 950px;
             background-color: $primaryColor;
             border: none;
             color: white;
             font-size: 20px;
             cursor: pointer;
             border-radius: 5px;
+            
+            @include breakpoint(medium) {
+                min-width: 700px;
+            }
+            @include breakpoint(small) {
+                
+                min-width: 300px;;
+            }
         }
     }
 }

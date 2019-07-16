@@ -40,6 +40,7 @@ body {
 
 /* Style the buttons inside the tab */
 .tab button {
+  width: 120px;
   background-color: inherit;
   float: left;
   border: none;
@@ -321,7 +322,7 @@ body {
       background: white;
       width: 2px;
       height: 2px;
-      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
       transform: rotate(45deg); }
   .organizer .dropbtn {
     background-color: cadetblue;
@@ -354,153 +355,169 @@ body {
   .organizer .dropdown:hover .dropbtn {
     background-color: #1f7281; }
 
-.boardBox2 {
+.boardsOrganizer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1250px; }
-  .boardBox2 .finalButton:hover {
-    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-  .boardBox2 .boards:hover {
-    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-  .boardBox2 .boards {
+  justify-content: center; }
+  .boardsOrganizer .boardBox2 {
+    width: inherit;
+    box-sizing: border-box;
+    max-width: 1250px;
     display: flex;
-    flex-direction: row;
-    margin: 10px;
-    width: 90%;
-    justify-content: space-around;
-    padding-bottom: 10px;
-    border-radius: 5px;
-    background-color: white; }
-    @media (max-width: 768px) {
-      .boardBox2 .boards {
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        align-self: center; } }
-    .boardBox2 .boards .boardsOwnerAndName {
+    align-items: center;
+    flex-direction: column; }
+    .boardsOrganizer .boardBox2 .finalButton:hover {
+      box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+    .boardsOrganizer .boardBox2 .boards:hover {
+      box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+    .boardsOrganizer .boardBox2 .boards {
       display: flex;
-      flex-direction: column;
-      width: 80%;
-      margin-bottom: 10px;
-      font-size: 25px;
-      margin-top: 20px;
-      margin-left: 20px;
-      margin-right: 20px; }
-      @media (max-width: 768px) {
-        .boardBox2 .boards .boardsOwnerAndName {
-          align-items: left;
-          justify-content: start; } }
-      .boardBox2 .boards .boardsOwnerAndName .numberOfBoard {
-        display: flex;
-        flex-direction: row;
-        font-size: 25px;
-        color: cadetblue; }
-      .boardBox2 .boards .boardsOwnerAndName .listOwner {
-        font-size: 16px;
-        margin-top: 20px;
-        align-items: center; }
-        @media (max-width: 768px) {
-          .boardBox2 .boards .boardsOwnerAndName .listOwner {
-            align-items: center;
-            justify-content: flex-start; } }
-        .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
-          margin-bottom: 2px;
-          font-size: 18px; }
-        .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
-          padding: 10px;
-          margin-top: 15px;
-          font-size: 13px;
-          color: #4d4949;
-          list-style: none;
-          list-style-position: inside; }
-        .boardBox2 .boards .boardsOwnerAndName .listOwner li::before {
-          content: "\2022";
-          color: cadetblue;
-          font-weight: bold;
-          display: inline-block;
-          width: 1em;
-          margin-left: 0em; }
-    .boardBox2 .boards .innerBoard {
-      display: flex;
-      flex-direction: column;
-      position: relative;
+      flex-direction: row;
       margin: 10px;
-      height: 110px;
-      width: 45%;
-      padding: 20px 10px 85px 20px;
-      background-color: #ebe8e8;
-      border-radius: 5px; }
+      flex-grow: 1;
+      min-width: 950px;
+      justify-content: space-around;
+      padding-bottom: 10px;
+      border-radius: 5px;
+      background-color: white; }
+      @media (max-width: 992px) {
+        .boardsOrganizer .boardBox2 .boards {
+          min-width: 700px; } }
       @media (max-width: 768px) {
-        .boardBox2 .boards .innerBoard {
-          width: 80%; } }
-      .boardBox2 .boards .innerBoard .circleButton:hover {
-        box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
-      .boardBox2 .boards .innerBoard .membersOfBoard {
-        font-size: 20px;
-        margin-top: 0px; }
-        .boardBox2 .boards .innerBoard .membersOfBoard .headOfMember {
-          margin-top: 5px;
-          font-size: 19px;
-          margin-bottom: 14px;
-          font-weight: bold; }
-        .boardBox2 .boards .innerBoard .membersOfBoard ul {
-          padding: 0px;
-          margin-top: 0px;
-          font-size: 13px;
-          height: 90px;
-          color: #4d4949;
-          list-style: none;
-          overflow: auto;
-          /* Track */
-          /* Handle */ }
-          .boardBox2 .boards .innerBoard .membersOfBoard ul:hover::-webkit-scrollbar-thumb {
-            background: cadetblue;
-            border-radius: 5px;
-            border-left: 7px solid #ebe8e8;
-            border-right: 7px solid #ebe8e8; }
-          .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar {
-            width: 21px; }
-          .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar-track {
-            border-radius: 5px;
-            background: white;
-            border-left: 10px solid #ebe8e8;
-            border-right: 10px solid #ebe8e8; }
-          .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar-thumb {
-            background: rgba(95, 158, 160, 0);
-            border-radius: 5px;
-            border-left: 7px solid #ebe8e8;
-            border-right: 7px solid #ebe8e8; }
-        .boardBox2 .boards .innerBoard .membersOfBoard li::before {
-          content: "\2022";
-          color: cadetblue;
-          font-weight: bold;
-          display: inline-block;
-          width: 1em;
-          margin-left: 0em; }
-      .boardBox2 .boards .innerBoard .circleButton {
+        .boardsOrganizer .boardBox2 .boards {
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+          align-self: center;
+          min-width: 300px; } }
+      .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        height: 35px;
-        width: 35px;
-        background-color: cadetblue;
-        border: none;
-        color: white;
-        font-size: 15px;
-        cursor: pointer;
-        bottom: 10px;
-        border-radius: 50%; }
-  .boardBox2 .finalButton {
-    display: flex;
-    margin: 10px;
-    justify-content: center;
-    height: 40px;
-    width: 90%;
-    background-color: cadetblue;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px; }
+        flex-direction: column;
+        width: 80%;
+        margin-bottom: 10px;
+        font-size: 25px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px; }
+        @media (max-width: 768px) {
+          .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName {
+            align-items: left;
+            justify-content: start; } }
+        .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .numberOfBoard {
+          display: flex;
+          flex-direction: row;
+          font-size: 25px;
+          color: cadetblue; }
+        .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .listOwner {
+          font-size: 16px;
+          margin-top: 20px;
+          align-items: center; }
+          @media (max-width: 768px) {
+            .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .listOwner {
+              align-items: center;
+              justify-content: flex-start; } }
+          .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .listOwner h6 {
+            margin-bottom: 2px;
+            font-size: 18px; }
+          .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .listOwner ul {
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #4d4949;
+            list-style: none;
+            list-style-position: inside; }
+          .boardsOrganizer .boardBox2 .boards .boardsOwnerAndName .listOwner li::before {
+            content: "\2022";
+            color: cadetblue;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 0em; }
+      .boardsOrganizer .boardBox2 .boards .innerBoard {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 10px;
+        height: 110px;
+        width: 45%;
+        padding: 20px 10px 85px 20px;
+        background-color: #ebe8e8;
+        border-radius: 5px; }
+        @media (max-width: 768px) {
+          .boardsOrganizer .boardBox2 .boards .innerBoard {
+            width: 80%; } }
+        .boardsOrganizer .boardBox2 .boards .innerBoard .circleButton:hover {
+          box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+        .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard {
+          font-size: 20px;
+          margin-top: 0px; }
+          .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard .headOfMember {
+            margin-top: 5px;
+            font-size: 19px;
+            margin-bottom: 14px;
+            font-weight: bold; }
+          .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard ul {
+            padding: 0px;
+            margin-top: 0px;
+            font-size: 13px;
+            height: 90px;
+            color: #4d4949;
+            list-style: none;
+            overflow: auto;
+            /* Track */
+            /* Handle */ }
+            .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard ul:hover::-webkit-scrollbar-thumb {
+              background: cadetblue;
+              border-radius: 5px;
+              border-left: 7px solid #ebe8e8;
+              border-right: 7px solid #ebe8e8; }
+            .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar {
+              width: 21px; }
+            .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar-track {
+              border-radius: 5px;
+              background: white;
+              border-left: 10px solid #ebe8e8;
+              border-right: 10px solid #ebe8e8; }
+            .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard ul::-webkit-scrollbar-thumb {
+              background: rgba(95, 158, 160, 0);
+              border-radius: 5px;
+              border-left: 7px solid #ebe8e8;
+              border-right: 7px solid #ebe8e8; }
+          .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard li::before {
+            content: "\2022";
+            color: cadetblue;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 0em; }
+        .boardsOrganizer .boardBox2 .boards .innerBoard .circleButton {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          height: 35px;
+          width: 35px;
+          background-color: cadetblue;
+          border: none;
+          color: white;
+          font-size: 15px;
+          cursor: pointer;
+          bottom: 10px;
+          border-radius: 50%; }
+    .boardsOrganizer .boardBox2 .finalButton {
+      display: flex;
+      margin: 10px;
+      justify-content: center;
+      height: 40px;
+      width: 950px;
+      background-color: cadetblue;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px; }
+      @media (max-width: 992px) {
+        .boardsOrganizer .boardBox2 .finalButton {
+          min-width: 700px; } }
+      @media (max-width: 768px) {
+        .boardsOrganizer .boardBox2 .finalButton {
+          min-width: 300px; } }
