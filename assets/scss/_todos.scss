@@ -39,10 +39,12 @@ $primaryColor: cadetblue;
 
 
 	.boardBoxTodo {
+		box-sizing: border-box;
 
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
+		max-width: 1250px;
 
 		margin: 20px;
 
@@ -59,7 +61,10 @@ $primaryColor: cadetblue;
 
 		.todoBox {
 
+			box-sizing: border-box;
+
 			display: flex;
+			flex-flow: row wrap;
 			box-sizing: border-box;
 			flex-direction: column;
 			margin: 10px;
@@ -73,20 +78,22 @@ $primaryColor: cadetblue;
 			background: white;
 
 			@include breakpoint(small) {
-				height: 300px;
+				height: 400px;
 			}
 
 
 
 			.title {
-
-				line-height: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				
 				color: white;
 				font-weight: bold;
 				font-size: 19px;
 				align-self: center;
 				text-align: center;
-				height: 50px;
+				height: 40px;
 				width: 95%;
 				border-radius: 3px;
 				background-color: cadetblue;
@@ -241,6 +248,17 @@ $primaryColor: cadetblue;
 			opacity: 0.5;
 			filter: alpha(opacity=50);
 			order: 1;
+		}
+
+		.empty {
+			background-color: transparent;
+			box-sizing: border-box;
+			padding: 3% 0% 2% 0%;
+			margin: 10px;
+			height: 400px;
+			width: 17%;
+			min-width: 270px;
+			order: 2;
 		}
 
 		.plus {
