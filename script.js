@@ -17,3 +17,5 @@ window.onload = () => {
         document.getElementById("boardBox").appendChild(emptyDiv);
     }
 }
+
+

@@ -1,7 +1,7 @@
 var i, count = 0;
 
 window.onload = () => { 
-    var boardBoxWidth = document.getElementById("todoHolder").offsetWidth;
+    var boardBoxWidth = document.getElementById("boardBoxTodo").offsetWidth;
     console.log("Board Box Width = " + boardBoxWidth);
     var boards = document.getElementsByClassName("todoBox");
     console.log("Board Count = " + boards.length);
@@ -16,4 +16,16 @@ window.onload = () => {
         emptyDiv.setAttribute("class", "empty");
         document.getElementById("boardBoxTodo").appendChild(emptyDiv);
     }
+
+
+    
+
+
+    var rowWidth= ( boards[0].clientWidth*columns)+(columns-1)*20;
+    console.log("row width = " + rowWidth);
+    $('.todosInfo').css({"width":+rowWidth+"px"});
+
+
+
+
 }
