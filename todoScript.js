@@ -6,7 +6,7 @@ window.onload = () => {
     var boards = document.getElementsByClassName("todoBox");
     console.log("Board Count = " + boards.length);
     console.log("Board Width = " + boards[0].clientWidth);
-    var columns = (Math.floor(boardBoxWidth /  ((boards[0].clientWidth))) );
+    var columns = (Math.floor(boardBoxWidth /  ((boards[0].clientWidth+19))) );
     console.log("Columns = " + columns);
     var emptyBoardsNeeded = (boards.length % columns) === 0 ? 0 : columns - (boards.length % columns);
 
@@ -24,6 +24,9 @@ window.onload = () => {
     var rowWidth= ( boards[0].clientWidth*columns)+(columns-1)*20;
     console.log("row width = " + rowWidth);
     $('.todosInfo').css({"width":+rowWidth+"px"});
+
+
+    window.onresize = function(){ location.reload(); }
 
 
 
