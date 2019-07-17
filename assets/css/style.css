@@ -468,7 +468,8 @@ body {
           .boardsOrganizer .boardBox2 .boards .innerBoard {
             width: 80%; } }
         .boardsOrganizer .boardBox2 .boards .innerBoard .circleButton:hover {
-          box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315); }
+          box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.315);
+          opacity: 0.9; }
         .boardsOrganizer .boardBox2 .boards .innerBoard .membersOfBoard {
           font-size: 20px;
           margin-top: 0px; }
