@@ -18,4 +18,5 @@ window.onload = () => {
     }
 }
 
+window.onresize = () => {location.reload();};
 
