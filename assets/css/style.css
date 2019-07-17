@@ -2,7 +2,7 @@
   font-family: 'GT Walsheim';
   src: url("assets/fonts/GT Walsheim Regular.ttf") format("truetype"); }
 
-body {
+html, body {
   font-family: Arial, Helvetica, sans-serif , sans-serif;
   font-style: light;
   font-weight: 200;
@@ -11,7 +11,9 @@ body {
 .bg {
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #f3f3f3 68%, rgba(124, 229, 233, 0.11) 68%) rgba(124, 229, 233, 0.11); }
+  background: radial-gradient(circle at right bottom, rgba(0, 0, 0, 0) 80%, rgba(95, 158, 160, 0.315) 80%), radial-gradient(farthest-corner at 0% -20%, #f3f3f3 68%, rgba(124, 229, 233, 0.11) 68%) rgba(124, 229, 233, 0.11);
+  position: static;
+  background-attachment: fixed; }
 
 ::-webkit-scrollbar {
   width: 20px; }
@@ -71,7 +73,8 @@ body {
   border: 1px solid #ebebeb;
   border-top: none;
   position: relative;
-  background-color: transparent; }
+  background-color: transparent;
+  height: 100%; }
 
 .boardBoxOrganizer {
   display: flex;
@@ -174,6 +177,7 @@ body {
     .organizer .todoHolder .boardBoxTodo {
       box-sizing: border-box;
       display: flex;
+      flex-direction: row;
       justify-content: center;
       flex-wrap: wrap;
       max-width: 1250px;
@@ -344,7 +348,7 @@ body {
       background: white;
       width: 2px;
       height: 2px;
-      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
       transform: rotate(45deg); }
   .organizer .dropbtn {
     background-color: cadetblue;
@@ -540,7 +544,7 @@ body {
       border-radius: 5px; }
       @media (max-width: 992px) {
         .boardsOrganizer .boardBox2 .finalButton {
-          min-width: 700px; } }
+          max-width: 700px; } }
       @media (max-width: 768px) {
         .boardsOrganizer .boardBox2 .finalButton {
-          min-width: 300px; } }
+          max-width: 300px; } }

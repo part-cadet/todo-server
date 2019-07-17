@@ -272,11 +272,11 @@ $primaryColor: cadetblue;
             border-radius: 5px;
             
             @include breakpoint(medium) {
-                min-width: 700px;
+                max-width: 700px;
             }
             @include breakpoint(small) {
                 
-                min-width: 300px;;
+                max-width: 300px;;
             }
         }
     }
