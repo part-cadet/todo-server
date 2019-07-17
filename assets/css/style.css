@@ -40,7 +40,7 @@ html, body {
   border-bottom: 1px solid #ccc;
   box-shadow: 0 5px 20px rgba(3, 27, 78, 0.1); }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .tab {
     justify-content: center; } }
 
@@ -346,7 +346,7 @@ html, body {
       background: white;
       width: 2px;
       height: 2px;
-      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
       transform: rotate(45deg); }
   .organizer .dropbtn {
     background-color: cadetblue;
