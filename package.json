@@ -5,7 +5,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --include-path scss assets/scss/style.scss assets/css/style.css",
+    "scss": "node-sass --include-path scss server/public/ftp/assets/scss/style.scss server/public/ftp/assets/css/style.css",
     "start": "npm run scss && npm run scss -- -w"
   },
   "repository": {
@@ -15,6 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-sass": "^4.12.0"
+    "finalhandler": "^1.1.2",
+    "node-sass": "^4.12.0",
+    "serve-static": "^1.14.1"
   }
 }
