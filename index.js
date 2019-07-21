@@ -1,5 +1,5 @@
 const http = require('http')
-const router = require('./lib/router/router')
+const { router } = require('./lib/router/router')
 const server = http.createServer()
 const PORT = 80
 
