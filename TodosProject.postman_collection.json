@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "09fc18c8-4d68-49b1-b239-3408c6a757a1",
+		"name": "TodosProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boards",
+			"item": [
+				{
+					"name": "listBoards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/boards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"boards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBoardByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/boards/f1c6099a-870b-43c6-99bb-d8195c7d7220",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"boards",
+								"f1c6099a-870b-43c6-99bb-d8195c7d7220"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addBoard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Board 1\",\n    \"members\": [\n        \"Ali\",\n        \"Faezeh\"\n    ],\n    \"done\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/boards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"boards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBoard",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Board 1\",\n    \"members\": [\n        \"Ali\",\n        \"Faezeh\",\n        \"Nafiseh\"\n    ],\n    \"done\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/boards/d0fee3af-c690-4bb5-b833-59a38a3e05ba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"boards",
+								"d0fee3af-c690-4bb5-b833-59a38a3e05ba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeBoard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/boards/61840c1d-1d3b-4447-8ca3-c91fb1c09560",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"boards",
+								"61840c1d-1d3b-4447-8ca3-c91fb1c09560"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "getTodo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTodo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"ffdfdfd\"\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/todo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTodo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"hiiiiiiiiiiii\"\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost/api/todo/9516d24c-a13f-4d9c-bd15-c3ca44c16f61",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"todo",
+								"9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeTodo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/todo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "listTasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTaskByID ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTask",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"done\": true,\n  \"description\":\"all tasks\",\n  \"assignee\":\"faez\",\n  \"imgUrl\":\"url\"\n}"
+						},
+						"url": {
+							"raw": "localhost/api/tasks",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTask",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"done\": true,\n  \"description\":\"hiiiiiiiiiiiiiiii\",\n  \"assignee\":\"faezijkhjjh\",\n  \"imgUrl\":\"url\"\n}"
+						},
+						"url": {
+							"raw": "localhost/api/task/885f49c7-617c-4d1e-8c6d-d8c743879ec8",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"task",
+								"885f49c7-617c-4d1e-8c6d-d8c743879ec8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeTask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/tasks/64e7681c-7621-498d-87ac-debdb0cb4d7a",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"64e7681c-7621-498d-87ac-debdb0cb4d7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
