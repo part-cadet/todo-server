@@ -1,0 +1,52 @@
+{
+  "info": {
+    "title": "Hello World",
+    "version": "1.0.0",
+    "description": "API Documentation for Todo Web Application"
+  },
+  "basePath": "/",
+  "swagger": "2.0",
+  "paths": {
+    "/api/boards": {
+      "get": {
+        "description": "Get a list of current boards",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Boards Listed"
+          }
+        }
+      }
+    },
+    "/api/boards/{id}": {
+      "get": {
+        "description": "Login to the application",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Board Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}
