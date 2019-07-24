@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "09fc18c8-4d68-49b1-b239-3408c6a757a1",
+		"_postman_id": "eec1830f-fc11-4206-8fa2-ef6f039be569",
 		"name": "TodosProject",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -139,7 +139,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost/api/todo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
 						}
 					},
 					"response": []
@@ -150,7 +158,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost/api/todo/9516d24c-a13f-4d9c-bd15-c3ca44c16f61",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"todo",
+								"9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+							]
 						}
 					},
 					"response": []
@@ -246,7 +263,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
 						}
 					},
 					"response": []
