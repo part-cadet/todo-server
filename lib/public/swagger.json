@@ -1,6 +1,6 @@
 {
   "info": {
-    "title": "Hello World",
+    "title": "Todo Web Application",
     "version": "1.0.0",
     "description": "API Documentation for Todo Web Application"
   },
@@ -9,7 +9,10 @@
   "paths": {
     "/api/boards": {
       "get": {
-        "description": "Get a list of current boards",
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Get a list of current boards",
         "produces": [
           "application/json"
         ],
@@ -18,11 +21,67 @@
             "description": "Boards Listed"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Creates a new board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "board info",
+            "required": true,
+            "description": "The info required to create a board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "members",
+                "done"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Board 1"
+                },
+                "members": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "John",
+                    "Elizabeth"
+                  ]
+                },
+                "done": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/api/boards/{id}": {
       "get": {
-        "description": "Login to the application",
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Returns the board requested by id",
         "parameters": [
           {
             "in": "path",
@@ -30,7 +89,8 @@
             "required": true,
             "type": "string",
             "format": "uuid",
-            "description": "The ID of the requested board"
+            "description": "The ID of the requested board",
+            "example": "573357c2-dfcb-493c-a0aa-3c05ef199943"
           }
         ],
         "produces": [
@@ -39,6 +99,9 @@
         "responses": {
           "200": {
             "description": "Board Found"
+          },
+          "404": {
+            "description": "Board Not Found"
           }
         }
       }
