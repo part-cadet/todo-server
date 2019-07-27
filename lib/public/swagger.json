@@ -133,12 +133,12 @@
                 "members": {
                   "type": "array",
                   "items": {
-                    "type": "string",
-                    "example": [
-                      "John",
-                      "Elizabeth"
-                    ]
-                  }
+                    "type": "string"
+                  },
+                  "example": [
+                    "John",
+                    "Elizabeth"
+                  ]
                 },
                 "done": {
                   "type": "boolean",
