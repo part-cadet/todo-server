@@ -7,6 +7,164 @@
   "basePath": "/",
   "swagger": "2.0",
   "paths": {
+    "/api/todo": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get a list of current todos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todos Listed"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Creates a new todo board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "todo info",
+            "required": true,
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "title"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/todo/{id}": {
+      "put": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Updates a current todo board requested by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested todo board"
+          },
+          {
+            "in": "body",
+            "name": "todo info",
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board was found and updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested Todo board was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Deletes the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested Todo board",
+            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board found and deleted."
+          },
+          "404": {
+            "description": "Todo board was not found."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested board",
+            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board Found"
+          },
+          "404": {
+            "description": "Todo board Not Found"
+          }
+        }
+      }
+    },
     "/api/boards": {
       "get": {
         "tags": [
