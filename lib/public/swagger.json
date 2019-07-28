@@ -7,6 +7,22 @@
   "basePath": "/",
   "swagger": "2.0",
   "paths": {
+    "/api/todo": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get a list of current todos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Boards Listed"
+          }
+        }
+      }
+    },
     "/api/boards": {
       "get": {
         "tags": [
