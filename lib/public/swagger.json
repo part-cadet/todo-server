@@ -165,6 +165,214 @@
         }
       }
     },
+    "/api/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get a list of current tasks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "tasks Listed"
+          }
+        }
+      }
+    },
+    "/api/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Returns the task requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested board",
+            "example": "573357c2-dfcb-493c-a0aa-3c05ef199943"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task Found"
+          },
+          "404": {
+            "description": "Task Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Updates a current task requested by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested board"
+          },
+          {
+            "in": "body",
+            "name": "board info",
+            "description": "The info required to create a board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "done": {
+                  "type": "boolean",
+                  "example": "task 1"
+                },
+                "description": {
+                  "type": "string",
+                  "assignee": {
+                    "type": "string"
+                  }
+                },
+                "imgUrl": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task was found and updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested task was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Deletes the task requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the requested board",
+            "example": "573357c2-dfcb-493c-a0aa-3c05ef199943"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task found and deleted."
+          },
+          "404": {
+            "description": "Task was not found."
+          }
+        }
+      }
+    },
+    "/api/tasks/{todoID}": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Creates a new task.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "todoID",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the todo containing the task"
+          },
+          {
+            "in": "body",
+            "name": "task info",
+            "required": true,
+            "description": "The info required to create a task.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "done",
+                "description",
+                "assignee",
+                "imgUrl"
+              ],
+              "properties": {
+                "done": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "description": {
+                  "type": "string",
+                  "example": "task 1"
+                },
+                "assignee": {
+                  "type": "string",
+                  "example": "Faezeh"
+                },
+                "imgUrl": {
+                  "type": "string",
+                  "example": "../public/assets/pictures/igg_avatar.png"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/todo": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get a list of current todos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Boards Listed"
+          }
+        }
+      }
+    },
     "/api/boards": {
       "get": {
         "tags": [
