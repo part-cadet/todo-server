@@ -47,16 +47,19 @@
               "properties": {
                 "done": {
                   "type": "boolean",
-                  "example": "task 1"
+                  "example": false
                 },
                 "description": {
                   "type": "string",
-                  "assignee": {
-                    "type": "string"
-                  }
+                  "example": "task 1"
+                },
+                "assignee": {
+                  "type": "string",
+                  "example": "Faezeh"
                 },
                 "imgUrl": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "../public/assets/pictures/igg_avatar.png"
                 }
               }
             }
