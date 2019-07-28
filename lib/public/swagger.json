@@ -21,58 +21,6 @@
             "description": "tasks Listed"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Creates a new task.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "board info",
-            "required": true,
-            "description": "The info required to create a board.",
-            "schema": {
-              "type": "object",
-              "required": [
-                "done",
-                "description",
-                "assignee",
-                "imgUrl"
-              ],
-              "properties": {
-                "done": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "description": {
-                  "type": "string",
-                  "example": "task 1"
-                },
-                "assignee": {
-                  "type": "string",
-                  "example": "Faezeh"
-                },
-                "imgUrl": {
-                  "type": "string",
-                  "example": "../public/assets/pictures/igg_avatar.png"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
       }
     },
     "/api/tasks/{id}": {
@@ -185,6 +133,68 @@
           },
           "404": {
             "description": "Task was not found."
+          }
+        }
+      }
+    },
+    "/api/tasks/{todoID}": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Creates a new task.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "todoID",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the todo containing the task"
+          },
+          {
+            "in": "body",
+            "name": "task info",
+            "required": true,
+            "description": "The info required to create a task.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "done",
+                "description",
+                "assignee",
+                "imgUrl"
+              ],
+              "properties": {
+                "done": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "description": {
+                  "type": "string",
+                  "example": "task 1"
+                },
+                "assignee": {
+                  "type": "string",
+                  "example": "Faezeh"
+                },
+                "imgUrl": {
+                  "type": "string",
+                  "example": "../public/assets/pictures/igg_avatar.png"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }
