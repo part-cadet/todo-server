@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "ajv": "^6.10.2",
+    "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
     "finalhandler": "^1.1.2",
     "find-my-way": "^2.1.0",
