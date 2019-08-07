@@ -35,9 +35,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
-            "description": "The ID of the requested board",
-            "example": "573357c2-dfcb-493c-a0aa-3c05ef199943"
+            "description": "The ID of the requested board"
           }
         ],
         "produces": [
@@ -63,7 +61,6 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
             "description": "The ID of the requested board"
           },
           {
@@ -75,15 +72,9 @@
               "properties": {
                 "done": {
                   "type": "boolean",
-                  "example": "task 1"
+                  "example": true
                 },
                 "description": {
-                  "type": "string",
-                  "assignee": {
-                    "type": "string"
-                  }
-                },
-                "imgUrl": {
                   "type": "string"
                 }
               }
@@ -95,7 +86,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Task was found and updated."
+            "description": "Task updated."
           },
           "400": {
             "description": "Request body is not valid."
@@ -119,9 +110,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
-            "description": "The ID of the requested board",
-            "example": "573357c2-dfcb-493c-a0aa-3c05ef199943"
+            "description": "The ID of the requested board"
           }
         ],
         "produces": [
@@ -129,7 +118,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Task found and deleted."
+            "description": "Task deleted."
           },
           "404": {
             "description": "Task was not found."
@@ -152,7 +141,6 @@
             "name": "todoID",
             "required": true,
             "type": "string",
-            "format": "uuid",
             "description": "The ID of the todo containing the task"
           },
           {
@@ -164,9 +152,7 @@
               "type": "object",
               "required": [
                 "done",
-                "description",
-                "assignee",
-                "imgUrl"
+                "description"
               ],
               "properties": {
                 "done": {
@@ -176,14 +162,6 @@
                 "description": {
                   "type": "string",
                   "example": "task 1"
-                },
-                "assignee": {
-                  "type": "string",
-                  "example": "Faezeh"
-                },
-                "imgUrl": {
-                  "type": "string",
-                  "example": "../public/assets/pictures/igg_avatar.png"
                 }
               }
             }
@@ -215,6 +193,35 @@
         }
       }
     },
+    "/api/todo/tasksof/{id}": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the tasks of the requested todo board",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested todo board",
+            "example": "3"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Tasks Found"
+          },
+          "404": {
+            "description": "Todo Board Not Found"
+          }
+        }
+      }
+    },
     "/api/todo/{boardID}": {
       "post": {
         "tags": [
@@ -230,7 +237,7 @@
             "name": "boardID",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the todo containing the task"
           },
           {
@@ -274,7 +281,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the requested todo board"
           },
           {
@@ -321,7 +328,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the requested Todo board",
             "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
           }
@@ -349,9 +356,8 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
-            "description": "The ID of the requested board",
-            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+            "format": "string",
+            "description": "The ID of the requested board"
           }
         ],
         "produces": [
