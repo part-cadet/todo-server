@@ -237,7 +237,7 @@
             "name": "boardID",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the todo containing the task"
           },
           {
@@ -281,7 +281,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the requested todo board"
           },
           {
@@ -328,7 +328,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
+            "format": "string",
             "description": "The ID of the requested Todo board",
             "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
           }
@@ -356,9 +356,8 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "format": "uuid",
-            "description": "The ID of the requested board",
-            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+            "format": "string",
+            "description": "The ID of the requested board"
           }
         ],
         "produces": [
