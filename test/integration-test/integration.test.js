@@ -1,4 +1,5 @@
-const dotenv = require('dotenv').config()
+/* eslint-disable no-undef */
+require('dotenv').config()
 const server = require('../../lib/server').server
 
 const chai = require('chai')
@@ -7,47 +8,49 @@ chai.use(chaiHttp)
 
 const expect = require('chai').expect
 
-const validUser = {
-  username: 'Demo',
-  password: 'DEMOdemo1@34'
-}
-
 const invalidUsername = {
-  username: 'Dem',
-  password: 'DEMOdemo1@34'
+  username: 'Testsdkf;adnskdas;vnafodvafdsfjsdfknsdfnasdf;askdmvafnvorenaeoivmsimfasofm',
+  password: '1234'
 }
 
 const invalidPassword = {
-  username: 'Demo',
+  username: 'UserCreatedForIntegrationTest',
   password: '1234'
 }
 
 const newUser = {
-  username: 'Tester2',
-  password: 'TESTERtester1@34'
+  username: 'UserCreatedForIntegrationTest',
+  password: 'TESTtest1@34'
 }
 
 let token
+let boardID
 
 describe('To-Do Web App Integration Test', () => {
-  describe('User APIs', () => {
-    describe('#authenticateUser()', () => {
-      it('Login completes with right credentials', (done) => {
+  describe('Auth', () => {
+    describe('POST /api/signup', () => {
+      it('should fail with a weak password')
+
+      it('should create a new user for test', (done) => {
         chai.request(server)
-          .post('/api/login')
-          .send(validUser)
+          .post('/api/signup')
+          .send(newUser)
           .end((err, res) => {
             if (err) {
               done(err)
             } else {
-              expect(res.status).to.equal(200)
-              token = res.body.token
+              expect(res.status).to.equal(201)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('New user added.')
               done()
             }
           })
       }).timeout(5000)
+    })
 
-      it('Login fails when username does not exist in the database', (done) => {
+    describe('POST /api/login', () => {
+      it('should fail without proper username', (done) => {
         chai.request(server)
           .post('/api/login')
           .send(invalidUsername)
@@ -55,8 +58,6 @@ describe('To-Do Web App Integration Test', () => {
             if (err) {
               done(err)
             } else {
-              // console.log(res.status)
-              // console.log(res.body)
               expect(res.status).to.equal(404)
               expect(res.body).to.have.all.keys('status', 'message')
               expect(res.body.status).to.equal('Not Found')
@@ -66,7 +67,7 @@ describe('To-Do Web App Integration Test', () => {
           })
       }).timeout(5000)
 
-      it('Login fails when password is wrong', (done) => {
+      it('should fail without proper password', (done) => {
         chai.request(server)
           .post('/api/login')
           .send(invalidPassword)
@@ -83,34 +84,48 @@ describe('To-Do Web App Integration Test', () => {
             }
           })
       }).timeout(5000)
-    })
 
-    describe('#addUser()', () => {
-      it('successful', (done) => {
+      it('should succeed with proper credentials', (done) => {
         chai.request(server)
-          .post('/api/signup')
+          .post('/api/login')
           .send(newUser)
           .end((err, res) => {
             if (err) {
               done(err)
             } else {
-              console.log(res.status)
-              console.log(res.body)
-              // expect(res.status).to.equal(400)
-              // expect(res.body).to.have.all.keys('message')
-              // expect(res.body.message).to.equal('Password Not Verified')
+              expect(res.status).to.equal(200)
+              token = res.body.token
               done()
             }
           })
       }).timeout(5000)
-
-      it('password not strong')
     })
   })
 
-  describe('Test Board APIs', () => {
-    describe('#listBoards()', () => {
-      it('Return a list of user boards', (done) => {
+  describe('Boards', () => {
+    describe('POST /api/boards', () => {
+      it('should create a board', (done) => {
+        chai.request(server)
+          .post('/api/boards')
+          .set('Authorization', `Bearer ${token}`)
+          .send({ title: 'Test' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              console.log(res.body)
+              // expect(res.status).to.equal(200) // Check if the status is Ok
+              // res.body.forEach(element => {
+              //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
+              // })
+              done()
+            }
+          })
+      })
+    })
+
+    describe('GET /api/boards', () => {
+      it('should return a list of boards', (done) => {
         chai.request(server)
           .get('/api/boards')
           .set('Authorization', `Bearer ${token}`)
@@ -118,8 +133,10 @@ describe('To-Do Web App Integration Test', () => {
             if (err) {
               done(err)
             } else {
-              // console.log(res.body)
+              console.log(res.body)
               expect(res.status).to.equal(200) // Check if the status is Ok
+              boardID = res.body[0].id
+              console.log(boardID)
               res.body.forEach(element => {
                 expect(element).to.have.all.keys('id', 'title', 'owner_name')
               })
@@ -128,6 +145,27 @@ describe('To-Do Web App Integration Test', () => {
           })
       })
     })
+
+    describe('DELETE /api/boards', () => {
+      it('should remove board', (done) => {
+        chai.request(server)
+          .delete(`/api/boards/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              console.log(res.body)
+              // expect(res.status).to.equal(200) // Check if the status is Ok
+              // res.body.forEach(element => {
+              //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
+              // })
+              done()
+            }
+          })
+      })
+    })
+
     it('list boards')
     it('get board by id')
     it('add board')
@@ -158,5 +196,24 @@ describe('To-Do Web App Integration Test', () => {
     it('remove task')
     it('get assignee of task')
     it('')
+  })
+
+  describe('DELETE /api/users', (done) => {
+    it('Remove the created user', (done) => {
+      chai.request(server)
+        .delete('/api/users')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200)
+            expect(res.body).to.have.all.keys('status', 'message')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.message).to.equal('User deleted.')
+            done()
+          }
+        })
+    }).timeout(5000)
   })
 })
