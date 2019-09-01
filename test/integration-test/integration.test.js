@@ -118,11 +118,6 @@ describe('To-Do Web App Integration Test', () => {
               expect(res.body).to.have.all.keys('status', 'message')
               expect(res.body.status).to.equal('Ok')
               expect(res.body.message).to.equal('New board added.')
-              // console.log(res.body)
-              // expect(res.status).to.equal(200) // Check if the status is Ok
-              // res.body.forEach(element => {
-              //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
-              // })
               done()
             }
           })
