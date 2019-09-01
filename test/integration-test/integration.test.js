@@ -25,6 +25,7 @@ const newUser = {
 
 let token
 let boardID
+let todoboardID
 
 describe('To-Do Web App Integration Test', () => {
   describe('Auth', () => {
@@ -127,7 +128,6 @@ describe('To-Do Web App Integration Test', () => {
           })
       })
     })
-
     describe('GET /api/boards', () => {
       it('should return a list of boards', (done) => {
         chai.request(server)
@@ -148,6 +148,97 @@ describe('To-Do Web App Integration Test', () => {
             }
           })
       })
+    })
+
+    describe('TodoBoard', () => {
+      describe('POST api/todo', () => {
+        it('should create a todo board', (done) => {
+          chai.request(server)
+            .post(`/api/todo/${boardID}`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({ title: 'Test' })
+            .end((err, res) => {
+              if (err) {
+                done(err)
+              } else {
+                expect(res.body).to.have.all.keys('status', 'message')
+                expect(res.body.status).to.equal('Ok')
+                expect(res.body.message).to.equal('New todo board added.')
+
+                done()
+              }
+            })
+        }).timeout(5000)
+      })
+
+      describe('GET /api/todo', () => {
+        it('should return a list of todo boards', (done) => {
+          chai.request(server)
+            .get('/api/todo')
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+              if (err) {
+                done(err)
+              } else {
+                // console.log(res.body)
+                expect(res.status).to.equal(200) // Check if the status is Ok
+                todoboardID = res.body[0].id
+                // console.log(boardID)
+                res.body.forEach(element => {
+                  expect(element).to.have.all.keys('id', 'title', 'board_id')
+                })
+                done()
+              }
+            })
+        })
+      })
+
+      describe('PUT api/todo', () => {
+        it('should update a todo board', (done) => {
+          chai.request(server)
+            .put(`/api/todo/${todoboardID}`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({ title: 'Updated' })
+            .end((err, res) => {
+              if (err) {
+                done(err)
+              } else {
+                expect(res.body).to.have.all.keys('status', 'message')
+                expect(res.body.status).to.equal('Ok')
+                expect(res.body.message).to.equal('Todo board updated.')
+
+                done()
+              }
+            })
+        }).timeout(5000)
+      })
+
+      describe('DELETE /api/todo', () => {
+        it('should remove todo board', (done) => {
+          chai.request(server)
+            .delete(`/api/todo/${todoboardID}`)
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+              if (err) {
+                done(err)
+              } else {
+                expect(res.status).to.equal(200)
+                expect(res.body).to.have.all.keys('status', 'message')
+                expect(res.body.status).to.equal('Ok')
+                expect(res.body.message).to.equal('Todo Board deleted.')
+                // console.log(res.body)
+                // expect(res.status).to.equal(200) // Check if the status is Ok
+                // res.body.forEach(element => {
+                //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
+                // })
+                done()
+              }
+            })
+        })
+      })
+
+      it('get tasks of todo')
+      it('get todo by id')
     })
 
     describe('DELETE /api/boards', () => {
@@ -174,26 +265,11 @@ describe('To-Do Web App Integration Test', () => {
       })
     })
 
-    it('list boards')
     it('get board by id')
-    it('add board')
-    it('add member')
-    it('remover member')
-    it('get todos of board')
     it('get owner of board')
     it('get members of board')
     it('update board')
-    it('remove board')
     it('get all members of board')
-  })
-
-  describe('Test To-Do APIs', () => {
-    it('list todo boards')
-    it('get tasks of todo')
-    it('add todo')
-    it('update todo board')
-    it('remove todo board')
-    it('get todo by id')
   })
 
   describe('Test Task APIs', () => {
@@ -203,7 +279,6 @@ describe('To-Do Web App Integration Test', () => {
     it('update task')
     it('remove task')
     it('get assignee of task')
-    it('')
   })
 
   describe('DELETE /api/users', (done) => {
