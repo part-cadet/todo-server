@@ -113,7 +113,11 @@ describe('To-Do Web App Integration Test', () => {
             if (err) {
               done(err)
             } else {
-              console.log(res.body)
+              expect(res.status).to.equal(201)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('New board added.')
+              // console.log(res.body)
               // expect(res.status).to.equal(200) // Check if the status is Ok
               // res.body.forEach(element => {
               //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
@@ -133,10 +137,10 @@ describe('To-Do Web App Integration Test', () => {
             if (err) {
               done(err)
             } else {
-              console.log(res.body)
+              // console.log(res.body)
               expect(res.status).to.equal(200) // Check if the status is Ok
               boardID = res.body[0].id
-              console.log(boardID)
+              // console.log(boardID)
               res.body.forEach(element => {
                 expect(element).to.have.all.keys('id', 'title', 'owner_name')
               })
@@ -155,7 +159,11 @@ describe('To-Do Web App Integration Test', () => {
             if (err) {
               done(err)
             } else {
-              console.log(res.body)
+              expect(res.status).to.equal(200)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Board deleted.')
+              // console.log(res.body)
               // expect(res.status).to.equal(200) // Check if the status is Ok
               // res.body.forEach(element => {
               //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
