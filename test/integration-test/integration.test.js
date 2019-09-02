@@ -105,45 +105,72 @@ describe('To-Do Web App Integration Test', () => {
 
   describe('Boards', () => {
     describe('POST /api/boards', () => {
-      it('should create a board', (done) => {
-        chai.request(server)
-          .post('/api/boards')
-          .set('Authorization', `Bearer ${token}`)
-          .send({ title: 'Test' })
-          .end((err, res) => {
-            if (err) {
-              done(err)
-            } else {
-              expect(res.status).to.equal(201)
-              expect(res.body).to.have.all.keys('status', 'message')
-              expect(res.body.status).to.equal('Ok')
-              expect(res.body.message).to.equal('New board added.')
-              done()
-            }
-          })
-      })
     })
+
     describe('GET /api/boards', () => {
-      it('should return a list of boards', (done) => {
-        chai.request(server)
-          .get('/api/boards')
-          .set('Authorization', `Bearer ${token}`)
-          .end((err, res) => {
-            if (err) {
-              done(err)
-            } else {
-              // console.log(res.body)
-              expect(res.status).to.equal(200) // Check if the status is Ok
-              boardID = res.body[0].id
-              // console.log(boardID)
-              res.body.forEach(element => {
-                expect(element).to.have.all.keys('id', 'title', 'owner_name')
-              })
-              done()
-            }
-          })
-      })
     })
+
+    it('should create a board', (done) => {
+      chai.request(server)
+        .post('/api/boards')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ title: 'Test' })
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(201)
+            expect(res.body).to.have.all.keys('status', 'message')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.message).to.equal('New board added.')
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return a list of boards', (done) => {
+      chai.request(server)
+        .get('/api/boards')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            // console.log(res.body)
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            boardID = res.body[0].id
+            // console.log(boardID)
+            res.body.forEach(element => {
+              expect(element).to.have.all.keys('id', 'title', 'owner_name')
+            })
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return a board requested by id', (done) => {
+      chai.request(server)
+        .get(`/api/boards/${boardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.result[0]).to.have.all.keys('id', 'title', 'owner_name')
+            expect(res.body.result[0].id).to.equal(boardID)
+            expect(res.body.result[0].title).to.equal('Test')
+            expect(res.body.result[0].owner_name).to.equal(newUser.username)
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('get owner of board')
+    it('get members of board')
+    it('update board')
+    it('get all members of board')
 
     describe('TodoBoard', () => {
       describe('POST api/todo', () => {
@@ -175,10 +202,8 @@ describe('To-Do Web App Integration Test', () => {
               if (err) {
                 done(err)
               } else {
-                // console.log(res.body)
                 expect(res.status).to.equal(200) // Check if the status is Ok
                 todoboardID = res.body[0].id
-                // console.log(boardID)
                 res.body.forEach(element => {
                   expect(element).to.have.all.keys('id', 'title', 'board_id')
                 })
@@ -221,11 +246,6 @@ describe('To-Do Web App Integration Test', () => {
                 expect(res.body).to.have.all.keys('status', 'message')
                 expect(res.body.status).to.equal('Ok')
                 expect(res.body.message).to.equal('Todo Board deleted.')
-                // console.log(res.body)
-                // expect(res.status).to.equal(200) // Check if the status is Ok
-                // res.body.forEach(element => {
-                //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
-                // })
                 done()
               }
             })
@@ -249,22 +269,11 @@ describe('To-Do Web App Integration Test', () => {
               expect(res.body).to.have.all.keys('status', 'message')
               expect(res.body.status).to.equal('Ok')
               expect(res.body.message).to.equal('Board deleted.')
-              // console.log(res.body)
-              // expect(res.status).to.equal(200) // Check if the status is Ok
-              // res.body.forEach(element => {
-              //   expect(element).to.have.all.keys('id', 'title', 'owner_name')
-              // })
               done()
             }
           })
       })
     })
-
-    it('get board by id')
-    it('get owner of board')
-    it('get members of board')
-    it('update board')
-    it('get all members of board')
   })
 
   describe('Test Task APIs', () => {
