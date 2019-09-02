@@ -5,6 +5,7 @@
   "main": "script.js",
   "scripts": {
     "integ-test": "npx mocha test/integration-test/integration.test.js --exit",
+    "integ-test-html": "npx mocha test/integration-test/integration.test.js --reporter mochawesome --exit",
     "scss": "node-sass --include-path scss server/public/ftp/assets/scss/style.scss server/public/ftp/assets/css/style.css",
     "start": "npm run scss && npm run scss -- -w"
   },
