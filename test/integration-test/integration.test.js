@@ -23,6 +23,11 @@ const newUser = {
   password: 'TESTtest1@34'
 }
 
+const newUserWithWeakPass = {
+  username: 'UserCreatedForIntegrationTest',
+  password: '1'
+}
+
 let token
 let boardID
 let todoboardID
@@ -30,7 +35,24 @@ let todoboardID
 describe('To-Do Web App Integration Test', () => {
   describe('Auth', () => {
     describe('POST /api/signup', () => {
-      it('should fail with a weak password')
+      it('should fail with a weak password', (done) => {
+        chai.request(server)
+          .post('/api/signup')
+          .send(newUserWithWeakPass)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              // console.log(res.body)
+              // console.log(res.)
+              expect(res.status).to.equal(400)
+              expect(res.body).to.have.all.keys('rules', 'verified')
+              expect(res.body.verified).to.equal(false)
+              // expect(res.body.message).to.equal('New user added.')
+              done()
+            }
+          })
+      }).timeout(5000)
 
       it('should create a new user for test', (done) => {
         chai.request(server)
@@ -210,7 +232,7 @@ describe('To-Do Web App Integration Test', () => {
                 done()
               }
             })
-        })
+        }).timeout(5000)
       })
 
       describe('PUT api/todo', () => {
@@ -249,7 +271,7 @@ describe('To-Do Web App Integration Test', () => {
                 done()
               }
             })
-        })
+        }).timeout(5000)
       })
 
       it('get tasks of todo')
@@ -272,7 +294,7 @@ describe('To-Do Web App Integration Test', () => {
               done()
             }
           })
-      })
+      }).timeout(5000)
     })
   })
 
