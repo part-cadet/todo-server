@@ -289,7 +289,7 @@ describe('To-Do Web App Integration Test', () => {
       chai.request(server)
         .post(`/api/tasks/${todoboardID}`)
         .set('Authorization', `Bearer ${token}`)
-        .send({ done: false, description: 'test', assignee: 'Faezeh' })
+        .send({ done: false, description: 'test' })
         .end((err, res) => {
           if (err) {
             done(err)
@@ -314,6 +314,26 @@ describe('To-Do Web App Integration Test', () => {
             expect(res.body).to.have.all.keys('status', 'message', 'result')
             expect(res.body.result[0]).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
             taskID = res.body.result[0].id
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return a task requested by id', (done) => {
+      chai.request(server)
+        .get(`/api/tasks/${taskID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'result')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.result[0]).to.have.all.keys('id', 'done', 'description', 'assignee', 'todo_id')
+            expect(res.body.result[0].id).to.equal(taskID)
+            expect(res.body.result[0].description).to.equal('test')
+            expect(res.body.result[0].todo_id).to.equal(todoboardID)
             done()
           }
         })
