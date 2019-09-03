@@ -14,18 +14,19 @@ const invalidUsername = {
 }
 
 const invalidPassword = {
-  username: 'UserCreatedForIntegrationTest',
+  username: 'UserCreatedForIntegrationTest2',
   password: '1234'
 }
 
 const newUser = {
-  username: 'UserCreatedForIntegrationTest',
+  username: 'UserCreatedForIntegrationTest2',
   password: 'TESTtest1@34'
 }
 
 let token
 let boardID
 let todoboardID
+let taskID
 
 describe('To-Do Web App Integration Test', () => {
   describe('Auth', () => {
@@ -146,7 +147,7 @@ describe('To-Do Web App Integration Test', () => {
     })
 
     describe('TodoBoard', () => {
-      describe('POST api/todo', () => {
+      describe('POST api/todo/:boardID', () => {
         it('should create a todo board', (done) => {
           chai.request(server)
             .post(`/api/todo/${boardID}`)
@@ -188,6 +189,56 @@ describe('To-Do Web App Integration Test', () => {
         })
       })
 
+      describe('Tasks', () => {
+        describe('POST api/tasks/:todoID', () => {
+          it('should create a task', (done) => {
+            chai.request(server)
+              .post(`/api/tasks/${todoboardID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .send({ done: false, description: 'test', assignee: 'Faezeh' })
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {
+                  // console.log(res.body)
+                  expect(res.body).to.have.all.keys('status', 'message')
+                  expect(res.body.status).to.equal('Ok')
+                  expect(res.body.message).to.equal('New task added.')
+  
+                  done()
+                }
+              })
+          }).timeout(5000)
+        })
+        describe('GET /api/tasks', () => {
+          it('should return a list of tasks', (done) => {
+            chai.request(server)
+              .get('/api/tasks')
+              .set('Authorization', `Bearer ${token}`)
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {
+                  // console.log(res.body)
+                  expect(res.status).to.equal(200) // Check if the status is Ok
+                  taskID = res.body[0].id
+                  // console.log(boardID)
+                  res.body.forEach(element => {
+                    expect(element).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
+                  })
+                  done()
+                }
+              })
+          }).timeout(5000)
+        })
+
+       
+        it('get task by id')
+        it('update task')
+        it('remove task')
+        it('get assignee of task')
+      })
+
       describe('PUT api/todo', () => {
         it('should update a todo board', (done) => {
           chai.request(server)
@@ -207,6 +258,24 @@ describe('To-Do Web App Integration Test', () => {
             })
         }).timeout(5000)
       })
+      // describe('GET /api/todo/tasksof/:todoID', () => {
+      //   it('should return tasks of a todo boards', (done) => {
+      //     chai.request(server)
+      //       .get(`/api/todo/${todoboardID}`)
+      //       .set('Authorization', `Bearer ${token}`)
+      //       .end((err, res) => {
+      //         if (err) {
+      //           done(err)
+      //         } else {
+      //           // console.log(res.body)
+      //           // expect(res.status).to.equal(200) // Check if the status is Ok
+      //           // expect(res.body.status).to.equal('Ok')
+      //           // expect(res.body.message).to.equal('Tasks Found.')
+      //           done()
+      //         }
+      //       })
+      //   })
+      // })
 
       describe('DELETE /api/todo', () => {
         it('should remove todo board', (done) => {
@@ -265,15 +334,6 @@ describe('To-Do Web App Integration Test', () => {
     it('get members of board')
     it('update board')
     it('get all members of board')
-  })
-
-  describe('Test Task APIs', () => {
-    it('list tasks')
-    it('get task by id')
-    it('add task')
-    it('update task')
-    it('remove task')
-    it('get assignee of task')
   })
 
   describe('DELETE /api/users', (done) => {
