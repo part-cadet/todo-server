@@ -251,7 +251,7 @@ describe('To-Do Web App Integration Test', () => {
                   expect(res.body).to.have.all.keys('status', 'message')
                   expect(res.body.status).to.equal('Ok')
                   expect(res.body.message).to.equal('New task added.')
-  
+
                   done()
                 }
               })
@@ -279,9 +279,62 @@ describe('To-Do Web App Integration Test', () => {
           }).timeout(5000)
         })
 
-       
+        describe('PUT api/tasks', () => {
+          it('should update tasks done', (done) => {
+            chai.request(server)
+              .put(`/api/tasks/${taskID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .send({ done: false })
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {
+                  expect(res.body).to.have.all.keys('status', 'message')
+                  expect(res.body.status).to.equal('Ok')
+                  expect(res.body.message).to.equal('Task updated.')
+
+                  done()
+                }
+              })
+          }).timeout(10000)
+          it('should update tasks description', (done) => {
+            chai.request(server)
+              .put(`/api/tasks/${taskID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .send({ description: 'updated' })
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {                  
+                  expect(res.body).to.have.all.keys('status', 'message')
+                  expect(res.body.status).to.equal('Ok')
+                  expect(res.body.message).to.equal('Task updated.')
+
+                  done()
+                }
+              })
+          }).timeout(10000)
+          it('should update tasks Assignee', (done) => {
+            chai.request(server)
+              .put(`/api/tasks/${taskID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .send({ assignee: newUser.username })
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {                  
+                  expect(res.body).to.have.all.keys('status', 'message')
+                  expect(res.body.status).to.equal('Ok')
+                  expect(res.body.message).to.equal('Task updated.')
+
+                  done()
+                }
+              })
+          }).timeout(10000)
+
+        })
+
         it('get task by id')
-        it('update task')
         it('remove task')
         it('get assignee of task')
       })
@@ -364,27 +417,6 @@ describe('To-Do Web App Integration Test', () => {
             }
           })
       }).timeout(5000)
-    })
-
-    describe('PUT api/tasks', () => {
-      it('should update tasks done', (done) => {
-        chai.request(server)
-          .put(`/api/tasks/${taskID}`)
-          .set('Authorization', `Bearer ${token}`)
-          .send({ done: false })
-          .end((err, res) => {
-            if (err) {
-              done(err)
-            } else {
-              console.log(res.body)
-              // expect(res.body).to.have.all.keys('status', 'message')
-              // expect(res.body.status).to.equal('Ok')
-              // expect(res.body.message).to.equal('Task updated.')
-
-              done()
-            }
-          })
-      }).timeout(10000)
     })
 
     it('get board by id')
