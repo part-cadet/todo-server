@@ -14,12 +14,12 @@ const invalidUsername = {
 }
 
 const invalidPassword = {
-  username: 'UserCreatedForIntegrationTest2',
+  username: 'UserCreatedForIntegrationTest',
   password: '1234'
 }
 
 const newUser = {
-  username: 'UserCreatedForIntegrationTest2',
+  username: 'UserCreatedForIntegrationTest',
   password: 'TESTtest1@34'
 }
 
@@ -260,14 +260,26 @@ describe('To-Do Web App Integration Test', () => {
           if (err) {
             done(err)
           } else {
-            console.log(res.body)
             expect(res.status).to.equal(200) // Check if the status is Ok
             todoboardID = res.body.result[0].id
-            console.log(todoboardID)
-            console.log(res.body.result[0].id)
-            // res.body.forEach(element => {
-            //   expect(element).to.have.all.keys('id', 'title', 'board_id')
-            // })
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return the requested todo board', (done) => {
+      chai.request(server)
+        .get(`/api/todo/${todoboardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'result')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.result[0]).to.have.all.keys('id', 'title', 'board_id')
+            expect(res.body.result[0].id).to.equal(todoboardID)
             done()
           }
         })
@@ -285,14 +297,12 @@ describe('To-Do Web App Integration Test', () => {
             expect(res.body).to.have.all.keys('status', 'message')
             expect(res.body.status).to.equal('Ok')
             expect(res.body.message).to.equal('New task added.')
-
             done()
           }
         })
     }).timeout(5000)
 
     it('should return a list of tasks', (done) => {
-      console.log('todo ID', todoboardID)
       chai.request(server)
         .get(`/api/todo/tasksof/${todoboardID}`)
         .set('Authorization', `Bearer ${token}`)
@@ -300,7 +310,6 @@ describe('To-Do Web App Integration Test', () => {
           if (err) {
             done(err)
           } else {
-            console.log(res.body)
             expect(res.status).to.equal(200) // Check if the status is Ok
             expect(res.body).to.have.all.keys('status', 'message', 'result')
             expect(res.body.result[0]).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
@@ -361,6 +370,24 @@ describe('To-Do Web App Integration Test', () => {
         })
     }).timeout(10000)
 
+    it('should remove the requested task', (done) => {
+      chai.request(server)
+        .delete(`/api/tasks/${taskID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200)
+            expect(res.body).to.have.all.keys('status', 'message')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.message).to.equal('Task deleted.')
+            // console.log(res.body)
+            done()
+          }
+        })
+    }).timeout(10000)
+
     it('should return a list of the members and owner of a board requested by the task id', (done) => {
       chai.request(server)
         .get(`/api/tasks/allmembersof/${taskID}`)
@@ -372,7 +399,6 @@ describe('To-Do Web App Integration Test', () => {
             expect(res.status).to.equal(200) // Check if the status is Ok
             expect(res.body).to.have.all.keys('status', 'result')
             expect(res.body.status).to.equal('Ok')
-            console.log(res.body)
             done()
           }
         })
@@ -445,10 +471,5 @@ describe('To-Do Web App Integration Test', () => {
           }
         })
     }).timeout(5000)
-
-    it('get task by id')
-    it('remove task')
-    it('get tasks of todo')
-    it('get todo by id')
   })
 })
