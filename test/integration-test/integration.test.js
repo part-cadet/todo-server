@@ -55,7 +55,7 @@ describe('To-Do Web App Integration Test', () => {
       it('should create a new user for test', (done) => {
         chai.request(server)
           .post('/api/signup')
-          // .send(newUser)
+          .send(newUser)
           .end((err, res) => {
             if (err) {
               done(err)
