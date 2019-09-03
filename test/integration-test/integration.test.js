@@ -55,7 +55,7 @@ describe('To-Do Web App Integration Test', () => {
       it('should create a new user for test', (done) => {
         chai.request(server)
           .post('/api/signup')
-          .send(newUser)
+          // .send(newUser)
           .end((err, res) => {
             if (err) {
               done(err)
@@ -425,20 +425,20 @@ describe('To-Do Web App Integration Test', () => {
     }).timeout(5000)
 
     it('should update a todo board', (done) => {
-          chai.request(server)
-            .put(`/api/todo/${todoboardID}`)
-            .set('Authorization', `Bearer ${token}`)
-            .send({ title: 'Updated' })
-            .end((err, res) => {
-              if (err) {
-                done(err)
-              } else {
-                expect(res.body).to.have.all.keys('status', 'message')
-                expect(res.body.status).to.equal('Ok')
-                expect(res.body.message).to.equal('Todo board updated.')
-                done()
-              }
-            })
+      chai.request(server)
+        .put(`/api/todo/${todoboardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({ title: 'Updated' })
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.body).to.have.all.keys('status', 'message')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.message).to.equal('Todo board updated.')
+            done()
+          }
+        })
     }).timeout(5000)
 
     it('should remove todo board', (done) => {

@@ -4,6 +4,8 @@
 node_modules
 package-lock.json
 mochawesome-report
+coverage
+.nyc_output
 
 # Log files
 *.log

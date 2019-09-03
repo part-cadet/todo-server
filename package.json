@@ -4,10 +4,16 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "integ-test": "npx mocha test/integration-test/integration.test.js --exit",
-    "integ-test-html": "npx mocha test/integration-test/integration.test.js --reporter mochawesome --exit",
+    "test": "npx mocha test/integration-test/integration.test.js --reporter mochawesome --exit",
+    "coverage": "nyc --reporter=html npm test",
+    "lint": "npx eslint lib",
     "scss": "node-sass --include-path scss server/public/ftp/assets/scss/style.scss server/public/ftp/assets/css/style.css",
     "start": "npm run scss && npm run scss -- -w"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm test"
+    }
   },
   "repository": {
     "type": "git",
@@ -24,10 +30,12 @@
     "eslint": "^6.1.0",
     "finalhandler": "^1.1.2",
     "find-my-way": "^2.1.0",
+    "husky": "^3.0.5",
     "jsonwebtoken": "^8.5.1",
     "lokijs": "^1.5.6",
     "mocha": "^6.2.0",
     "mochawesome": "^4.1.0",
+    "nyc": "^14.1.1",
     "password-sheriff": "^1.1.0",
     "pg": "^7.12.0",
     "raw-body": "^2.4.1",
