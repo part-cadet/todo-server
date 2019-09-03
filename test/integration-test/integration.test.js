@@ -329,10 +329,30 @@ describe('To-Do Web App Integration Test', () => {
       })
     })
 
+    describe('PUT api/tasks', () => {
+      it('should update tasks done', (done) => {
+        chai.request(server)
+          .put(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ done: false })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              console.log(res.body)
+              // expect(res.body).to.have.all.keys('status', 'message')
+              // expect(res.body.status).to.equal('Ok')
+              // expect(res.body.message).to.equal('Task updated.')
+
+              done()
+            }
+          })
+      }).timeout(10000)
+    })
+
     it('get board by id')
     it('get owner of board')
     it('get members of board')
-    it('update board')
     it('get all members of board')
   })
 
