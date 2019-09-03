@@ -243,22 +243,21 @@ describe('To-Do Web App Integration Test', () => {
         })
     }).timeout(5000)
 
-    it('should return a list of the members and its owner', (done) => {
-      chai.request(server)
-        .get(`/api/boards/allmembersof/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            console.log(res.body)
-            // expect(res.body).to.have.all.keys('status', 'result')
-            // expect(res.body.status).to.equal('Ok')
-            done()
-          }
-        })
-    }).timeout(5000)
+    // it('should return a list of the members and owner of a board requested by the task id', (done) => {
+    //   chai.request(server)
+    //     .get(`/api/boards/allmembersof/${boardID}`)
+    //     .set('Authorization', `Bearer ${token}`)
+    //     .end((err, res) => {
+    //       if (err) {
+    //         done(err)
+    //       } else {
+    //         expect(res.status).to.equal(200) // Check if the status is Ok
+    //         expect(res.body).to.have.all.keys('status', 'result')
+    //         expect(res.body.status).to.equal('Ok')
+    //         done()
+    //       }
+    //     })
+    // }).timeout(5000)
 
     describe('TodoBoard', () => {
       describe('POST api/todo/:boardID', () => {
@@ -338,6 +337,23 @@ describe('To-Do Web App Integration Test', () => {
                   res.body.forEach(element => {
                     expect(element).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
                   })
+                  done()
+                }
+              })
+          }).timeout(5000)
+
+          it('should return a list of the members and owner of a board requested by the task id', (done) => {
+            chai.request(server)
+              .get(`/api/tasks/allmembersof/${taskID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .end((err, res) => {
+                if (err) {
+                  done(err)
+                } else {
+                  expect(res.status).to.equal(200) // Check if the status is Ok
+                  expect(res.body).to.have.all.keys('status', 'result')
+                  expect(res.body.status).to.equal('Ok')
+                  console.log(res.body)
                   done()
                 }
               })
