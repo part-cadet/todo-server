@@ -179,6 +179,7 @@ describe('To-Do Web App Integration Test', () => {
             done(err)
           } else {
             expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'result')
             expect(res.body.status).to.equal('Ok')
             expect(res.body.result[0]).to.have.all.keys('id', 'title', 'owner_name')
             expect(res.body.result[0].id).to.equal(boardID)
@@ -189,10 +190,74 @@ describe('To-Do Web App Integration Test', () => {
         })
     }).timeout(5000)
 
-    it('get owner of board')
-    it('get members of board')
-    it('update board')
-    it('get all members of board')
+    it('should return the owner of requested board', (done) => {
+      chai.request(server)
+        .get(`/api/boards/ownerof/${boardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'result')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.result[0]).to.have.all.keys('owner_name')
+            expect(res.body.result[0].owner_name).to.equal(newUser.username)
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return a list of the requested board\'s members', (done) => {
+      chai.request(server)
+        .get(`/api/boards/membersof/${boardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'result')
+            expect(res.body.status).to.equal('Ok')
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should update the requested board', (done) => {
+      chai.request(server)
+        .put(`/api/boards/${boardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({ title: 'Updated Title' })
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            expect(res.body).to.have.all.keys('status', 'message')
+            expect(res.body.status).to.equal('Ok')
+            expect(res.body.message).to.equal('Board updated.')
+            done()
+          }
+        })
+    }).timeout(5000)
+
+    it('should return a list of the members and its owner', (done) => {
+      chai.request(server)
+        .get(`/api/boards/allmembersof/${boardID}`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).to.equal(200) // Check if the status is Ok
+            console.log(res.body)
+            // expect(res.body).to.have.all.keys('status', 'result')
+            // expect(res.body.status).to.equal('Ok')
+            done()
+          }
+        })
+    }).timeout(5000)
 
     describe('TodoBoard', () => {
       describe('POST api/todo', () => {
