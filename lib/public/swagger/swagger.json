@@ -4,164 +4,52 @@
     "version": "1.0.0",
     "description": "API Documentation for Todo Web Application"
   },
-  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "APIs for creating, loggin in with, and removing a user"
+    },
+    {
+      "name": "Boards",
+      "description": "APIs for creating, listing, updating, and removing boards"
+    },
+    {
+      "name": "Todos",
+      "description": "APIs for creating, listing, updating, and removing todos"
+    },
+    {
+      "name": "Tasks",
+      "description": "APIs for creating, listing, updating, and removing tasks"
+    }
+  ],
   "swagger": "2.0",
   "paths": {
-    "/api/tasks": {
-      "get": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Get a list of current tasks",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "tasks Listed"
-          }
-        }
-      }
-    },
-    "/api/tasks/{id}": {
-      "get": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Returns the task requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested board"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Task Found"
-          },
-          "404": {
-            "description": "Task Not Found"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Updates a current task requested by id.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested board"
-          },
-          {
-            "in": "body",
-            "name": "board info",
-            "description": "The info required to create a board.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "done": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "description": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Task updated."
-          },
-          "400": {
-            "description": "Request body is not valid."
-          },
-          "404": {
-            "description": "The requested task was not found."
-          },
-          "500": {
-            "description": "Internal Server Error has occured while processing the request body."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Deletes the task requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested board"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Task deleted."
-          },
-          "404": {
-            "description": "Task was not found."
-          }
-        }
-      }
-    },
-    "/api/tasks/{todoID}": {
+    "/api/signup": {
       "post": {
         "tags": [
-          "Tasks"
+          "Users"
         ],
-        "summary": "Creates a new task.",
-        "consumes": [
-          "application/json"
-        ],
+        "summary": "Register a user",
         "parameters": [
           {
-            "in": "path",
-            "name": "todoID",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the todo containing the task"
-          },
-          {
             "in": "body",
-            "name": "task info",
-            "required": true,
-            "description": "The info required to create a task.",
+            "name": "user",
+            "description": "The info required to register a user",
             "schema": {
               "type": "object",
               "required": [
-                "done",
-                "description"
+                "username",
+                "password"
               ],
               "properties": {
-                "done": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "description": {
+                "username": {
                   "type": "string",
-                  "example": "task 1"
+                  "example": "Swagger"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "SWAGGERswagger1@34",
+                  "description": "Should be more than 8 characters, include a small letter, a capital letter, a number, and a special character"
                 }
               }
             }
@@ -171,129 +59,43 @@
           "application/json"
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/todo": {
-      "get": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Get a list of current todos",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
           "200": {
-            "description": "Todos Listed"
-          }
-        }
-      }
-    },
-    "/api/todo/tasksof/{id}": {
-      "get": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Returns the tasks of the requested todo board",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested todo board",
-            "example": "3"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Tasks Found"
+            "description": "User logged in, token recieved"
+          },
+          "400": {
+            "description": "Wrong password"
           },
           "404": {
-            "description": "Todo Board Not Found"
+            "description": "Username not found in the database"
           }
         }
       }
     },
-    "/api/todo/{boardID}": {
+    "/api/login": {
       "post": {
         "tags": [
-          "Todos"
+          "Users"
         ],
-        "summary": "Creates a new todo board.",
-        "consumes": [
-          "application/json"
-        ],
+        "summary": "Log into the account of the user",
         "parameters": [
           {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the todo containing the task"
-          },
-          {
             "in": "body",
-            "name": "todo info",
-            "required": true,
-            "description": "The info required to create a todo board.",
+            "name": "user",
+            "description": "The credentials for login",
             "schema": {
               "type": "object",
               "required": [
-                "title"
+                "username",
+                "password"
               ],
               "properties": {
-                "title": {
+                "username": {
                   "type": "string",
-                  "example": "Todo 1"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/todo/{id}": {
-      "put": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Updates a current todo board requested by id.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested todo board"
-          },
-          {
-            "in": "body",
-            "name": "todo info",
-            "description": "The info required to create a todo board.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
+                  "example": "Demo"
+                },
+                "password": {
                   "type": "string",
-                  "example": "Todo 1"
+                  "example": "DEMOdemo1@34"
                 }
               }
             }
@@ -304,71 +106,13 @@
         ],
         "responses": {
           "200": {
-            "description": "Todo board was found and updated."
+            "description": "User logged in, token recieved (expires in 10 minutes), this token is needed for working with other APIs"
           },
           "400": {
-            "description": "Request body is not valid."
+            "description": "Wrong password"
           },
           "404": {
-            "description": "The requested Todo board was not found."
-          },
-          "500": {
-            "description": "Internal Server Error has occured while processing the request body."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Deletes the Todo board requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested Todo board",
-            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todo board found and deleted."
-          },
-          "404": {
-            "description": "Todo board was not found."
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Returns the Todo board requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested board"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todo board Found"
-          },
-          "404": {
-            "description": "Todo board Not Found"
+            "description": "Username not found in the database"
           }
         }
       }
@@ -385,7 +129,7 @@
             "name": "Authorization",
             "required": true,
             "type": "string",
-            "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NjY2MzU1NDh9.oiMIZVDlswG0s9CLr6re70fGwxg5zyQ-wSL0qLWTJkg"
+            "description": "Bearer ${token recieved in login}"
           }
         ],
         "produces": [
@@ -707,11 +451,376 @@
           }
         }
       }
+    },
+    "/api/todo": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get a list of current todos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todos Listed"
+          }
+        }
+      }
+    },
+    "/api/todo/tasksof/{id}": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the tasks of the requested todo board",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested todo board",
+            "example": "3"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Tasks Found"
+          },
+          "404": {
+            "description": "Todo Board Not Found"
+          }
+        }
+      }
+    },
+    "/api/todo/{boardID}": {
+      "post": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Creates a new todo board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the todo containing the task"
+          },
+          {
+            "in": "body",
+            "name": "todo info",
+            "required": true,
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "title"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/todo/{id}": {
+      "put": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Updates a current todo board requested by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested todo board"
+          },
+          {
+            "in": "body",
+            "name": "todo info",
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board was found and updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested Todo board was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Deletes the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested Todo board",
+            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board found and deleted."
+          },
+          "404": {
+            "description": "Todo board was not found."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board Found"
+          },
+          "404": {
+            "description": "Todo board Not Found"
+          }
+        }
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get a list of current tasks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "tasks Listed"
+          }
+        }
+      }
+    },
+    "/api/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Returns the task requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task Found"
+          },
+          "404": {
+            "description": "Task Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Updates a current task requested by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          },
+          {
+            "in": "body",
+            "name": "board info",
+            "description": "The info required to create a board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "done": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested task was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Deletes the task requested by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task deleted."
+          },
+          "404": {
+            "description": "Task was not found."
+          }
+        }
+      }
+    },
+    "/api/tasks/{todoID}": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Creates a new task.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "todoID",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the todo containing the task"
+          },
+          {
+            "in": "body",
+            "name": "task info",
+            "required": true,
+            "description": "The info required to create a task.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "done",
+                "description"
+              ],
+              "properties": {
+                "done": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "description": {
+                  "type": "string",
+                  "example": "task 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "definitions": {},
   "responses": {},
   "parameters": {},
-  "securityDefinitions": {},
-  "tags": []
+  "securityDefinitions": {}
 }
