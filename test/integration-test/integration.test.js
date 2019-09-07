@@ -124,372 +124,409 @@ describe('To-Do Web App Integration Test', () => {
   })
 
   describe('General APIs', () => {
-    it('should create a board', (done) => {
-      chai.request(server)
-        .post('/api/boards')
-        .set('Authorization', `Bearer ${token}`)
-        .send({ title: 'Test' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(201)
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('New board added.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('POST /api/boards', () => {
+      it('should create a board', (done) => {
+        chai.request(server)
+          .post('/api/boards')
+          .set('Authorization', `Bearer ${token}`)
+          .send({ title: 'Test' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(201)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('New board added.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a list of boards', (done) => {
-      chai.request(server)
-        .get('/api/boards')
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            // console.log(res.body)
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            boardID = res.body[0].id
-            // console.log(boardID)
-            res.body.forEach(element => {
-              expect(element).to.have.all.keys('id', 'title', 'owner_name')
-            })
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/boards', () => {
+      it('should return a list of boards', (done) => {
+        chai.request(server)
+          .get('/api/boards')
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              // console.log(res.body)
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              boardID = res.body[0].id
+              // console.log(boardID)
+              res.body.forEach(element => {
+                expect(element).to.have.all.keys('id', 'title', 'owner_name')
+              })
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a board requested by id', (done) => {
-      chai.request(server)
-        .get(`/api/boards/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.result[0]).to.have.all.keys('id', 'title', 'owner_name')
-            expect(res.body.result[0].id).to.equal(boardID)
-            expect(res.body.result[0].title).to.equal('Test')
-            expect(res.body.result[0].owner_name).to.equal(newUser.username)
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/boards/:boardID', () => {
+      it('should return a board requested by id', (done) => {
+        chai.request(server)
+          .get(`/api/boards/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.result[0]).to.have.all.keys('id', 'title', 'owner_name')
+              expect(res.body.result[0].id).to.equal(boardID)
+              expect(res.body.result[0].title).to.equal('Test')
+              expect(res.body.result[0].owner_name).to.equal(newUser.username)
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return the owner of requested board', (done) => {
-      chai.request(server)
-        .get(`/api/boards/ownerof/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.result[0]).to.have.all.keys('owner_name')
-            expect(res.body.result[0].owner_name).to.equal(newUser.username)
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/boards/ownerof/:boardID', () => {
+      it('should return the owner of requested board', (done) => {
+        chai.request(server)
+          .get(`/api/boards/ownerof/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.result[0]).to.have.all.keys('owner_name')
+              expect(res.body.result[0].owner_name).to.equal(newUser.username)
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a list of the requested board\'s members', (done) => {
-      chai.request(server)
-        .get(`/api/boards/membersof/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/boards/membersof/:boardID', () => {
+      it('should return a list of the requested board\'s members', (done) => {
+        chai.request(server)
+          .get(`/api/boards/membersof/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should update the requested board', (done) => {
-      chai.request(server)
-        .put(`/api/boards/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ title: 'Updated Title' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Board updated.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('PUT /api/boards/:boardID', () => {
+      it('should update the requested board', (done) => {
+        chai.request(server)
+          .put(`/api/boards/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ title: 'Updated Title' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Board updated.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should create a todo board', (done) => {
-      chai.request(server)
-        .post(`/api/todo/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ title: 'Test' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('New todo board added.')
+    describe('POST /api/todo/:boardID', () => {
+      it('should create a todo board', (done) => {
+        chai.request(server)
+          .post(`/api/todo/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ title: 'Test' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('New todo board added.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/boards/todosof/:boardID', () => {
+      it('should return a list of todo boards', (done) => {
+        chai.request(server)
+          .get(`/api/boards/todosof/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              todoboardID = res.body.result[0].id
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a list of todo boards', (done) => {
-      chai.request(server)
-        .get(`/api/boards/todosof/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            todoboardID = res.body.result[0].id
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/todo/:todoboardID', () => {
+      it('should return the requested todo board', (done) => {
+        chai.request(server)
+          .get(`/api/todo/${todoboardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.result[0]).to.have.all.keys('id', 'title', 'board_id')
+              expect(res.body.result[0].id).to.equal(todoboardID)
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return the requested todo board', (done) => {
-      chai.request(server)
-        .get(`/api/todo/${todoboardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.result[0]).to.have.all.keys('id', 'title', 'board_id')
-            expect(res.body.result[0].id).to.equal(todoboardID)
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('POST /api/tasks/:todoboardID', () => {
+      it('should create a task', (done) => {
+        chai.request(server)
+          .post(`/api/tasks/${todoboardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ done: false, description: 'test' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('New task added.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should create a task', (done) => {
-      chai.request(server)
-        .post(`/api/tasks/${todoboardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ done: false, description: 'test' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('New task added.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/todo/tasksof/:todoboardID', () => {
+      it('should return a list of tasks', (done) => {
+        chai.request(server)
+          .get(`/api/todo/tasksof/${todoboardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'message', 'result')
+              expect(res.body.result[0]).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
+              taskID = res.body.result[0].id
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a list of tasks', (done) => {
-      chai.request(server)
-        .get(`/api/todo/tasksof/${todoboardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'message', 'result')
-            expect(res.body.result[0]).to.have.all.keys('id', 'description', 'done', 'assignee', 'todo_id')
-            taskID = res.body.result[0].id
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('GET /api/tasks/:taskID', () => {
+      it('should return a task requested by id', (done) => {
+        chai.request(server)
+          .get(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.result[0]).to.have.all.keys('id', 'done', 'description', 'assignee', 'todo_id')
+              expect(res.body.result[0].id).to.equal(taskID)
+              expect(res.body.result[0].description).to.equal('test')
+              expect(res.body.result[0].todo_id).to.equal(todoboardID)
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should return a task requested by id', (done) => {
-      chai.request(server)
-        .get(`/api/tasks/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.result[0]).to.have.all.keys('id', 'done', 'description', 'assignee', 'todo_id')
-            expect(res.body.result[0].id).to.equal(taskID)
-            expect(res.body.result[0].description).to.equal('test')
-            expect(res.body.result[0].todo_id).to.equal(todoboardID)
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('PUT /api/tasks/:taskID', () => {
+      it('should update tasks done', (done) => {
+        chai.request(server)
+          .put(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ done: false })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Task updated.')
+              done()
+            }
+          })
+      }).timeout(10000)
 
-    it('should update tasks done', (done) => {
-      chai.request(server)
-        .put(`/api/tasks/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ done: false })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Task updated.')
-            done()
-          }
-        })
-    }).timeout(10000)
+      it('should update tasks description', (done) => {
+        chai.request(server)
+          .put(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ description: 'updated' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Task updated.')
+              done()
+            }
+          })
+      }).timeout(5000)
 
-    it('should update tasks description', (done) => {
-      chai.request(server)
-        .put(`/api/tasks/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ description: 'updated' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Task updated.')
-            done()
-          }
-        })
-    }).timeout(5000)
+      it('should update tasks Assignee', (done) => {
+        chai.request(server)
+          .put(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ assignee: newUser.username })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Task updated.')
+              done()
+            }
+          })
+      }).timeout(10000)
+    })
 
-    it('should update tasks Assignee', (done) => {
-      chai.request(server)
-        .put(`/api/tasks/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ assignee: newUser.username })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Task updated.')
-            done()
-          }
-        })
-    }).timeout(10000)
+    describe('GET /api/tasks/allmembersof/:taskID', () => {
+      it('should return a list of the members and owner of a board requested by the task id', (done) => {
+        chai.request(server)
+          .get(`/api/tasks/allmembersof/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200) // Check if the status is Ok
+              expect(res.body).to.have.all.keys('status', 'result')
+              expect(res.body.status).to.equal('Ok')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should remove the requested task', (done) => {
-      chai.request(server)
-        .delete(`/api/tasks/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200)
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Task deleted.')
-            // console.log(res.body)
-            done()
-          }
-        })
-    }).timeout(10000)
+    describe('DELETE /api/tasks/:taskID', () => {
+      it('should remove the requested task', (done) => {
+        chai.request(server)
+          .delete(`/api/tasks/${taskID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Task deleted.')
+              // console.log(res.body)
+              done()
+            }
+          })
+      }).timeout(10000)
+    })
 
-    it('should return a list of the members and owner of a board requested by the task id', (done) => {
-      chai.request(server)
-        .get(`/api/tasks/allmembersof/${taskID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200) // Check if the status is Ok
-            expect(res.body).to.have.all.keys('status', 'result')
-            expect(res.body.status).to.equal('Ok')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('PUT /api/todo/:todoID', () => {
+      it('should update a todo board', (done) => {
+        chai.request(server)
+          .put(`/api/todo/${todoboardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .send({ title: 'Updated' })
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Todo board updated.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should update a todo board', (done) => {
-      chai.request(server)
-        .put(`/api/todo/${todoboardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send({ title: 'Updated' })
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Todo board updated.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('DELETE /api/todo/:todoID', () => {
+      it('should remove todo board', (done) => {
+        chai.request(server)
+          .delete(`/api/todo/${todoboardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Todo Board deleted.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should remove todo board', (done) => {
-      chai.request(server)
-        .delete(`/api/todo/${todoboardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200)
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Todo Board deleted.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('DELETE /api/boards/:boardID', () => {
+      it('should remove board', (done) => {
+        chai.request(server)
+          .delete(`/api/boards/${boardID}`)
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('Board deleted.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
 
-    it('should remove board', (done) => {
-      chai.request(server)
-        .delete(`/api/boards/${boardID}`)
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200)
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('Board deleted.')
-            done()
-          }
-        })
-    }).timeout(5000)
-
-    it('Remove the created user', (done) => {
-      chai.request(server)
-        .delete('/api/users')
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          if (err) {
-            done(err)
-          } else {
-            expect(res.status).to.equal(200)
-            expect(res.body).to.have.all.keys('status', 'message')
-            expect(res.body.status).to.equal('Ok')
-            expect(res.body.message).to.equal('User deleted.')
-            done()
-          }
-        })
-    }).timeout(5000)
+    describe('DELETE /api/users', () => {
+      it('Remove the created user', (done) => {
+        chai.request(server)
+          .delete('/api/users')
+          .set('Authorization', `Bearer ${token}`)
+          .end((err, res) => {
+            if (err) {
+              done(err)
+            } else {
+              expect(res.status).to.equal(200)
+              expect(res.body).to.have.all.keys('status', 'message')
+              expect(res.body.status).to.equal('Ok')
+              expect(res.body.message).to.equal('User deleted.')
+              done()
+            }
+          })
+      }).timeout(5000)
+    })
   })
 })
