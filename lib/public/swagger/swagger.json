@@ -2,7 +2,7 @@
   "info": {
     "title": "Todo Web Application",
     "version": "1.0.0",
-    "description": "API Documentation for Todo Web Application"
+    "description": "API Documentation for Todo Web Application, in order to work with these APIs, you need to add the token in the request authorization headers. to get a token, create a user using the signup API, the log in with that user; in the response you get a token (which is only valid for 10 minutes), to use the token, paste it in the token field in each API with the word `Bearer` before it."
   },
   "tags": [
     {
@@ -117,6 +117,76 @@
         }
       }
     },
+    "/api/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Lists the users in the database",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users in the database listed"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Deletes the current user specified by the token",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The credentials for login",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Swagger"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "SWAGGERswagger1@34"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user deleted"
+          }
+        }
+      }
+    },
     "/api/boards": {
       "get": {
         "tags": [
@@ -150,6 +220,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "body",
             "name": "board info",
@@ -192,6 +269,13 @@
         "summary": "Returns the board requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -217,6 +301,13 @@
         ],
         "summary": "Updates a current board requested by id.",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -264,6 +355,13 @@
         "summary": "Deletes the board requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -294,6 +392,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "boardID",
@@ -343,6 +448,13 @@
         ],
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "boardID",
             "required": true,
@@ -372,6 +484,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "boardID",
@@ -403,6 +522,13 @@
         ],
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "boardID",
             "required": true,
@@ -433,6 +559,13 @@
         ],
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "boardID",
             "required": true,
@@ -458,6 +591,15 @@
           "Todos"
         ],
         "summary": "Get a list of current todos",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
         "produces": [
           "application/json"
         ],
@@ -475,6 +617,13 @@
         ],
         "summary": "Returns the tasks of the requested todo board",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -507,6 +656,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "boardID",
@@ -551,6 +707,13 @@
         ],
         "summary": "Updates a current todo board requested by id.",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -599,6 +762,13 @@
         "summary": "Deletes the Todo board requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -627,6 +797,13 @@
         "summary": "Returns the Todo board requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -654,6 +831,15 @@
           "Tasks"
         ],
         "summary": "Get a list of current tasks",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
         "produces": [
           "application/json"
         ],
@@ -671,6 +857,13 @@
         ],
         "summary": "Returns the task requested by id",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -697,6 +890,13 @@
         ],
         "summary": "Updates a current task requested by id.",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -747,6 +947,13 @@
         "summary": "Deletes the task requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -777,6 +984,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "todoID",
@@ -814,6 +1028,41 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/tasks/assignee/{memberID}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Gets the assignee of the task",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "memberID",
+            "required": true,
+            "type": "string",
+            "description": "The username of the task's assignee"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Task's assignee found."
+          },
+          "404": {
+            "description": "Task was not found."
           }
         }
       }
