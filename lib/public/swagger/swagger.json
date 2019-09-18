@@ -2,17 +2,844 @@
   "info": {
     "title": "Todo Web Application",
     "version": "1.0.0",
-    "description": "API Documentation for Todo Web Application"
+    "description": "API Documentation for Todo Web Application, in order to work with these APIs, you need to add the token in the request authorization headers. to get a token, create a user using the signup API, the log in with that user; in the response you get a token (which is only valid for 10 minutes), to use the token, paste it in the token field in each API with the word `Bearer` before it."
   },
-  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "APIs for creating, loggin in with, and removing a user"
+    },
+    {
+      "name": "Boards",
+      "description": "APIs for creating, listing, updating, and removing boards"
+    },
+    {
+      "name": "Todos",
+      "description": "APIs for creating, listing, updating, and removing todos"
+    },
+    {
+      "name": "Tasks",
+      "description": "APIs for creating, listing, updating, and removing tasks"
+    }
+  ],
   "swagger": "2.0",
   "paths": {
+    "/api/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Register a user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The info required to register a user",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Swagger"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "SWAGGERswagger1@34",
+                  "description": "Should be more than 8 characters, include a small letter, a capital letter, a number, and a special character"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in, token recieved"
+          },
+          "400": {
+            "description": "Wrong password"
+          },
+          "404": {
+            "description": "Username not found in the database"
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Log into the account of the user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The credentials for login",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Demo"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "DEMOdemo1@34"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in, token recieved (expires in 10 minutes), this token is needed for working with other APIs"
+          },
+          "400": {
+            "description": "Wrong password"
+          },
+          "404": {
+            "description": "Username not found in the database"
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Lists the users in the database",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users in the database listed"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Deletes the current user specified by the token",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The credentials for login",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Swagger"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "SWAGGERswagger1@34"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user deleted"
+          }
+        }
+      }
+    },
+    "/api/boards": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Get a list of current boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Boards Listed"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Creates a new board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "body",
+            "name": "board info",
+            "required": true,
+            "description": "The info required to create a board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "title",
+                "owner_name"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Board 1"
+                },
+                "owner_name": {
+                  "type": "string",
+                  "example": "Ali Goldani"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/boards/{id}": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Returns the board requested by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Board Found"
+          },
+          "404": {
+            "description": "Board Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Updates a current board requested by id.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          },
+          {
+            "in": "body",
+            "name": "board info",
+            "description": "The info required to update a board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Board 2"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Board was found and updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested board was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Deletes the board requested by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Board found and deleted."
+          },
+          "404": {
+            "description": "Board was not found."
+          }
+        }
+      }
+    },
+    "/api/boards/addmemberto/{boardID}": {
+      "post": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Adds a member to a board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "description": "The id of the board to which we are adding the member.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "body",
+            "name": "board info",
+            "required": true,
+            "description": "The info required to add a member to the board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Ali Goldani"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/boards/todosof/{boardID}": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Gets a list of todos in the board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "description": "The id of the board in which we are searching for todos.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/boards/ownerof/{boardID}": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Gets the owner of the given board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "description": "The id of the board the owner of which we want to find.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner found."
+          }
+        }
+      }
+    },
+    "/api/boards/tasksof/{boardID}": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Gets a list of all the tasks in the board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "description": "The id of the board in which we are searching for tasks.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/boards/membersof/{boardID}": {
+      "get": {
+        "tags": [
+          "Boards"
+        ],
+        "summary": "Gets a list of members of the board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "description": "The id of the board of which we are searching for members.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/todo": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Get a list of current todos",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todos Listed"
+          }
+        }
+      }
+    },
+    "/api/todo/tasksof/{id}": {
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the tasks of the requested todo board",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the requested todo board",
+            "example": "3"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Tasks Found"
+          },
+          "404": {
+            "description": "Todo Board Not Found"
+          }
+        }
+      }
+    },
+    "/api/todo/{boardID}": {
+      "post": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Creates a new todo board.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "boardID",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the todo containing the task"
+          },
+          {
+            "in": "body",
+            "name": "todo info",
+            "required": true,
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "title"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/todo/{id}": {
+      "put": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Updates a current todo board requested by id.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested todo board"
+          },
+          {
+            "in": "body",
+            "name": "todo info",
+            "description": "The info required to create a todo board.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Todo 1"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board was found and updated."
+          },
+          "400": {
+            "description": "Request body is not valid."
+          },
+          "404": {
+            "description": "The requested Todo board was not found."
+          },
+          "500": {
+            "description": "Internal Server Error has occured while processing the request body."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Deletes the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested Todo board",
+            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board found and deleted."
+          },
+          "404": {
+            "description": "Todo board was not found."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Todos"
+        ],
+        "summary": "Returns the Todo board requested by id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "string",
+            "description": "The ID of the requested board"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo board Found"
+          },
+          "404": {
+            "description": "Todo board Not Found"
+          }
+        }
+      }
+    },
     "/api/tasks": {
       "get": {
         "tags": [
           "Tasks"
         ],
         "summary": "Get a list of current tasks",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          }
+        ],
         "produces": [
           "application/json"
         ],
@@ -30,6 +857,13 @@
         ],
         "summary": "Returns the task requested by id",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -56,6 +890,13 @@
         ],
         "summary": "Updates a current task requested by id.",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "id",
@@ -106,6 +947,13 @@
         "summary": "Deletes the task requested by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -136,6 +984,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
             "name": "todoID",
@@ -177,282 +1032,26 @@
         }
       }
     },
-    "/api/todo": {
+    "/api/tasks/assignee/{memberID}": {
       "get": {
         "tags": [
-          "Todos"
+          "Tasks"
         ],
-        "summary": "Get a list of current todos",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todos Listed"
-          }
-        }
-      }
-    },
-    "/api/todo/tasksof/{id}": {
-      "get": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Returns the tasks of the requested todo board",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested todo board",
-            "example": "3"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Tasks Found"
-          },
-          "404": {
-            "description": "Todo Board Not Found"
-          }
-        }
-      }
-    },
-    "/api/todo/{boardID}": {
-      "post": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Creates a new todo board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the todo containing the task"
-          },
-          {
-            "in": "body",
-            "name": "todo info",
-            "required": true,
-            "description": "The info required to create a todo board.",
-            "schema": {
-              "type": "object",
-              "required": [
-                "title"
-              ],
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Todo 1"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/todo/{id}": {
-      "put": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Updates a current todo board requested by id.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested todo board"
-          },
-          {
-            "in": "body",
-            "name": "todo info",
-            "description": "The info required to create a todo board.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Todo 1"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todo board was found and updated."
-          },
-          "400": {
-            "description": "Request body is not valid."
-          },
-          "404": {
-            "description": "The requested Todo board was not found."
-          },
-          "500": {
-            "description": "Internal Server Error has occured while processing the request body."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Deletes the Todo board requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested Todo board",
-            "example": "9516d24c-a13f-4d9c-bd15-c3ca44c16f61"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todo board found and deleted."
-          },
-          "404": {
-            "description": "Todo board was not found."
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Todos"
-        ],
-        "summary": "Returns the Todo board requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "format": "string",
-            "description": "The ID of the requested board"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Todo board Found"
-          },
-          "404": {
-            "description": "Todo board Not Found"
-          }
-        }
-      }
-    },
-    "/api/boards": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Get a list of current boards",
+        "summary": "Gets the assignee of the task",
         "parameters": [
           {
             "in": "header",
             "name": "Authorization",
             "required": true,
             "type": "string",
-            "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NjY2MzU1NDh9.oiMIZVDlswG0s9CLr6re70fGwxg5zyQ-wSL0qLWTJkg"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Boards Listed"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Creates a new board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "board info",
-            "required": true,
-            "description": "The info required to create a board.",
-            "schema": {
-              "type": "object",
-              "required": [
-                "title",
-                "owner_name"
-              ],
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Board 1"
-                },
-                "owner_name": {
-                  "type": "string",
-                  "example": "Ali Goldani"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/boards/{id}": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Returns the board requested by id",
-        "parameters": [
+            "description": "Bearer ${token recieved in login}"
+          },
           {
             "in": "path",
-            "name": "id",
+            "name": "memberID",
             "required": true,
             "type": "string",
-            "description": "The ID of the requested board"
+            "description": "The username of the task's assignee"
           }
         ],
         "produces": [
@@ -460,250 +1059,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Board Found"
+            "description": "Task's assignee found."
           },
           "404": {
-            "description": "Board Not Found"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Updates a current board requested by id.",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested board"
-          },
-          {
-            "in": "body",
-            "name": "board info",
-            "description": "The info required to update a board.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Board 2"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Board was found and updated."
-          },
-          "400": {
-            "description": "Request body is not valid."
-          },
-          "404": {
-            "description": "The requested board was not found."
-          },
-          "500": {
-            "description": "Internal Server Error has occured while processing the request body."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Deletes the board requested by id",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "The ID of the requested board"
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Board found and deleted."
-          },
-          "404": {
-            "description": "Board was not found."
-          }
-        }
-      }
-    },
-    "/api/boards/addmemberto/{boardID}": {
-      "post": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Adds a member to a board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "description": "The id of the board to which we are adding the member.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "body",
-            "name": "board info",
-            "required": true,
-            "description": "The info required to add a member to the board.",
-            "schema": {
-              "type": "object",
-              "required": [
-                "username"
-              ],
-              "properties": {
-                "username": {
-                  "type": "string",
-                  "example": "Ali Goldani"
-                }
-              }
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/boards/todosof/{boardID}": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Gets a list of todos in the board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "description": "The id of the board in which we are searching for todos.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/boards/ownerof/{boardID}": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Gets the owner of the given board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "description": "The id of the board the owner of which we want to find.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Owner found."
-          }
-        }
-      }
-    },
-    "/api/boards/tasksof/{boardID}": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Gets a list of all the tasks in the board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "description": "The id of the board in which we are searching for tasks.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/api/boards/membersof/{boardID}": {
-      "get": {
-        "tags": [
-          "Boards"
-        ],
-        "summary": "Gets a list of members of the board.",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "boardID",
-            "required": true,
-            "description": "The id of the board of which we are searching for members.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
+            "description": "Task was not found."
           }
         }
       }
@@ -712,6 +1071,5 @@
   "definitions": {},
   "responses": {},
   "parameters": {},
-  "securityDefinitions": {},
-  "tags": []
+  "securityDefinitions": {}
 }
