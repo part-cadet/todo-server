@@ -8,12 +8,7 @@
     "coverage": "nyc --reporter=html npm test",
     "lint": "npx eslint lib",
     "scss": "node-sass --include-path scss server/public/ftp/assets/scss/style.scss server/public/ftp/assets/css/style.css",
-    "start": "npm run scss && npm run scss -- -w"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run lint && npm test"
-    }
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
