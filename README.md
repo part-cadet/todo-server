@@ -1,6 +1,5 @@
 # TODO List Web Application
 
-In order to test tge APIs in Swagger-UI:
+A **DEMO** of this web app is up and running of [HEROKU](https://todo-webapp-part-cadet.herokuapp.com/).
 
-* run the program
-* navigate to `localhost:${RUNNING_PORT}/swagger/swagger.html`
+In order to test the APIs in Swagger-UI, navigate to the [swagger section](https://todo-webapp-part-cadet.herokuapp.com/swagger/swagger.html).
