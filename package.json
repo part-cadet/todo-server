@@ -4,7 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "npx mocha test/integration-test/integration.test.js --reporter mochawesome --exit",
+    "test": "npx mocha test/integration-test/integration.test.js --exit",
+    "test-export": "npx mocha test/integration-test/integration.test.js --reporter mochawesome --exit",
     "coverage": "nyc --reporter=html npm test",
     "lint": "npx eslint lib",
     "scss": "node-sass --include-path scss server/public/ftp/assets/scss/style.scss server/public/ftp/assets/css/style.css",
@@ -12,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://igit.partdp.ir/cadet/todo.git"
+    "url": "https://github.com/part-cadet/todo-server.git"
   },
   "author": "",
   "license": "ISC",
